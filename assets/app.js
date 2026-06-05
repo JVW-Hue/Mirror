@@ -452,8 +452,20 @@
 
     document.getElementById("obj-toggle").addEventListener("click", () => {
       panel.classList.toggle("collapsed");
+      panel.classList.toggle("expanded");
       document.getElementById("obj-toggle").textContent = panel.classList.contains("collapsed") ? "+" : "−";
     });
+
+    // Mobile: tap the panel header (h4) to slide up the bottom sheet
+    const panelH4 = panel.querySelector("h4");
+    if (panelH4 && !panelH4.dataset.mobileBound) {
+      panelH4.dataset.mobileBound = "1";
+      panelH4.addEventListener("click", () => {
+        if (window.matchMedia("(max-width: 600px)").matches) {
+          panel.classList.toggle("expanded");
+        }
+      });
+    }
   }
 
   function renderDiscoveryCounter() {

@@ -893,3 +893,263 @@ body.reveal-4 .thread-callout { background: transparent; }
   .thread-bar .container { gap: 0.75rem; }
   .thread-link { font-size: 0.7rem; padding: 0.15rem 0.4rem; }
 }
+
+/* ============================================
+   MOBILE-FRIENDLY OVERHAUL
+   (Added for github.io deploy. Mobile-first.)
+   ============================================ */
+
+/* Prevent iOS auto-zoom on input focus */
+@supports (-webkit-touch-callout: none) {
+  body { -webkit-text-size-adjust: 100%; }
+}
+html { -webkit-text-size-adjust: 100%; }
+
+/* Touch target sizing — buttons and links should be tappable */
+.btn, button, input[type="submit"], input[type="button"] {
+  min-height: 44px;
+  padding: 0.7rem 1.2rem;
+  touch-action: manipulation;
+}
+
+/* Make all images and media scale to viewport */
+img, video, svg, iframe, embed, object {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Long unbroken strings (URLs, hashes) should wrap */
+body {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+pre, code {
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* ============== TABLET (<= 900px) ============== */
+@media (max-width: 900px) {
+  .container { padding: 0 1.25rem; }
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.15rem; }
+  .objectives-panel { display: none; }
+  nav.main-nav ul { gap: 1.2rem; flex-wrap: wrap; }
+  .thread-bar .container { gap: 0.6rem; }
+  .thread-link { font-size: 0.7rem; }
+  .site-header { position: sticky; top: 0; }
+  .thread-bar { position: sticky; top: 60px; z-index: 99; }
+  .hero h1 { font-size: 2.2rem; }
+  .hero .lead { font-size: 1rem; }
+  .court-order { padding: 1.5rem 1.25rem; }
+  .court-caption .court-name { font-size: 0.85rem; }
+  .forum-post { padding: 1rem; }
+  .signin-box { margin: 2rem 1rem; padding: 1.5rem; }
+  .map-canvas { width: 100% !important; max-width: 100% !important; }
+  .thread-card { padding: 1rem; }
+}
+
+/* ============== PHONE (<= 600px) ============== */
+@media (max-width: 600px) {
+  :root { --c-fg: #0a1628; }
+
+  /* Layout */
+  .container { padding: 0 1rem; }
+  main { padding-bottom: 5rem; } /* room for mobile bottom bar */
+  h1 { font-size: 1.65rem; line-height: 1.15; margin-bottom: 0.75rem; }
+  h2 { font-size: 1.3rem; margin: 1.75rem 0 0.75rem; }
+  h3 { font-size: 1.05rem; margin: 1.25rem 0 0.5rem; }
+  body { font-size: 16px; line-height: 1.55; }
+  p { margin-bottom: 0.85rem; }
+
+  /* Header — make brand + nav stack */
+  .site-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding-top: 0.6rem;
+    padding-bottom: 0.6rem;
+  }
+  .site-header { position: sticky; top: 0; }
+  nav.main-nav { width: 100%; }
+  nav.main-nav ul {
+    gap: 0.6rem 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    justify-content: flex-start;
+  }
+  nav.main-nav a { padding: 0.4rem 0; min-height: 36px; display: inline-block; }
+
+  /* Thread bar — make scrollable, sticky, more compact */
+  .thread-bar {
+    padding: 0.5rem 0;
+    position: sticky;
+    top: 88px;
+    z-index: 99;
+    background: #f6f8fa;
+  }
+  .thread-bar .container { gap: 0.4rem; padding: 0 1rem; }
+  .thread-link { font-size: 0.7rem; padding: 0.3rem 0.5rem; }
+  .thread-link .dot { width: 6px; height: 6px; }
+
+  /* Hero — make it a phone-friendly intro */
+  .hero { padding: 2.5rem 0; }
+  .hero h1 { font-size: 1.8rem; }
+  .hero .lead { font-size: 0.95rem; }
+  .hero .btn, .hero a.btn { display: block; margin: 0.4rem 0; text-align: center; }
+
+  /* Cards grid — single column on phones */
+  .cards { grid-template-columns: 1fr; gap: 1rem; }
+  .card { padding: 1.1rem; }
+  .card .num { font-size: 0.75rem; }
+  .card h3 { font-size: 1.1rem; }
+
+  /* Thread cards (home page) */
+  a.thread-card { padding: 1rem; margin-bottom: 0.5rem; }
+  a.thread-card h3 { font-size: 1rem; }
+
+  /* Buttons — full width, easier to tap */
+  .btn { width: 100%; display: block; text-align: center; box-sizing: border-box; }
+
+  /* Page header */
+  .page-header { padding: 0.5rem 0 1rem; }
+  .page-header h1 { font-size: 1.5rem; }
+
+  /* Forum thread / posts */
+  .forum-thread { margin: 0.5rem 0; }
+  .forum-post { padding: 0.9rem; margin: 0.6rem 0; }
+  .forum-post h3 { font-size: 1rem; }
+  .forum-post .meta { flex-direction: column; align-items: flex-start; gap: 0.2rem; }
+  .forum-thread-row {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    padding: 0.7rem 0;
+  }
+  .forum-thread-row .stats { text-align: left; }
+
+  /* Archive / court order */
+  .court-order { margin: 0.5rem 0; padding: 1rem 0.75rem; }
+  .court-caption .court-name { font-size: 0.75rem; }
+  .court-caption .district, .court-caption .case-no { font-size: 0.7rem; }
+  .order-body p, .order-body ol li { font-size: 0.95rem; line-height: 1.6; }
+  .order-title { font-size: 0.9rem; margin: 1.25rem 0 1rem; }
+  .parties { grid-template-columns: 1fr; gap: 0.5rem; }
+  .parties .center { display: none; }
+  .parties .left, .parties .right { text-align: left; padding-left: 0; }
+  .stamp-seal { font-size: 0.7rem; padding: 0.5rem 0.6rem; right: 6px; opacity: 0.5; }
+  .stamp-deseal { font-size: 0.65rem; padding: 0.4rem 0.5rem; left: 6px; opacity: 0.7; }
+  .signature-block .sig-line { min-width: 160px; }
+
+  /* Helena purple-themed pages */
+  .purple-content { margin: 2rem 1rem; padding: 0; line-height: 1.75; }
+  .purple-content h1 { font-size: 1.4rem; }
+
+  /* Mirror pages (truth, after, etc.) */
+  .mirror-truth, .end-content { margin: 2rem 1rem; padding: 0; }
+  .mirror-truth h1 { font-size: 1.6rem; letter-spacing: 0.15em; }
+  .end-content h1 { font-size: 1.2rem; letter-spacing: 0.3em; }
+  .end-content { font-size: 0.95rem; }
+
+  /* Sign-in form */
+  .signin-box { margin: 1.5rem 0.75rem; padding: 1.25rem; }
+  .signin-box h1 { font-size: 1.3rem; }
+
+  /* Maps / large diagrams */
+  .thread-map, .map-canvas {
+    width: 100% !important;
+    height: 360px !important;
+  }
+
+  /* Tables — horizontal scroll if needed */
+  table, .data-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Code blocks — scroll horizontally rather than wrap (preserves code) */
+  pre {
+    white-space: pre;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    max-width: 100%;
+    padding: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  /* Discovery counter — make it a floating compact pill on phone */
+  .discovery-counter {
+    bottom: 12px !important;
+    right: 12px !important;
+    top: auto !important;
+    font-size: 0.7rem !important;
+    padding: 0.4rem 0.7rem !important;
+    border-radius: 20px !important;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Objectives panel — make it a slide-up bottom sheet on phone */
+  .objectives-panel {
+    position: fixed !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    left: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+    border-radius: 16px 16px 0 0 !important;
+    transform: translateY(calc(100% - 44px));
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  .objectives-panel.expanded { transform: translateY(0); }
+  .objectives-panel .obj-list { max-height: none; }
+
+  /* Map page canvas */
+  canvas { max-width: 100% !important; }
+
+  /* Long lists — single column */
+  .the-list { columns: 1; font-size: 0.7rem; }
+  .memo { padding: 1rem; }
+  .content { max-width: 100%; }
+
+  /* Footer */
+  .site-footer { padding: 1rem 0; font-size: 0.8rem; }
+  .site-footer .container { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+  /* Disable hover-only effects on touch */
+  a:hover, .btn:hover { text-decoration: none; }
+
+  /* Fragment collection — bigger touch target */
+  .fragment {
+    padding: 0.3rem 0.5rem;
+    margin: 0.1rem 0.1rem;
+    display: inline-block;
+    min-height: 28px;
+  }
+
+  /* Null / 404 / data-room — minimalist */
+  .data-room-box { margin: 1.5rem 0.75rem; padding: 1.25rem; }
+}
+
+/* ============== VERY SMALL PHONES (<= 380px) ============== */
+@media (max-width: 380px) {
+  .container { padding: 0 0.85rem; }
+  h1 { font-size: 1.45rem; }
+  .hero h1 { font-size: 1.55rem; }
+  .thread-link { font-size: 0.65rem; padding: 0.25rem 0.4rem; }
+  .forum-post { padding: 0.7rem; }
+  .court-order { padding: 0.75rem 0.5rem; }
+}
+
+/* ============== PRINT (still mobile-friendly, no extras) ============== */
+@media print {
+  .site-header, .thread-bar, .objectives-panel, .discovery-counter,
+  nav.main-nav, .site-footer, body::before, body::after { display: none !important; }
+  body { background: white; color: black; }
+  a { color: black; text-decoration: underline; }
+}

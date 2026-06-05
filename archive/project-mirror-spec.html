@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Project MIRROR — System Specification (excerpt). RED THREAD." />
+<title>Project MIRROR — System Specification — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<style>
+  .spec { font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.7; }
+  .spec h2 { font-family: var(--font-body); margin-top: 3rem; }
+  .spec .axis-table { width: 100%; border-collapse: collapse; margin: 1.5rem 0; font-size: 0.85rem; }
+  .spec .axis-table th, .spec .axis-table td { text-align: left; padding: 0.5rem; border-bottom: 1px solid rgba(192,57,43,0.3); }
+  .spec .axis-table th { color: var(--c-danger); text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.75rem; }
+  .spec .redacted-value { background: var(--c-danger); color: white; padding: 0 4px; font-size: 0.75rem; }
+  .spec .footer-note { color: var(--c-muted); font-size: 0.8rem; margin-top: 2rem; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="max-width:900px;">
+    <div class="page-header" style="border-bottom-color:rgba(192,57,43,0.3);">
+      <div class="breadcrumb" style="color:var(--c-danger);"><a href="../archive.html">ARCHIVE</a> / SPECIFICATION</div>
+      <h1>Project MIRROR — System Specification (excerpt)</h1>
+      <p style="color:var(--c-muted);">Document number: HX-M-2018-001 · Last modified: 2019-11-04 · Released in evidence package, redacted</p>
+    </div>
+
+    <div class="content spec">
+      <h2 style="font-family:var(--font-body);">§ 1. Purpose</h2>
+      <p>MIRROR is a real-time, population-scale behavioral prediction system. The system is designed to identify, at the cohort level, individuals within the United States whose combined behavioral profile indicates an elevated probability of participation in coordinated civil-disruptive activity within a 90-day forward window.</p>
+      <p>The system is designed to operate on de-identified data. The de-identification methodology is described in § 6.</p>
+
+      <h2 style="font-family:var(--font-body);">§ 2. Cohort definition</h2>
+      <p>A subject is added to the cohort registry when the subject's 14-axis profile score exceeds the configured threshold on any single axis, or exceeds <span class="redacted-value">[REDACTED — THRESHOLD VALUE WITHHELD PENDING LITIGATION]</span> on the composite score.</p>
+      <p>Once added to the cohort registry, a subject is not removed unless one of the following conditions is met: (a) the subject's composite score falls below <span class="redacted-value">[REDACTED]</span> for 180 consecutive days, (b) the subject is deceased, or (c) the subject is the subject of a federal court order directing removal.</p>
+      <p>As of the most recent verified inventory, the cohort registry contained 2,304,891 entries. The inventory is updated nightly.</p>
+
+      <h2 style="font-family:var(--font-body);">§ 3. The 14-axis model</h2>
+      <p>The 14-axis model is described in the table below. The axis weights, also redacted, are part of the proprietary Helix modeling stack and are not part of this release.</p>
+
+      <table class="axis-table">
+        <thead>
+          <tr>
+            <th>Axis</th>
+            <th>Description</th>
+            <th>Data source(s)</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>01 · Political affiliation</td>
+            <td>Self-reported party registration; inferred party from donation records; inferred party from public social media signal.</td>
+            <td>State voter files; FEC; public social media.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>02 · Geographic mobility</td>
+            <td>Address changes in the last 24 months; international travel inferred from public passport data.</td>
+            <td>USPS change-of-address; State Department.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>03 · Social network density</td>
+            <td>Number of social connections; ratio of close ties to weak ties; cluster coefficient.</td>
+            <td>Public social media.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>04 · Vocabulary patterns</td>
+            <td>Frequency of use of terms from a curated 4,200-word lexicon associated with prior civil-disruptive events.</td>
+            <td>Public social media; public comments on news sites.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>05 · Posting time distribution</td>
+            <td>Inferred sleep cycle from posting time; deviation from population norm.</td>
+            <td>Public social media.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>06 · Purchasing patterns</td>
+            <td>Categorical analysis of public receipts; flagged categories include outdoor equipment, certain over-the-counter pharmaceuticals, and a curated set of hardware items.</td>
+            <td>Public commercial databases; partner data.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>07 · Library and reading patterns</td>
+            <td>Public library borrowing records (where available); purchase patterns from public booksellers.</td>
+            <td>Public library APIs; public commercial databases.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>08 · Religious affiliation</td>
+            <td>Self-reported affiliation; inferred affiliation from public social media signal and public donations.</td>
+            <td>Public records; public social media.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>09 · Occupation and employment</td>
+            <td>Self-reported occupation; inferred occupation from public professional profiles.</td>
+            <td>Public records; public professional networks.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>10 · Family structure</td>
+            <td>Self-reported marital status; number of dependents; public records of family events.</td>
+            <td>Public records.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>11 · Financial stress indicators</td>
+            <td>Public records of liens, judgments, bankruptcies; inferred financial stress from purchasing patterns.</td>
+            <td>Public court records; public commercial databases.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>12 · Criminal history</td>
+            <td>Public arrest records; public court records.</td>
+            <td>Public records.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>13 · Medical and mental health</td>
+            <td>Inferred indicators from public prescription records (where available); self-disclosure on public platforms.</td>
+            <td>Public commercial databases; public social media.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+          <tr>
+            <td>14 · Group association</td>
+            <td>Public membership in organizations categorized as "high-mobilization-potential" by an internal Helix committee.</td>
+            <td>Public social media; public records of organization membership.</td>
+            <td><span class="redacted-value">[REDACTED]</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2 style="font-family:var(--font-body);">§ 4. Cohort registry</h2>
+      <p>The cohort registry is the canonical list of all subjects whose 14-axis profile has crossed the configured threshold. The registry is stored in a warm-store database cluster and is replicated, for redundancy, to two geographically separate facilities.</p>
+      <p>The registry is queryable, on a per-subject basis, by authorized federal users. The query log is retained for 90 days and is not available to the EO board.</p>
+
+      <h2 style="font-family:var(--font-body);">§ 5. Audit pipeline</h2>
+      <p>Every model decision is logged to a separate, immutable audit store. The audit store is queryable by the EO board and is exportable, in full, to clients on request.</p>
+      <p>The audit pipeline is the only component of MIRROR that maintains a complete record of every subject who has been added to or removed from the cohort registry, the timestamp of the action, the reason for the action, and the identity of the operator who initiated the action.</p>
+      <p>The audit pipeline was designed, in 2018, by E. Vasquez. The audit pipeline is the only component of MIRROR that, if shut down, would unambiguously prevent any future reconstruction of the cohort registry.</p>
+
+      <h2 style="font-family:var(--font-body);">§ 6. De-identification</h2>
+      <p>All subjects are de-identified at ingest. The de-identification methodology uses a one-way hash of the subject identifier with a rotating salt. The salt rotates every 24 hours and is not stored after rotation.</p>
+      <p>The de-identification methodology is robust against re-identification attacks of the kind described in <span class="redacted">[citation withheld]</span> and has been reviewed annually by an external auditor.</p>
+      <p>De-identification is necessary but not sufficient. A demographic signature — for example, the signature of an unusually homogeneous cohort — is itself identifying. This risk is acknowledged in <span class="redacted">Vasquez, E. (2019). "On the limits of de-identified prediction." ACM FAccT.</span> and is, in our professional judgment, the most significant limitation of the MIRROR design.</p>
+
+      <h2 style="font-family:var(--font-body);">§ 7. Termination</h2>
+      <p>The termination of MIRROR is governed by a separate document, the <em>Termination Order</em>. The Termination Order requires (a) the destruction of the cohort registry, (b) the destruction of the audit pipeline, (c) the certification, by signature, of both destructions by a Helix principal engineer, and (d) the retention, for a period of seven years, of a written record of the destruction event.</p>
+      <p>As of the most recent verified record, conditions (a), (b), and (d) have been completed. Condition (c) has been completed by <span class="redacted">[number withheld] of [number withheld] required signatories</span>. The signatories who have not signed are listed in the Termination Order itself.</p>
+
+      <p class="footer-note">// end of excerpt // the full specification is 142 pages and has been entered into evidence in Vasquez v. Helix Technologies, Inc. as exhibit 17. // redactions in this copy correspond to redactions in the court-filed version, with the exception of axis weights, which are redacted here as a matter of Helix's trade-secret claim, not as a matter of court order.</p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div style="color:var(--c-muted);">© 2021 — preserved in the EV-2417 evidence package</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

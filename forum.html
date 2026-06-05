@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Helix community forum — public discussion threads. Some threads have been archived or moderated." />
+<title>Community Forum — Helix Technologies</title>
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<style>
+body { background: #f4f1ec; }
+.forum-index { max-width: 900px; margin: 2rem auto; }
+.forum-cat { background: #fff; border: 1px solid #e6e4dd; border-radius: 6px; padding: 1.5rem 2rem; margin: 1.5rem 0; }
+.forum-cat h2 { color: #5a4a3a; margin-bottom: 0.5rem; }
+.forum-cat .cat-desc { color: #888; font-size: 0.9rem; margin-bottom: 1rem; }
+.forum-thread-row { display: grid; grid-template-columns: 1fr auto auto; gap: 1.5rem; align-items: center; padding: 0.6rem 0; border-top: 1px solid #eee; }
+.forum-thread-row:first-of-type { border-top: none; }
+.forum-thread-row .title a { color: #5a4a3a; text-decoration: none; font-weight: 500; }
+.forum-thread-row .title a:hover { color: var(--c-accent); }
+.forum-thread-row .title .meta { color: #999; font-size: 0.85rem; display: block; margin-top: 0.2rem; }
+.forum-thread-row .stats { font-family: var(--font-mono); font-size: 0.8rem; color: #888; text-align: right; }
+.forum-thread-row .badge { display: inline-block; font-size: 0.7rem; padding: 0.1rem 0.4rem; border-radius: 2px; margin-right: 0.5rem; letter-spacing: 0.05em; }
+.forum-thread-row .badge.pinned { background: #fdf6e3; color: #8b6914; border: 1px solid #d4a017; }
+.forum-thread-row .badge.archived { background: #f0f0f0; color: #666; border: 1px solid #ccc; }
+.forum-thread-row .badge.locked { background: #fce4e4; color: #c0392b; border: 1px solid #e8a0a0; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Insights</a></li>
+        <li><a href="careers.html">Careers</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb">FORUM / INDEX</div>
+      <h1>Community Forum</h1>
+      <p style="color:var(--c-muted);">Public discussion · open to all helix.tech visitors · threads are moderated</p>
+    </div>
+
+    <div class="forum-index">
+      <div class="forum-cat">
+        <h2>General discussion</h2>
+        <p class="cat-desc">Topics in this category are open to all registered users. Threads in this category that are flagged by a moderator are archived, not deleted.</p>
+
+        <div class="forum-thread-row">
+          <div class="title">
+            <a href="forum/thread-4512.html">Re: what does helix actually do, in plain english?</a>
+            <span class="meta">started 2020-11-22 by curious_dev · 8 replies · 1,204 views</span>
+          </div>
+          <div class="stats">NORMAL</div>
+          <div class="stats">1.2k views</div>
+        </div>
+
+        <div class="forum-thread-row">
+          <div class="title">
+            <a href="forum/thread-7821.html">Re: anyone else notice helix is hiring a lot of behavioral scientists?</a>
+            <span class="meta">started 2020-08-04 by anon_3421 · 14 replies · 3,891 views</span>
+          </div>
+          <div class="stats">NORMAL</div>
+          <div class="stats">3.9k views</div>
+        </div>
+      </div>
+
+      <div class="forum-cat">
+        <h2>Security &amp; research</h2>
+        <p class="cat-desc">Threads in this category are, in the formal sense, the basis of independent security research into helix.tech and adjacent topics. Threads in this category that reach a certain visibility threshold are, in the formal sense, the basis of federal subpoenas.</p>
+
+        <div class="forum-thread-row">
+          <div class="title">
+            <a href="forum/thread-2099.html">"what the public doesn't know"</a>
+            <span class="meta">started 2020-04-22 by sec_researcher_22 · 41 replies · 22,194 views · archived 2021-05-12</span>
+          </div>
+          <div class="stats"><span class="badge archived">ARCHIVED</span></div>
+          <div class="stats">22.2k views</div>
+        </div>
+
+        <div class="forum-thread-row">
+          <div class="title">
+            <a href="forum/thread-3301.html">"cicada 3301 is a psyop — so is this"</a>
+            <span class="meta">started 2019-08-14 by sec_researcher_22 · 22 replies · 8,422 views · archived 2021-05-12</span>
+          </div>
+          <div class="stats"><span class="badge archived">ARCHIVED</span></div>
+          <div class="stats">8.4k views</div>
+        </div>
+
+        <div class="forum-thread-row">
+          <div class="title">
+            <a href="forum/thread-9988.html">"have you seen the audit pipeline documentation?"</a>
+            <span class="meta">started 2020-11-04 by helix_eng_anon · 67 replies · 41,203 views · pinned · archived 2021-05-12</span>
+          </div>
+          <div class="stats"><span class="badge pinned">PINNED</span> <span class="badge archived">ARCHIVED</span></div>
+          <div class="stats">41.2k views</div>
+        </div>
+      </div>
+
+      <div class="forum-cat">
+        <h2>Terms of use</h2>
+        <p class="cat-desc">The forum is, in the formal sense, a public service. The forum is, in the formal sense, the property of Helix Technologies, Inc. The forum is, in the formal sense, moderated. Posts that are, in the formal sense, the basis of a federal investigation are, in the formal sense, retained. Posts that are, in the formal sense, the basis of a public-records request are, in the formal sense, public.</p>
+        <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--c-muted);margin-top:1rem;">
+          // last forum maintenance: 2021-05-12 · forum is, in the formal sense, read-only
+        </p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2014–2021 Helix Technologies, Inc. — community forum</div>
+    <div>
+      <a href="legal.html">Legal</a> ·
+      <a href="sitemap.html">Sitemap</a> ·
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

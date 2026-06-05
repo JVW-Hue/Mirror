@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="How we built our cohort modeling pipeline." />
+<title>How we built our cohort modeling pipeline — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../team.html">Team</a></li>
+        <li><a href="../blog.html">Insights</a></li>
+        <li><a href="../careers.html">Careers</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../blog.html">INSIGHTS</a> / ENGINEERING</div>
+      <h1>How we built our cohort modeling pipeline</h1>
+      <p style="color:var(--c-muted);">Posted 2019-11-08 by Elena Vasquez, Principal Engineer</p>
+    </div>
+
+    <div class="content">
+      <p>This is a technical post about the architecture behind our Behavioral Modeling practice. If you're not interested in distributed systems, you can skip it. If you are, the rest of this post will make you sad in a familiar way.</p>
+
+      <h2>The problem</h2>
+      <p>We needed a system that could ingest population-scale event data, de-identify it on arrival, build cohort models on the de-identified stream, and emit predictions back to clients with sub-second latency — all while remaining auditable end-to-end by our Ethics &amp; Oversight Board.</p>
+      <p>The "auditable end-to-end" requirement is the one that made this hard. Most high-throughput ML systems are not auditable. Most auditable ML systems are not high-throughput. We needed both.</p>
+
+      <h2>The architecture</h2>
+      <p>We settled on a three-layer architecture:</p>
+      <ol>
+        <li><strong>Ingest:</strong> Kafka-based event bus with a de-identification worker at the head. The worker uses a one-way hash of the subject identifier and a rotating salt. The salt rotates every 24 hours and is not stored.</li>
+        <li><strong>Model:</strong> Flink-based stream processor that maintains cohort assignments in memory and emits predictions on subscription. Cohort definitions are versioned and stored in an append-only log.</li>
+        <li><strong>Audit:</strong> Every model decision is logged to a separate, immutable audit store. The audit store is queryable by the Ethics &amp; Oversight Board and is exportable in full to clients on request.</li>
+      </ol>
+
+      <h2>What we learned</h2>
+      <p>The audit layer, not the model layer, is the part of the system that breaks the most often. The model is straightforward to keep running. The audit pipeline is a continuous source of late-night pages.</p>
+      <p>If you are building a system like this, design for the audit pipeline first. The model is the easy part.</p>
+
+      <p>— Elena</p>
+
+      <div class="memo hidden-stage3" style="margin-top:3rem;">
+        <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">// DRAFT — follow-up post that was never published</p>
+        <p><strong>Title:</strong> what the audit pipeline caught that the model didn't</p>
+        <p><strong>Status:</strong> blocked by legal, 2021-02-12</p>
+        <p>— e.v.</p>
+        <p style="color:var(--c-muted);font-size:0.85rem;">Elena's draft for this follow-up was preserved in her personal archive and later surfaced as part of the EV-2417 evidence package. A redacted version is available at <a href="../archive/leaked-memo.html">/archive/</a> for verified access.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2014–2021 Helix Technologies, Inc.</div>
+    <div><a href="../legal.html">Legal</a> · <a href="../sitemap.html">Sitemap</a> · <a href="../contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

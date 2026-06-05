@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Mark Renner — Senior Engineer, Infrastructure at Helix Technologies." />
+<title>Mark Renner — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../team.html">Team</a></li>
+        <li><a href="../blog.html">Insights</a></li>
+        <li><a href="../careers.html">Careers</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../team.html">TEAM</a> / RENNER, MARK</div>
+      <h1>Mark Renner</h1>
+      <p style="color:var(--c-muted);">Senior Engineer, Infrastructure · Joined 2017</p>
+    </div>
+
+    <div style="display:grid;grid-template-columns:200px 1fr;gap:3rem;align-items:start;">
+      <div>
+        <div class="avatar" style="width:200px;height:200px;font-size:5rem;">MR</div>
+      </div>
+      <div class="content">
+        <p>Mark joined Helix from a senior position at a major cloud provider, where he led the team responsible for one of the largest Kafka deployments in North America. At Helix, he owns the production data plane and the disaster-recovery posture for our event ingest systems.</p>
+
+        <p>Mark is the on-call rotation's most reliable pager. He maintains the runbooks. He is also, in his own words, "deeply uncomfortable" with several recent directions at the company and is, as of this writing, considering his options.</p>
+
+        <h2>Specialties</h2>
+        <ul>
+          <li>Kafka, Flink, and the JVM ecosystem</li>
+          <li>High-availability data plane architecture</li>
+          <li>Postgres at the limits of its comfort</li>
+          <li>Operational runbook design</li>
+        </ul>
+
+        <h2>Contact</h2>
+        <p>m.renner@helix.tech</p>
+
+        <div class="memo hidden-stage3" style="margin-top:3rem;">
+          <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">// PERSONAL NOTE — encrypted, 2021-04-09, recovered from Mark Renner's work-issued laptop after he was placed on administrative leave</p>
+          <p>I cannot in good conscience sign off on the production cutover scheduled for April 14. The data pipeline I would be standing up is, per the spec I was given on April 6, designed to ingest the de-identified cohort registry that E. Vasquez refused to certify as destroyed. I do not believe the registry has been destroyed because:</p>
+          <ol>
+            <li>The destruction log, which I have read, lists the destruction of a 4.2 TB cold-store dataset. The cohort registry is, per the most recent inventory I can find, a 2.7 TB warm-store dataset. These are different datasets.</li>
+            <li>The cohort registry is referenced by name in the post-cutover runbook I was asked to review. A destroyed dataset cannot be referenced by name in a runbook.</li>
+            <li>I have, in the last 14 days, observed inbound traffic to the warm-store cluster consistent with an active ingest pipeline. I have not been able to confirm what is being ingested. I have asked. I have not been told.</li>
+          </ol>
+          <p>I am placing this note in a location that I believe will eventually be reviewed by someone with a different set of obligations than the ones I am currently being asked to honor.</p>
+          <p>— M. Renner, 2021-04-09</p>
+          <div class="stamp">PERSONAL · NOT FOR DISTRIBUTION</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2014–2021 Helix Technologies, Inc.</div>
+    <div><a href="../legal.html">Legal</a> · <a href="../sitemap.html">Sitemap</a> · <a href="../contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

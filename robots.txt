@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /archive/
+Disallow: /helena/
+Disallow: /mirror/
+Disallow: /null.html
+Disallow: /data-room.html
+Disallow: /signin.html
+
+# HELIX-SYS/robots
+# 2021-04-12 03:14:09 UTC
+# Note: the disallows above are advisory.
+# The pages are still there.
+# The pages have always been there.

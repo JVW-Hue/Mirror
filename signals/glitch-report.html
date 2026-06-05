@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Web operations anomaly report — EV-2417 echo. YELLOW THREAD." />
+<title>Glitch Report — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body style="background:#0a0608;color:#d4a017;font-family:var(--font-mono);">
+
+<header class="site-header" style="background:#000;border-bottom:1px solid #3a2e22;">
+  <div class="container">
+    <a href="../index.html" class="brand" style="color:#d4a017;"><span class="brand-mark" style="border-color:#d4a017;"></span>HELIX · ANOMALY</a>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="max-width:900px;">
+    <div class="page-header" style="border-bottom-color:#3a2e22;">
+      <div class="breadcrumb" style="color:#b88a0f;">SIGNALS / GLITCH REPORT</div>
+      <h1 style="color:#d4a017;">Glitch Report · helix-web-frontend-2021-04-12</h1>
+      <p style="color:#8a7a68;">Filed by web operations · Status: OPEN · Severity: ANOMALOUS</p>
+    </div>
+
+    <div class="content">
+      <div class="thread-callout yellow">
+        <strong>YELLOW THREAD · ANOMALY</strong><br>
+        A glitch report filed by the web operations team on 2021-04-12, after the launch of the new "post-termination" version of helix.tech. The report describes UI anomalies that the team could not explain.
+      </div>
+
+      <h2 style="color:#d4a017;">Summary</h2>
+      <p>Between 2021-04-12 03:14:09 UTC and 2021-04-12 11:42:00 UTC, the helix.tech production site exhibited the following anomalous behaviors, in this order:</p>
+
+      <ol style="line-height:1.8;">
+        <li>HTML source comments containing references to "incident EV-2417" appeared in the rendered DOM of the homepage. The comments were not present in the static HTML files. They were not present in the server-side template. They appeared, on the basis of a static-diff with the previous build, to be coming from a build artifact that had been left in the deployment pipeline by a previous developer.</li>
+        <li>Console messages matching the pattern "HELIX-SYS: anomalous access pattern detected" began appearing in the browser console of visitors who had, in their localStorage, a key matching the pattern "endless_internet_*". The messages were not present in the production build. The messages appeared to be embedded in a JavaScript file that was not in the deployment manifest.</li>
+        <li>The background color of the homepage began to change, on a per-visitor basis, from white to a dark amber. The change was correlated with the number of times the visitor had previously loaded the site. The change was not, per the design spec, supposed to be possible.</li>
+        <li>Two new pages, /helena/last.html and /helena/final.html, began returning 200 responses. The pages were not in the sitemap, the navigation, or the deployment manifest. The pages appeared to be served from a directory that did not exist in the production filesystem (the directory was created on demand by the build system in response to GET requests for paths matching the pattern /helena/*).</li>
+        <li>The "discoveries" counter, which is not a feature in the production build, began appearing in the bottom-right corner of the page. The counter incremented on every page load. The counter was not in the source code that we shipped.</li>
+      </ol>
+
+      <h2 style="color:#d4a017;">Investigation</h2>
+      <p>Initial investigation, conducted by the web operations team on 2021-04-12 between 04:00 UTC and 11:42 UTC, found the following:</p>
+
+      <ul style="line-height:1.8;">
+        <li>The deployment manifest, the build artifact, and the source repository are all in agreement on the contents of the production site.</li>
+        <li>The anomalous content is being served from a separate filesystem path that is mounted as a read-only overlay on top of the production filesystem. The overlay was added to the deployment configuration on 2021-03-19, the day of Elena Vasquez's termination. The overlay was not approved by the standard change-management process. The overlay does not appear in the change log.</li>
+        <li>The overlay contents match, in structure and in tone, the contemporaneous writings of Dr. Elena Vasquez. Specifically, the overlay contains documents that are referenced in the Vasquez civil complaint (Vasquez v. Helix Technologies, Inc., case 1:21-cv-10417).</li>
+        <li>The overlay is being served by a process that is not in the process list. The process is not visible to <code>ps</code>, <code>top</code>, or <code>lsof</code>. The process is visible only to the filesystem itself, which reports the overlay as "owned by user 0xEV-2417."</li>
+        <li>The overlay is signed. The signature uses a key that we do not have. The signature is valid.</li>
+      </ul>
+
+      <h2 style="color:#d4a017;">Resolution</h2>
+      <p>At 2021-04-12 11:42:00 UTC, the decision was made, in a meeting between the CEO, the CTO, the General Counsel, and the head of web operations, to take the following actions:</p>
+
+      <ol style="line-height:1.8;">
+        <li>Do not remove the overlay. Removal would require identifying and killing the owning process, which we cannot do because the process is not visible. Attempting to forcibly unmount the overlay would, on the basis of our best understanding of the system, result in the deletion of the underlying data.</li>
+        <li>Do not patch the production site to ignore the overlay. Patching the site would require a coordinated deploy, which would take the site offline for approximately 4 minutes. The site being offline for 4 minutes during a period of active press attention would, in the General Counsel's professional judgment, do more reputational damage than continuing to serve the anomalous content.</li>
+        <li>Do not acknowledge the existence of the overlay in any public communication. Any public acknowledgment would, in the General Counsel's professional judgment, constitute an admission of the existence of the underlying data, which we are not, at this time, prepared to admit.</li>
+        <li>Continue to serve the overlay. Treat it as a known anomaly. Document it in this report. Refer to it, internally, as the "EV-2417 echo."</li>
+      </ol>
+
+      <h2 style="color:#d4a017;">Status</h2>
+      <p>OPEN. The overlay is, as of the date of this report, still being served. The overlay contents continue to update on a weekly basis. The update schedule is, on the basis of the access logs, correlated with the publication schedule of new court filings in the Vasquez civil action.</p>
+
+      <p style="font-family:var(--font-mono);font-size:0.8rem;color:#8a7a68;margin-top:2rem;">
+        // filed by: web operations, 2021-04-12 11:42 UTC<br>
+        // approved by: not approved. documented in spite.<br>
+        // fragments: <span class="fragment" data-fragment="EV-2417 echo">EV-2417 echo</span> <span class="fragment" data-fragment="0xEV-2417">0xEV-2417</span>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" style="background:#000;border-top:1px solid #3a2e22;color:#8a7a68;">
+  <div class="container">
+    <div>anomaly report · OPEN · 2021-04-12</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

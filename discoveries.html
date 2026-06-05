@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Your discoveries — every page, fragment, and password you have found on helix.tech." />
+<title>Discoveries — Helix Technologies</title>
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Insights</a></li>
+        <li><a href="discoveries.html">Discoveries</a></li>
+        <li><a href="map.html">Map</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb">YOUR PROGRESS</div>
+      <h1>Discoveries</h1>
+      <p style="color:var(--c-muted);">Everything you've found so far. Each one opens the next.</p>
+    </div>
+
+    <div class="content">
+      <p>You are not reading a normal site. You are reading the residue of a project. The pages here are organized in <strong>color threads</strong>. Each color is a different kind of breadcrumb.</p>
+
+      <div class="thread-callout blue">
+        <strong>BLUE — official trail</strong><br>
+        Public-facing breadcrumbs Helix left behind, or tried to remove. FOIA requests, employment records, contract disclosures. The things a journalist would find.
+      </div>
+      <div class="thread-callout yellow">
+        <strong>YELLOW — anomalous signal</strong><br>
+        Things that shouldn't be where they are. Glitches in the corporate surface. Console logs, dead-letter queues, pageview anomalies at 3am.
+      </div>
+      <div class="thread-callout red">
+        <strong>RED — project mirror</strong><br>
+        The deep. What they were actually building. The system specification. The list. The truth. Following this thread to the end unlocks the final reveal.
+      </div>
+      <div class="thread-callout purple">
+        <strong>PURPLE — elena's trail</strong><br>
+        Personal breadcrumbs. The human behind the data. Her first day at Helix, her last email, the things that were never in any press release.
+      </div>
+      <div class="thread-callout green">
+        <strong>GREEN — side investigations</strong><br>
+        The people around the story. The other engineers who refused. The Ethics Board chair. The journalist who broke the story. The forum users who noticed first.
+      </div>
+
+      <h2>What you've found</h2>
+      <p id="discoveryCount" style="font-family:var(--font-mono);color:var(--c-muted);font-size:0.85rem;">calculating...</p>
+
+      <div class="thread-map" id="threadMap">
+        <!-- Populated by inline script -->
+      </div>
+
+      <h2>Fragments you've collected</h2>
+      <p style="font-size:0.9rem;color:var(--c-muted);">Hidden words and codes across the site. Some unlock the archive, some unlock the truth.</p>
+      <div id="fragmentList" style="font-family:var(--font-mono);font-size:0.85rem;margin:1rem 0;min-height:2rem;">
+        <span style="color:var(--c-muted);">— no fragments collected yet —</span>
+      </div>
+
+      <h2>Objectives completed</h2>
+      <div id="objCompleted" style="font-family:var(--font-mono);font-size:0.85rem;margin:1rem 0;min-height:2rem;">
+        <span style="color:var(--c-muted);">— none yet —</span>
+      </div>
+
+      <h2>Current objectives</h2>
+      <div id="objActive" style="font-family:var(--font-mono);font-size:0.85rem;margin:1rem 0;min-height:2rem;">
+        <span style="color:var(--c-muted);">— check the side panel —</span>
+      </div>
+
+      <h2>What unlocks what</h2>
+      <p>Some pages require other pages to be read first. Some threads converge on the same final answer. The map is not a tree — it's a network.</p>
+      <p>When you've found something, you may want to look at the <a href="map.html">map</a> to see what's still out there.</p>
+
+      <div style="margin-top:4rem;padding:2rem;background:#f6f8fa;border:1px dashed var(--c-border);font-family:var(--font-mono);font-size:0.85rem;color:var(--c-muted);">
+        <p>// HELIX-SYS/discoveries.html</p>
+        <p>// this page is generated from your local browsing state. it is not sent anywhere.</p>
+        <p>// to reset: open the console and run <code>__resetEndlessInternet()</code></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2014–2021 Helix Technologies, Inc.</div>
+    <div><a href="map.html">Map</a> · <a href="sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+  // Render this page's state from the engine
+  (function() {
+    const state = window.__endlessState;
+    const threads = window.__endlessThreads;
+    const objectives = window.__endlessObjectives;
+    if (!state) return;
+
+    document.getElementById("discoveryCount").textContent =
+      `${state.discovered} discoveries · ${state.visited.size} pages visited · ${state.fragments.size} fragments · ${state.passwords.size} passwords solved · ${state.threads.size}/5 threads unlocked`;
+
+    // Render thread map
+    const map = document.getElementById("threadMap");
+    Object.values(threads).forEach(t => {
+      const visitedCount = t.pages.filter(p => state.visited.has(p) || state.visited.has(p.split("/").pop())).length;
+      const discovered = visitedCount > 0;
+      const node = document.createElement("a");
+      node.href = `map.html?thread=${t.id}`;
+      node.className = `node ${t.id}${discovered ? " discovered" : ""}`;
+      node.innerHTML = `<div><strong>${t.name.toUpperCase()}</strong><br>${visitedCount}/${t.pages.length}</div>`;
+      map.appendChild(node);
+    });
+
+    // Fragments
+    if (state.fragments.size > 0) {
+      const fl = document.getElementById("fragmentList");
+      fl.innerHTML = "";
+      [...state.fragments].forEach(f => {
+        const span = document.createElement("span");
+        span.className = "fragment collected";
+        span.textContent = f;
+        fl.appendChild(span);
+      });
+    }
+
+    // Completed objectives
+    const oc = document.getElementById("objCompleted");
+    if (state.completedObj.size > 0) {
+      oc.innerHTML = "";
+      [...state.completedObj].forEach(id => {
+        const o = objectives.find(x => x.id === id);
+        if (!o) return;
+        const div = document.createElement("div");
+        div.style.cssText = "padding:0.3rem 0;color:var(--thread-green);";
+        div.textContent = "✓ " + o.title;
+        oc.appendChild(div);
+      });
+    }
+
+    // Active objectives
+    const oa = document.getElementById("objActive");
+    if (state.activeObj && state.activeObj.length > 0) {
+      oa.innerHTML = "";
+      state.activeObj.forEach(id => {
+        const o = objectives.find(x => x.id === id);
+        if (!o) return;
+        const div = document.createElement("div");
+        div.style.cssText = "padding:0.3rem 0;color:var(--thread-blue);";
+        div.textContent = "▸ " + o.title;
+        oa.appendChild(div);
+      });
+    }
+  })();
+</script>
+</body>
+</html>

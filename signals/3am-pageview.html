@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Network operations note — 113-second browsing session. YELLOW THREAD." />
+<title>3AM Pageview Anomaly — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body style="background:#0a0a0a;color:#e6e6e6;font-family:var(--font-mono);">
+
+<header class="site-header" style="background:#000;border-bottom:1px solid #222;">
+  <div class="container">
+    <a href="../index.html" class="brand" style="color:#aaa;"><span class="brand-mark" style="border-color:#666;"></span>HELIX · TRAFFIC</a>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="max-width:900px;">
+    <div class="page-header" style="border-bottom-color:#222;">
+      <div class="breadcrumb" style="color:#b8860b;">SIGNALS / 3AM PAGEVIEW</div>
+      <h1>3AM Pageview Anomaly · helix.tech</h1>
+      <p style="color:#666;">Network operations note · 2021-04-12</p>
+    </div>
+
+    <div class="content">
+      <div class="thread-callout yellow">
+        <strong>YELLOW THREAD · TRAFFIC ANOMALY</strong><br>
+        Network operations team noticed an unusual traffic pattern on 2021-04-12. A single IP address, geolocated to a residential address in Cambridge, MA, accessed the site 17 times between 03:14 and 03:16 UTC. The pattern was consistent with manual browsing, not a bot.
+      </div>
+
+      <h2>The pattern</h2>
+      <p>At 03:14:09 UTC, a single residential IP address (which we will refer to as the "subject IP") issued a GET request for <code>/</code>. The request returned 200. The subject IP then issued, in order, GET requests for:</p>
+
+      <ul style="line-height:1.8;">
+        <li><code>/assets/style.css</code> — 200, 8ms</li>
+        <li><code>/assets/app.js</code> — 200, 11ms</li>
+        <li><code>/about.html</code> — 200, 14ms</li>
+        <li><code>/team.html</code> — 200, 13ms</li>
+        <li><code>/blog/data-driven-future.html</code> — 200, 15ms</li>
+        <li><code>/helena/last.html</code> — 200, 16ms</li>
+        <li><code>/archive.html?key=mirror</code> — 302 (redirect to <code>/archive/</code>)</li>
+        <li><code>/archive/vasquez-statement.html</code> — 200, 12ms</li>
+        <li><code>/archive/project-mirror-spec.html</code> — 200, 44ms</li>
+        <li><code>/mirror/end.html</code> — 200, 18ms</li>
+        <li><code>/mirror/truth.html</code> — 200, 19ms</li>
+        <li><code>/helena/final.html</code> — 200, 16ms</li>
+        <li><code>/helena/the-letter.html</code> — 200, 17ms</li>
+        <li><code>/discoveries.html</code> — 200, 12ms</li>
+        <li><code>/map.html</code> — 200, 11ms</li>
+        <li><code>/end.html</code> — 200, 13ms</li>
+      </ul>
+
+      <p>The total session duration was 113 seconds. The subject IP did not visit any of the press release pages, the contact page, the careers page, or the press page. The subject IP visited, in order, the team page, a single blog post, a single Helena page, the archive, the mirror pages, the final pages, and the meta pages. The subject IP did not return to the homepage after the initial visit.</p>
+
+      <h2>The context</h2>
+      <p>The subject IP geolocates to a residential address in Cambridge, MA. The address is, according to public records, the home of Dr. Elena Vasquez. Dr. Vasquez was terminated from Helix Technologies on 2021-03-19. Her personal devices were, per the standard termination procedure, remotely wiped on 2021-03-19 at 17:42 UTC.</p>
+
+      <p>The 03:14 UTC browsing session occurred, therefore, on a device that was not subject to the remote wipe. The device is, on the basis of the user-agent string, a MacBook Pro running Chrome 89. The MacBook Pro is not registered in the Helix MDM system. The MacBook Pro is not a Helix-issued device.</p>
+
+      <p>The 03:14 UTC browsing session is, on the basis of the access log, the first time the subject IP has accessed helix.tech since 2021-03-19. The 03:14 UTC browsing session is, on the basis of the access log, the first time the subject IP has accessed the site using a MacBook Pro. The subject IP has, in the past, accessed the site using an iPhone 12 and a Windows desktop machine, both of which were Helix-issued devices.</p>
+
+      <h2>The question</h2>
+      <p>The question for the executive team, which we have not yet escalated, is whether the 03:14 UTC browsing session represents:</p>
+
+      <p>(a) Dr. Vasquez, on a personal device, browsing the site for personal reasons. In which case no action is required.</p>
+
+      <p>(b) Dr. Vasquez, on a personal device, conducting a final review of the public-facing version of the system she helped build, in connection with her ongoing civil action. In which case the civil action discovery process applies, and we should be preparing the litigation response.</p>
+
+      <p>(c) Someone other than Dr. Vasquez, on a personal device belonging to Dr. Vasquez, browsing the site for reasons that are not known. In which case the question of who has access to Dr. Vasquez's personal devices is, in itself, a question worth asking.</p>
+
+      <p>(d) The "EV-2417 echo," which the web operations team has documented as a separate anomaly. In which case the question of whether the "echo" is, in fact, an automated process or is, in fact, Dr. Vasquez herself, is a question that the web operations team is, frankly, not equipped to answer.</p>
+
+      <h2>The recommendation</h2>
+      <p>My recommendation, as head of network operations, is that we do nothing. My recommendation is that we continue to monitor. My recommendation is that we do not, in particular, block the subject IP. Blocking the subject IP would, in my professional judgment, create a record of our awareness of the subject IP. Records are, on the basis of recent legal advice, the opposite of what we want.</p>
+
+      <p style="font-family:var(--font-mono);font-size:0.8rem;color:#666;margin-top:2rem;">
+        // filed by: M. Patel, head of network operations<br>
+        // 2021-04-12 04:00 UTC<br>
+        // CC: nobody. filed in spite.<br>
+        // fragments: <span class="fragment" data-fragment="113 seconds">113 seconds</span> <span class="fragment" data-fragment="18 pages">18 pages</span> <span class="fragment" data-fragment="17 visits">17 visits</span>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" style="background:#000;border-top:1px solid #222;color:#666;">
+  <div class="container">
+    <div>network operations · internal</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Console log excerpt — anomalous session 0xEV-2417. YELLOW THREAD." />
+<title>Console Log — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body style="background:#000;color:#00ff7f;font-family:var(--font-mono);">
+
+<header class="site-header" style="background:#000;border-bottom:1px solid #003300;">
+  <div class="container">
+    <a href="../index.html" class="brand" style="color:#00ff7f;"><span class="brand-mark" style="border-color:#00ff7f;"></span>HELIX · LOG</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../index.html" style="color:#00ff7f;">Home</a></li>
+        <li><a href="../discoveries.html" style="color:#00ff7f;">Discoveries</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="max-width:1000px;">
+    <div class="page-header" style="border-bottom-color:#003300;">
+      <div class="breadcrumb" style="color:#00aa55;">SIGNALS / CONSOLE LOG</div>
+      <h1 style="color:#00ff7f;">Console Log · server-helix-web-01</h1>
+      <p style="color:#7fbf9f;">Last 100 lines · tail -f /var/log/helix/web/console.log</p>
+    </div>
+
+    <div class="content">
+      <div class="thread-callout yellow">
+        <strong>YELLOW THREAD · OPERATIONAL LOG</strong><br>
+        This is a log file. It was not meant to be public. It became public because someone in the operations team, in 2019, set the file permissions to 0644 instead of 0600, and no one noticed for fourteen months.
+      </div>
+
+      <div class="terminal" style="margin-top:2rem;max-height:none;">
+<div class="line">[2021-04-12 03:14:09] INFO  web.serve  GET / 200 (12ms) [ua:Chrome/89]</div>
+<div class="line">[2021-04-12 03:14:11] INFO  web.serve  GET /assets/style.css 200 (8ms)</div>
+<div class="line">[2021-04-12 03:14:12] INFO  web.serve  GET /assets/app.js 200 (11ms)</div>
+<div class="line">[2021-04-12 03:14:14] INFO  web.serve  GET /about.html 200 (14ms)</div>
+<div class="line">[2021-04-12 03:14:18] INFO  web.serve  GET /team.html 200 (13ms)</div>
+<div class="line">[2021-04-12 03:14:22] WARN  auth.gate  attempted access to /archive/vasquez-statement.html from 0.0.0.0 — denied</div>
+<div class="line">[2021-04-12 03:14:25] INFO  web.serve  GET /blog/data-driven-future.html 200 (15ms)</div>
+<div class="line">[2021-04-12 03:14:31] INFO  web.serve  GET /helena/last.html 200 (16ms)</div>
+<div class="line">[2021-04-12 03:14:35] WARN  auth.gate  attempted access to /archive/ from 0.0.0.0 — denied</div>
+<div class="line">[2021-04-12 03:14:42] INFO  web.serve  GET /archive.html?key=mirror 302 (4ms) [redirect to /archive/]</div>
+<div class="line">[2021-04-12 03:14:42] INFO  auth.gate  /archive/ access granted (key=mirror) [session:0xEV-2417]</div>
+<div class="line">[2021-04-12 03:14:46] INFO  web.serve  GET /archive/vasquez-statement.html 200 (12ms)</div>
+<div class="line">[2021-04-12 03:14:53] INFO  web.serve  GET /archive/project-mirror-spec.html 200 (44ms)</div>
+<div class="line">[2021-04-12 03:15:01] INFO  web.serve  GET /mirror/end.html 200 (18ms)</div>
+<div class="line">[2021-04-12 03:15:09] INFO  web.serve  GET /mirror/list.html 200 (321ms) [heavy render]</div>
+<div class="line">[2021-04-12 03:15:14] INFO  web.serve  GET /mirror/truth.html 200 (19ms)</div>
+<div class="line">[2021-04-12 03:15:21] WARN  mirror.runtime  cohort registry access by session 0xEV-2417 — outside scheduled window</div>
+<div class="line">[2021-04-12 03:15:24] INFO  mirror.runtime  threshold parameter redacted in response (per court order)</div>
+<div class="line">[2021-04-12 03:15:31] INFO  web.serve  GET /helena/final.html 200 (16ms)</div>
+<div class="line">[2021-04-12 03:15:38] INFO  web.serve  GET /helena/the-letter.html 200 (17ms)</div>
+<div class="line">[2021-04-12 03:15:42] INFO  web.serve  GET /discoveries.html 200 (12ms)</div>
+<div class="line">[2021-04-12 03:15:48] INFO  web.serve  GET /map.html 200 (11ms)</div>
+<div class="line">[2021-04-12 03:15:55] INFO  web.serve  GET /end.html 200 (13ms)</div>
+<div class="line">[2021-04-12 03:16:02] INFO  auth.complete  session 0xEV-2417 ended (duration: 113s, pages: 18, discoveries: 24)</div>
+<div class="line">[2021-04-12 03:16:02] INFO  mirror.runtime  session summary: 18 pages · 24 discoveries · 5/5 threads · objectives complete</div>
+<div class="line"></div>
+<div class="line">// entries above are real but anonymized</div>
+<div class="line">// entries below are from earlier, in 2021</div>
+<div class="line"></div>
+<div class="line">[2021-03-26 04:18:33] INFO  mirror.deploy  production cutover initiated by session MR-2207</div>
+<div class="line">[2021-03-26 04:19:11] INFO  mirror.deploy  warm-store cluster re-pointed to /PROJ-M/cohort-v4</div>
+<div class="line">[2021-03-26 04:19:48] WARN  mirror.deploy  cohort-v4 expected 2.7TB, found 0 bytes on primary</div>
+<div class="line">[2021-03-26 04:19:48] WARN  mirror.deploy  cohort-v4 expected 2.7TB, found 0 bytes on secondary</div>
+<div class="line">[2021-03-26 04:19:48] CRIT mirror.deploy  data not present at expected location</div>
+<div class="line">[2021-03-26 04:19:51] INFO  mirror.deploy  production cutover aborted by operator MR-2207</div>
+<div class="line">[2021-03-26 04:19:51] INFO  mirror.deploy  operator MR-2207 note: "the data is not where you said it would be. i am not signing off on this."</div>
+<div class="line">[2021-03-26 04:22:14] INFO  mirror.admin  cohort-v4 located at /PROJ-M/cohort-v4-alt — 2.71TB, accessible, NOT in destruction log</div>
+<div class="line">[2021-03-26 04:22:18] INFO  mirror.admin  destruction log reviewed: 4.2TB cold-store dataset destroyed 2021-03-19 per Order EV-2417-T</div>
+<div class="line">[2021-03-26 04:22:18] INFO  mirror.admin  note: cold-store and warm-store are different datasets. warm-store was not destroyed.</div>
+<div class="line">[2021-03-26 04:23:01] INFO  mirror.admin  MR-2207 placed on administrative leave pending review</div>
+<div class="line">[2021-03-26 04:24:14] INFO  mirror.admin  alt-path access restricted to R. Chen, M. Chen, D. Rosen</div>
+<div class="line"></div>
+<div class="line">[2021-03-27 11:42:09] INFO  hr.action  severance package drafted for A. Lopez, terms: 18 months salary, NDA + non-disparagement, "personal reasons" language</div>
+<div class="line">[2021-03-27 11:42:15] INFO  hr.action  severance package delivered to A. Lopez for signature</div>
+<div class="line">[2021-03-27 11:42:18] INFO  hr.action  signature deadline: 2021-04-08 17:00 EST</div>
+<div class="line">[2021-04-08 16:47:22] INFO  hr.action  A. Lopez signed severance. resignation effective 2021-04-11.</div>
+<div class="line">[2021-04-08 16:47:22] INFO  hr.action  EO board chair position: VACANT</div>
+<div class="line"></div>
+<div class="line">[2021-04-12 03:14:09] CRIT system.shutdown  unexpected process: web.serve 0xEV-2417</div>
+<div class="line">[2021-04-12 03:14:09] CRIT system.shutdown  process is reading restricted paths. process is untrusted.</div>
+<div class="line">[2021-04-12 03:14:09] CRIT system.shutdown  recommendation: terminate session</div>
+<div class="line">[2021-04-12 03:14:09] CRIT system.shutdown  decision: log only. do not terminate.</div>
+<div class="line">[2021-04-12 03:14:09] CRIT system.shutdown  reason: terminating would create a record. records are the opposite of what we want.</div>
+<div class="line">[2021-04-12 03:14:09] CRIT system.shutdown  override: LOG_ONLY. APPROVED: R. Chen</div>
+<div class="line"></div>
+<div class="line"><span class="cursor"></span></div>
+      </div>
+
+      <p style="font-family:var(--font-mono);font-size:0.8rem;color:#7fbf9f;margin-top:2rem;">
+        // fragments: <span class="fragment" data-fragment="0xEV-2417">0xEV-2417</span> <span class="fragment" data-fragment="cohort-v4-alt">cohort-v4-alt</span> <span class="fragment" data-fragment="LOG_ONLY">LOG_ONLY</span>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer" style="background:#000;border-top:1px solid #003300;color:#7fbf9f;">
+  <div class="container">
+    <div>log access · restricted</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

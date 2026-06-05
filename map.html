@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="The map — visual network of every page on helix.tech, filterable by thread." />
+<title>Map — Helix Technologies</title>
+<link rel="stylesheet" href="assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<style>
+  .map-container {
+    background: #f6f8fa;
+    border: 1px solid var(--c-border);
+    border-radius: 6px;
+    padding: 2rem;
+    margin: 2rem 0;
+    min-height: 600px;
+    position: relative;
+  }
+  .map-node {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border: 2px solid var(--c-muted);
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.6rem;
+    font-family: var(--font-mono);
+    color: var(--c-muted);
+    text-decoration: none;
+    transition: all 0.3s;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+  .map-node.discovered {
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 20px currentColor;
+    border-width: 3px;
+  }
+  .map-node:hover { transform: scale(1.15); text-decoration: none; }
+  .map-node.center {
+    width: 120px;
+    height: 120px;
+    font-size: 0.8rem;
+    background: #fff;
+    color: var(--c-fg);
+    border-color: var(--c-fg);
+    border-width: 3px;
+  }
+  .map-thread-label {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    pointer-events: none;
+    padding: 0.2rem 0.4rem;
+    background: white;
+    border-radius: 3px;
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="blog.html">Insights</a></li>
+        <li><a href="discoveries.html">Discoveries</a></li>
+        <li><a href="map.html">Map</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb">THE NETWORK</div>
+      <h1>The map</h1>
+      <p style="color:var(--c-muted);">Every page on the Helix site, color-coded by thread. Discovered pages are lit.</p>
+    </div>
+
+    <div class="content">
+      <div id="threadTabs" style="display:flex;gap:0.5rem;margin-bottom:1.5rem;flex-wrap:wrap;"></div>
+
+      <div class="map-container" id="map">
+        <div class="map-node center" style="left:calc(50% - 60px);top:calc(50% - 60px);">
+          HELIX<br><span style="font-size:0.6rem;">index.html</span>
+        </div>
+      </div>
+
+      <div style="font-family:var(--font-mono);font-size:0.85rem;color:var(--c-muted);margin-top:1rem;">
+        <p>// each color is a thread. follow any thread. some threads converge.</p>
+        <p>// the map updates as you discover pages.</p>
+        <p>// there is no single path. there are many.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2014–2021 Helix Technologies, Inc.</div>
+    <div><a href="discoveries.html">Discoveries</a> · <a href="sitemap.html">Sitemap</a></div>
+  </div>
+</footer>
+
+<script src="assets/app.js"></script>
+<script>
+  (function() {
+    const state = window.__endlessState;
+    const threads = window.__endlessThreads;
+    if (!state) return;
+
+    // Thread tabs
+    const tabs = document.getElementById("threadTabs");
+    ["all", "blue", "yellow", "red", "purple", "green"].forEach(t => {
+      const btn = document.createElement("button");
+      btn.className = "thread-link " + t;
+      btn.style.cssText = "padding:0.4rem 0.8rem;border-radius:4px;cursor:pointer;font-family:var(--font-mono);font-size:0.75rem;border:1px solid;";
+      btn.textContent = t === "all" ? "all" : threads[t].name;
+      btn.onclick = () => renderMap(t);
+      tabs.appendChild(btn);
+    });
+
+    function renderMap(filter) {
+      const map = document.getElementById("map");
+      map.innerHTML = `<div class="map-node center" style="left:calc(50% - 60px);top:calc(50% - 60px);">HELIX<br><span style="font-size:0.6rem;">index.html</span></div>`;
+
+      const cx = 50, cy = 50;
+      const r = 32; // %
+      let allPages = [];
+      Object.entries(threads).forEach(([tid, t]) => {
+        if (filter !== "all" && filter !== tid) return;
+        t.pages.forEach((p, i) => {
+          allPages.push({ tid, p, t });
+        });
+      });
+
+      allPages.forEach((entry, i) => {
+        const angle = (i / allPages.length) * Math.PI * 2;
+        const x = cx + r * Math.cos(angle) - 4;
+        const y = cy + r * Math.sin(angle) - 4;
+        const visited = state.visited.has(entry.p) || state.visited.has(entry.p.split("/").pop());
+        const node = document.createElement("a");
+        node.href = entry.p;
+        node.className = `map-node ${entry.tid}${visited ? " discovered" : ""}`;
+        node.style.left = x + "%";
+        node.style.top = y + "%";
+        node.style.color = entry.t.color;
+        node.style.borderColor = entry.t.color;
+        if (visited) node.style.background = entry.t.color;
+        node.innerHTML = entry.p.split("/").pop().replace(".html", "").substring(0, 10);
+        node.title = entry.p + (visited ? " ✓" : " ?");
+        map.appendChild(node);
+      });
+    }
+
+    renderMap("all");
+  })();
+</script>
+</body>
+</html>

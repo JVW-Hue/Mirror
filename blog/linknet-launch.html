@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Reflecting on the Linknet launch." />
+<title>Reflecting on the Linknet launch — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../services.html">Services</a></li>
+        <li><a href="../team.html">Team</a></li>
+        <li><a href="../blog.html">Insights</a></li>
+        <li><a href="../careers.html">Careers</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <div class="page-header">
+      <div class="breadcrumb"><a href="../blog.html">INSIGHTS</a> / PRODUCT</div>
+      <h1>Reflecting on the Linknet launch</h1>
+      <p style="color:var(--c-muted);">Posted 2020-09-14 by David Rosen, CTO</p>
+    </div>
+
+    <div class="content">
+      <p>In March 2020, we soft-launched Linknet — a short-form social network designed for civic dialogue. We onboarded 14,000 users in the first month, mostly drawn from a partner university's graduate programs. The premise was simple: structured conversation beats outrage-optimized feeds.</p>
+      <p>Six months later, we made the call to sunset the product. This post is about why.</p>
+
+      <h2>What we built</h2>
+      <p>Linknet's core mechanic was a 280-character post followed by a required 40-character reflection from anyone who wanted to reply. The reflection prompt was always the same: "What is one thing the original post is leaving out?" We believed that forcing users to steelman the other side would change the tone of online conversation.</p>
+      <p>In the first three months, the data supported our belief. Conversation quality scores, as measured by external raters, were 4x the industry baseline. Users reported feeling "heard" at much higher rates than on comparable platforms.</p>
+
+      <h2>What changed</h2>
+      <p>In month four, we noticed a strange pattern. A small number of users — fewer than 200 — were producing an outsized share of the highest-rated reflections. When we looked closer, we found that these users had a striking commonality: they were all, in some way, connected to a single Helix project that we had not publicly announced.</p>
+      <p>The project — which we will not name in this post — is a long-horizon partnership with a federal client. The cohort of users we had accidentally onboarded were either direct employees of the client or in adjacent academic programs. They were good at steelmanning because steelmanning is a trained skill in their professional context.</p>
+      <p>This was not a leak. The data was de-identified at ingest. But the demographic signature of the cohort was unmistakable.</p>
+
+      <h2>What we decided</h2>
+      <p>We could not, in good conscience, continue to operate a public-facing product whose quality metrics were partially attributable to a population that was, by accident, drawn from a sensitive partnership. We announced the sunset on September 1 and shut the product down on September 30.</p>
+      <p>The 14,000 users were migrated to a partner network at no cost. The Linknet codebase has been archived.</p>
+
+      <h2>What we learned</h2>
+      <p>Three things, in order of importance:</p>
+      <ol>
+        <li>The quality of online conversation is downstream of the quality of the people having it. Tools help at the margins.</li>
+        <li>De-identification is necessary but not sufficient. A demographic signature is itself identifying.</li>
+        <li>If you build something good, the people who find it will not be the people you intended.</li>
+      </ol>
+
+      <p>— David</p>
+
+      <div class="memo hidden-stage3" style="margin-top:3rem;">
+        <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">// INTERNAL COMMENT — NOT FOR PUBLIC RELEASE</p>
+        <p><strong>Elena:</strong> David — the "federally-adjacent cohort" issue is real but the framing of this post is going to be a problem. the original analysis of the cohort contamination was done by my team, and we concluded that the risk was not to the partner but to the user subjects. the 14,000 users were effectively training a model they didn't consent to. i want that fact in the public record. — e.v.</p>
+        <p><strong>David:</strong> Elena — that fact is also, potentially, defamatory to the partner, and is also, possibly, the basis for a class action against us. i am not putting it in the post. — d.r.</p>
+        <p><strong>Elena:</strong> then i will put it somewhere else. — e.v.</p>
+        <p style="color:var(--c-danger);"><em>[internal ticket closed 2020-09-16, escalated 2021-02-04, see incident EV-2417]</em></p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>© 2014–2021 Helix Technologies, Inc.</div>
+    <div><a href="../legal.html">Legal</a> · <a href="../sitemap.html">Sitemap</a> · <a href="../contact.html">Contact</a></div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

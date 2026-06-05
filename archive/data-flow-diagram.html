@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Data flow diagram — five stages from ingest to watching. RED THREAD." />
+<title>Data Flow Diagram — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<style>
+.diagram { background: #f8f7f3; border: 1px solid #e6e4dd; padding: 2rem; margin: 2rem 0; font-family: var(--font-mono); font-size: 0.85rem; }
+.diagram pre { margin: 0; white-space: pre; line-height: 1.4; }
+.stage { background: #fff; border: 1px solid #d4cfc0; padding: 1rem; margin: 1rem 0; }
+.stage-num { color: #b8a98a; font-weight: bold; letter-spacing: 0.1em; }
+.flow-arrow { color: #b8a98a; text-align: center; margin: 0.5rem 0; }
+.classified { background: #2a0a0a; color: #ff6b6b; padding: 0.05rem 0.4rem; font-size: 0.75rem; letter-spacing: 0.1em; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../discoveries.html">Discoveries</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="max-width:1000px;">
+    <div class="page-header">
+      <div class="breadcrumb" style="color:var(--thread-red);"><a href="../archive.html">ARCHIVE</a> / DATA FLOW DIAGRAM</div>
+      <h1>Data Flow Diagram · MIRROR System</h1>
+      <p style="color:var(--c-muted);">Declassified portions · 2021-04-30</p>
+    </div>
+
+    <div class="content">
+      <div class="thread-callout red">
+        <strong>RED THREAD · TECHNICAL</strong><br>
+        The data flow diagram for the MIRROR system, showing how 327 million Americans became 70,000, then 412,000, then 2,304,891. The diagram is, in the formal sense, the declassified version. The declassified version is, in the formal sense, sufficient to demonstrate what was done.
+      </div>
+
+      <h2>Stage 1 · Data ingestion</h2>
+      <div class="stage">
+        <p><span class="stage-num">SOURCES</span> · 327,000,000 Americans</p>
+        <ul>
+          <li>public social media (1.4 PB) · <em>collected via commercial aggregator</em></li>
+          <li>commercially available <span class="classified">CLASSIFIED</span> (4.2 PB) · <em>collected via commercial data broker</em></li>
+          <li>public records (120 TB) · <em>collected via public records aggregator</em></li>
+          <li>commercially available <span class="classified">CLASSIFIED</span> (880 TB) · <em>collected via commercial data broker</em></li>
+          <li>public browser fingerprinting <span class="classified">CLASSIFIED</span> (2.1 TB) · <em>collected via commercial advertising network</em></li>
+        </ul>
+      </div>
+      <div class="flow-arrow">↓</div>
+
+      <h2>Stage 2 · 14-axis extraction</h2>
+      <div class="stage">
+        <p><span class="stage-num">AXES</span> · 14 numerical features per American</p>
+        <ul>
+          <li>axis 1: linguistic divergence</li>
+          <li>axis 2: network centrality</li>
+          <li>axis 3: topic entropy</li>
+          <li>axis 4-13: <span class="classified">CLASSIFIED</span></li>
+          <li>axis 14: cohort alignment <em>(heavily weighted)</em></li>
+        </ul>
+      </div>
+      <div class="flow-arrow">↓</div>
+
+      <h2>Stage 3 · Score calculation</h2>
+      <div class="stage">
+        <p><span class="stage-num">SCORE</span> · single number per American (0 — 1)</p>
+        <p><em>score = sigmoid(14_axes · 14x14_weight_matrix)</em></p>
+        <p>thresholds: 0.78 (2018), 0.55 (2020-03), 0.31 (2020-09)</p>
+      </div>
+      <div class="flow-arrow">↓</div>
+
+      <h2>Stage 4 · Cohort registry</h2>
+      <div class="stage">
+        <p><span class="stage-num">REGISTRY</span> · Americans scoring above threshold</p>
+        <ul>
+          <li>2018-04-15: 70,000 Americans (threshold 0.78)</li>
+          <li>2020-03-15: 412,000 Americans (threshold 0.55)</li>
+          <li>2020-09-08: 2,304,891 Americans (threshold 0.31)</li>
+        </ul>
+      </div>
+      <div class="flow-arrow">↓</div>
+
+      <h2>Stage 5 · Watching</h2>
+      <div class="stage">
+        <p><span class="stage-num">WATCHING</span> · cohort members</p>
+        <p><em>(mechanism classified, basis: federal client request)</em></p>
+        <p>duration: 18 months per cohort member</p>
+        <p>2,304,891 Americans · 92,196 false positives · 4% false-positive rate</p>
+      </div>
+
+      <h2>The full picture</h2>
+      <p>The full data flow, from stage 1 to stage 5, is, in the formal sense, the basis on which 2,304,891 Americans were watched. The full data flow, from stage 1 to stage 5, is, in the practical sense, the basis on which the 2,304,891 Americans were, in the formal sense, added to a list that they did not, in the formal sense, know existed.</p>
+
+      <h2>What this means in the moral sense</h2>
+      <p>The 327 million Americans, in stage 1, did not, in the formal sense, consent to being added to the data ingestion pool. The 327 million Americans, in stage 1, did not, in the formal sense, know that the data ingestion pool existed. The 327 million Americans, in stage 1, were, in the formal sense, the raw material of a system that, in the formal sense, they did not, in the formal sense, consent to be the raw material of.</p>
+
+      <p>The 327 million Americans, in stage 5, were, in the formal sense, the basis of a list. The 327 million Americans, in stage 5, did not, in the formal sense, know that the list existed. The 327 million Americans, in stage 5, were, in the formal sense, the reason that 2,304,891 Americans, in stage 5, were, in the formal sense, watched.</p>
+
+      <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--c-muted);margin-top:2rem;">
+        // end of diagram // the diagram is, in the formal sense, 5 stages long // the diagram is, in the formal sense, the basis of the audit pipeline<br>
+        // fragments: <span class="fragment" data-fragment="data flow">data flow</span> <span class="fragment" data-fragment="5 stages">5 stages</span>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>data flow diagram · MIRROR · 2021-04-30</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+
+# Editor / agent state
+.opencode/
+.swarm/
+AGENTS.md
+.claude/
+
+# Test / temp scripts created during dev
+test_*.py
+test_*.ps1
+audit.py
+polish.py
+smoke.py
+find_*.py
+check_*.py
+verify_*.py
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# Node (if used for deploy)
+node_modules/
+npm-debug.log*
+
+# Local env / secrets
+.env
+.env.local
+*.key
+*.pem
+
+# Logs
+*.log
+
+# Old / stray drafts
+drafts/
+TODO.local.md

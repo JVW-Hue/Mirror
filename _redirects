@@ -1,0 +1,29 @@
+# Netlify redirects
+# Forum-style URL → flat HTML
+/archive/        /archive/index.html  301
+/helena/         /helena/last.html    301
+/mirror/         /mirror/list.html    301
+/forum/          /forum.html          301
+
+# Clean URLs (no .html)
+/about           /about.html          301
+/services        /services.html       301
+/team            /team.html           301
+/careers         /careers.html        301
+/contact         /contact.html        301
+/blog            /blog.html           301
+/press           /press.html          301
+/legal           /legal.html          301
+/sitemap         /sitemap.html        301
+/archive         /archive.html        301
+/discoveries     /discoveries.html    301
+/map             /map.html            301
+/end             /end.html            301
+/forum           /forum.html          301
+/signin          /signin.html         301
+/data-room       /data-room.html      301
+/null            /null.html           301
+/404             /404.html            301
+
+# Fallback for everything else
+/*               /404.html            404

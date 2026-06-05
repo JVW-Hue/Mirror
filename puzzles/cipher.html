@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Decode the cipher — a puzzle in ROT13. PURPLE THREAD." />
+<title>Rot-13 Cipher — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+<style>
+body { background: #f8f7f3; color: #2a2a2a; }
+.cipher-content { max-width: 800px; margin: 4rem auto; font-family: var(--font-mono); }
+.cipher-content h1 { color: #5a4a3a; }
+.cipher { background: #1a1a1a; color: #d4cfc0; padding: 1.5rem; border-radius: 4px; font-size: 1.1rem; letter-spacing: 0.1em; word-break: break-all; line-height: 1.8; }
+.cipher-form { background: #fff; border: 1px solid #d4cfc0; padding: 1.5rem; margin: 2rem 0; border-radius: 4px; }
+.cipher-form input { width: 100%; padding: 0.6rem; font-family: var(--font-mono); font-size: 1rem; border: 1px solid #d4cfc0; border-radius: 3px; box-sizing: border-box; }
+.cipher-form button { margin-top: 1rem; background: #5a4a3a; color: #f8f7f3; border: none; padding: 0.5rem 1rem; cursor: pointer; }
+.cipher-form button:hover { background: #2a2a2a; }
+.hint { background: #fff8e6; border-left: 3px solid #d4a017; padding: 1rem; margin: 1.5rem 0; font-size: 0.9rem; }
+.answer { background: #e6f4e6; border-left: 3px solid #4a8a4a; padding: 1rem; margin: 1.5rem 0; font-size: 0.9rem; display: none; }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../discoveries.html">Discoveries</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container">
+    <article class="cipher-content">
+      <div class="page-header">
+        <div class="breadcrumb" style="color:#5a4a3a;">PUZZLES / CIPHER · ROT-13</div>
+        <h1>Rot-13 Cipher</h1>
+        <p style="color:var(--c-muted);">A puzzle found in the source repository · 2021-05-12</p>
+      </div>
+
+      <div class="thread-callout" style="background:#5a4a3a;color:#f8f7f3;">
+        <strong>PUZZLE · ROT-13</strong><br>
+        The following string was found, in the source repository, in a directory labeled /private/puzzles/2021-04/. The string is, in the formal sense, encoded. The string is, in the practical sense, a message that, in the formal sense, the auditor (you) is, in the formal sense, expected to decode.
+      </div>
+
+      <div class="cipher">
+        GUR NYY PNAER PBZRF PUNEYRF NAQ PBZRF BAYL<br>
+        GUR NYY PNAER PBZRF FNYRF NAQ PBZRF BAYL<br>
+        GUR NYY PNAER PBZRF NAQ PBZRF ABG FHER<br>
+        JUNG PBZRF FHER ABG FHER<br>
+        GUR NYY PNAER PBZRF NAQ PBZRF ABG FHER<br>
+        JUNG PBZRF FHER ABG FHER<br>
+        GUR NYY PNAER PBZRF NAQ PBZRF BAYL<br>
+        GUR NYY PBZRF NYY BAYL<br>
+        NYY BAYL NAQ NYY BAYL
+      </div>
+
+      <div class="hint">
+        <strong>Hint 1:</strong> This is a substitution cipher with a 13-letter shift, originally developed for use in online forums. Each letter is replaced by the letter 13 positions after it in the alphabet.
+      </div>
+
+      <div class="hint">
+        <strong>Hint 2:</strong> The decoded message is a quote from Dr. Elena Vasquez's 2016 MIT graduation speech. Look for the phrase "the most important thing a system could do was."
+      </div>
+
+      <div class="cipher-form">
+        <label for="answer"><strong>Decode the message:</strong></label>
+        <input type="text" id="answer" placeholder="Type the decoded message here..." />
+        <button id="check-btn">Check</button>
+        <div id="result" style="margin-top:1rem;"></div>
+      </div>
+
+      <div class="answer" id="answer-hint">
+        <strong>Decoded message (from Elena's 2016 MIT speech):</strong>
+        <p style="font-family:Georgia, serif;font-style:italic;line-height:1.7;color:#2a2a2a;">
+          "The most important thing a system could do was fail in a way that was legible.<br>
+          The most important thing a system could do was fail in a way that was recoverable.<br>
+          The most important thing a system could do was fail in a way that was not hidden.<br>
+          What was hidden was not hidden.<br>
+          The most important thing a system could do was fail in a way that was not hidden.<br>
+          What was hidden was not hidden.<br>
+          The most important thing a system could do was fail in a way that was legible.<br>
+          The most important thing was, was legible.<br>
+          Was legible and was legible."
+        </p>
+      </div>
+
+      <p style="margin-top:3rem;font-family:var(--font-mono);font-size:0.85rem;color:var(--c-muted);">
+        // fragments: <span class="fragment" data-fragment="cipher decoded">cipher decoded</span> <span class="fragment" data-fragment="legible">legible</span>
+      </p>
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>rot-13 puzzle · found in source repository · 2021-05-12</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+<script>
+const correct = 'the most important thing a system could do was fail in a way that was legible. was legible and was legible';
+document.getElementById('check-btn').addEventListener('click', () => {
+  const v = document.getElementById('answer').value.toLowerCase().replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').trim();
+  const r = document.getElementById('result');
+  if (v.includes('legible') && v.includes('system could do was fail')) {
+    r.innerHTML = '<span style="color:#2a6a2a;">✓ correct. the message is decoded. click below to read it in full.</span><br><br><button onclick="document.getElementById(\'answer-hint\').style.display=\'block\';this.style.display=\'none\';">show decoded message</button>';
+  } else {
+    r.innerHTML = '<span style="color:#8a3a3a;">not quite. try again, or use the hint.</span>';
+  }
+});
+</script>
+</body>
+</html>

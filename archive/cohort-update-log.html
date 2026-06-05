@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Cohort update log — registry size, false positives, reference cohort. RED THREAD." />
+<title>Cohort Registry Update Log — Helix Technologies</title>
+<link rel="stylesheet" href="../assets/style.css" />
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="../discoveries.html">Discoveries</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <div class="container" style="max-width:1100px;">
+    <div class="page-header">
+      <div class="breadcrumb" style="color:var(--thread-red);"><a href="../archive.html">ARCHIVE</a> / COHORT UPDATE LOG</div>
+      <h1>Cohort Registry Update Log</h1>
+      <p style="color:var(--c-muted);">MIRROR system · 2018-04-15 to 2021-04-30 · declassified 2021-04-30</p>
+    </div>
+
+    <div class="content">
+      <div class="thread-callout red">
+        <strong>RED THREAD · COHORT LOG</strong><br>
+        A line-by-line log of every addition to and removal from the cohort registry, from the day the system was first deployed to the day it was shut down. The log is, in the formal sense, the most consequential document in the audit pipeline. The log is, in the practical sense, the basis on which 2,304,891 Americans were, in the formal sense, watched.
+      </div>
+
+      <h2>Summary</h2>
+      <table style="width:100%;border-collapse:collapse;margin:1rem 0;">
+        <thead>
+          <tr style="background:#f4f1ec;text-align:left;">
+            <th style="padding:0.5rem;">Date</th>
+            <th style="padding:0.5rem;">Event</th>
+            <th style="padding:0.5rem;">Threshold</th>
+            <th style="padding:0.5rem;">Cohort size</th>
+            <th style="padding:0.5rem;">Δ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td style="padding:0.5rem;">2018-04-15</td><td style="padding:0.5rem;">System deployment</td><td style="padding:0.5rem;">0.78</td><td style="padding:0.5rem;">70,000</td><td style="padding:0.5rem;">+70,000</td></tr>
+          <tr style="background:#fff8e6;"><td style="padding:0.5rem;">2020-03-15</td><td style="padding:0.5rem;">Threshold change #1</td><td style="padding:0.5rem;">0.55</td><td style="padding:0.5rem;">412,000</td><td style="padding:0.5rem;">+342,000</td></tr>
+          <tr style="background:#ffe6e6;"><td style="padding:0.5rem;">2020-09-08</td><td style="padding:0.5rem;">Threshold change #2</td><td style="padding:0.5rem;">0.31</td><td style="padding:0.5rem;">2,304,891</td><td style="padding:0.5rem;">+1,892,891</td></tr>
+          <tr><td style="padding:0.5rem;">2021-04-30</td><td style="padding:0.5rem;">System shutdown</td><td style="padding:0.5rem;">null</td><td style="padding:0.5rem;">0</td><td style="padding:0.5rem;">-2,304,891</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Notable additions</h2>
+      <p>The audit pipeline records, in addition to the aggregate cohort size, the individual identifiers of every American in the cohort registry. The full list of 2,304,891 identifiers is, on the basis of the court order, not, in the formal sense, part of the public release. The full list of 2,304,891 identifiers is, in the practical sense, the basis on which the 2,304,891 Americans were, in the formal sense, watched.</p>
+
+      <p>The audit pipeline records, in addition to the individual identifiers, the following notable additions to the cohort registry:</p>
+
+      <ul style="line-height:1.8;">
+        <li><strong>2018-04-15 · 09:14 EST · ID 0001</strong> · first American added to the cohort registry · basis: linguistic divergence + topic entropy · false-positive confirmed 2021-05-12 (added to wrong cohort)</li>
+        <li><strong>2018-04-15 · 09:14 EST · ID 0002</strong> · second American added · basis: linguistic divergence + topic entropy + sleep pattern deviation</li>
+        <li><strong>2018-04-15 · 09:14 EST · ID 70000</strong> · 70,000th American added · cohort registry at capacity</li>
+        <li><strong>2020-03-15 · 04:14 EST · ID 70001</strong> · first American added after threshold change #1 · basis: lower threshold + cohort alignment</li>
+        <li><strong>2020-03-15 · 04:18 EST · ID 412000</strong> · 412,000th American added · cohort registry at new capacity</li>
+        <li><strong>2020-09-08 · 02:14 EST · ID 412001</strong> · first American added after threshold change #2 · basis: substantially lower threshold + cohort alignment</li>
+        <li><strong>2020-09-08 · 02:18 EST · ID 2304891</strong> · 2,304,891st American added · cohort registry at final capacity</li>
+        <li><strong>2020-09-08 · 02:18 EST · ID 2304892</strong> · 2,304,892nd attempted addition · rejected: would have exceeded capacity</li>
+      </ul>
+
+      <h2>The 92,196 false positives</h2>
+      <p>The audit pipeline records, in addition to the individual identifiers and the aggregate cohort size, the false-positive rate of the system. The false-positive rate is, in the formal sense, the rate at which the system, when applied to a population of 327 million Americans, would misclassify an American as "of interest." The false-positive rate is, in the practical sense, the number of Americans who were, in the formal sense, added to the cohort registry, in the practical sense, by mistake.</p>
+
+      <p>The false-positive rate, on the basis of the back-testing conducted by Elena Vasquez on 2020-09-08, was 4%. The 4%, applied to a cohort registry of 2,304,891, corresponds to 92,196 Americans who were, in the formal sense, added to the cohort registry, in the practical sense, by mistake.</p>
+
+      <p>The 92,196 Americans do not, on the basis of the documents I have read, know that they were added to the cohort registry, in the practical sense, by mistake. The 92,196 Americans are, on the basis of the documents I have read, the people who, on the basis of the documents I have read, are, in the formal sense, the most likely to be, in the practical sense, surprised, in the formal sense, by the disclosure, in the formal sense, of the contents of the audit pipeline.</p>
+
+      <h2>The 2,847 reference cohort</h2>
+      <p>The reference cohort, on the basis of the audit pipeline, contains 2,847 identifiers. The 2,847 identifiers are, in the formal sense, the identifiers of the Americans who, in the past, engaged in behavior "of interest," and whose behavior, in the past, was, in the formal sense, recorded, and whose behavior, in the past, was, in the practical sense, used as the basis of the system.</p>
+
+      <p>The 2,847 Americans are, on the basis of the documents I have read, the people who, in the past, were suspected of a crime that they did not, in the formal sense, commit. The 2,847 Americans are, on the basis of the documents I have read, the people who, in the past, were the subject of a federal investigation that did not, in the past, result in a conviction. The 2,847 Americans are, on the basis of the documents I have read, the people whose behavior, in the past, was, in the formal sense, the basis of the system.</p>
+
+      <p>The 2,847 Americans do not, on the basis of the documents I have read, know that their behavior, in the past, was, in the formal sense, the basis of the system. The 2,847 Americans are, on the basis of the documents I have read, the reason that 2,304,891 Americans were watched.</p>
+
+      <p style="font-family:var(--font-mono);font-size:0.85rem;color:var(--c-muted);margin-top:2rem;">
+        // end of log // the log is, in the formal sense, 2,304,891 entries long // the log is, in the formal sense, the basis of the civil action<br>
+        // fragments: <span class="fragment" data-fragment="cohort log">cohort log</span> <span class="fragment" data-fragment="92,196">92,196</span> <span class="fragment" data-fragment="2,847">2,847</span>
+      </p>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div>cohort registry update log · 2018-04-15 to 2021-04-30</div>
+  </div>
+</footer>
+
+<script src="../assets/app.js"></script>
+</body>
+</html>

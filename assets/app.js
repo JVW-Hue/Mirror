@@ -18,6 +18,67 @@
     started: "endless_internet_started",
     seenMessages: "endless_internet_seen_msgs",
     archiveUnlocked: "archive_unlocked",
+    riddlesSolved: "endless_internet_riddles_solved",
+    truthSeen: "endless_internet_truth_seen",
+    endSeen: "endless_internet_end_seen",
+  };
+
+  // ============================================
+  // RIDDLES — embedded puzzles hidden in pages
+  // ============================================
+  // Each riddle has: id, question, accept (array of accepted answers,
+  // case-insensitive), fragment granted on solve, optional misdirect msg.
+  // Solved riddles persist in localStorage.
+  const RIDDLES = {
+    "riddle-axis": {
+      id: "riddle-axis",
+      page: "mirror/14-axis-deep.html",
+      prompt: "14 numbers go in. 1 number comes out. The threshold, in the formal sense, is what?",
+      hint: "Read the spec carefully. Look for the number between two others.",
+      accept: ["0.55", ".55", "0.55%", "55", "point five five", "point-five-five"],
+      fragment: "threshold-crossed",
+      misdirect: [
+        "not quite. read again.",
+        "wrong. the answer is in the prose, not the math.",
+        "almost. but the formal sense is a different number than the practical sense.",
+      ],
+    },
+    "riddle-signal": {
+      id: "riddle-signal",
+      page: "signals/console-log.html",
+      prompt: "Four timestamps. Three of them are routine. One of them is not. Which one?",
+      hint: "It happened when nothing was supposed to happen. The page was not yours.",
+      accept: ["03:14", "0314", "3:14", "3:14am", "3:14 am", "three fourteen", "three-fourteen"],
+      fragment: "the system saw you",
+      misdirect: [
+        "no. the answer is a time, not a page.",
+        "close. but you have to find the timestamp that breaks the pattern.",
+      ],
+    },
+    "riddle-helena": {
+      id: "riddle-helena",
+      page: "helena/last.html",
+      prompt: "The author writes under a codename. Her codename, in the formal sense, is what she was called at the project. Find the codename.",
+      hint: "It appears in three digits and four letters. She was a number before she was a name.",
+      accept: ["ev-2417", "ev2417", "EV-2417", "EV2417", "ev 2417"],
+      fragment: "the codename",
+      misdirect: [
+        "no. the answer is a codename, not her real name.",
+        "wrong. it is on this page, but you have to look at the small text.",
+      ],
+    },
+    "riddle-truth": {
+      id: "riddle-truth",
+      page: "mirror/truth.html",
+      prompt: "How many Americans, in the formal sense? The number, written in digits, with a comma. As it appears in the verse.",
+      hint: "It is repeated in the document. The first appearance is in italics, in the dedication.",
+      accept: ["2,304,891", "2304891", "2,304,891.", "2304891 people", "two million three hundred four thousand eight hundred ninety one"],
+      fragment: "the count is real",
+      misdirect: [
+        "no. the verse says one number, plainly. read it again.",
+        "wrong. it is in the first three lines of the document, not the body.",
+      ],
+    },
   };
 
   // ============================================
@@ -677,10 +738,341 @@
   }
 
   // ============================================
+  // RIDDLES — UI handler
+  // ============================================
+  function setupRiddles() {
+    document.querySelectorAll(".riddle").forEach((el) => {
+      const id = el.getAttribute("data-riddle");
+      const riddle = RIDDLES[id];
+      if (!riddle) return;
+
+      const solved = localStorage.getItem(K.riddlesSolved + ":" + id) === "1";
+
+      el.innerHTML = `
+        <div class="riddle-frame">
+          <div class="riddle-label">[ RIDDLE — TRIGGERED ]</div>
+          <div class="riddle-prompt">${riddle.prompt}</div>
+          ${riddle.hint ? `<div class="riddle-hint">${riddle.hint}</div>` : ""}
+          <form class="riddle-form" autocomplete="off">
+            <input type="text" class="riddle-input" placeholder="..." autocomplete="off" />
+            <button type="submit" class="riddle-btn">answer</button>
+          </form>
+          <div class="riddle-msg"></div>
+        </div>
+      `;
+
+      const form = el.querySelector(".riddle-form");
+      const input = el.querySelector(".riddle-input");
+      const msg = el.querySelector(".riddle-msg");
+
+      if (solved) {
+        msg.innerHTML = `<span class="riddle-solved">✓ solved. fragment: <code>${riddle.fragment}</code></span>`;
+        input.disabled = true;
+        el.querySelector(".riddle-btn").disabled = true;
+        el.querySelector(".riddle-btn").textContent = "✓";
+      }
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const v = input.value.trim().toLowerCase();
+        if (!v) return;
+        if (riddle.accept.some((a) => a.toLowerCase() === v)) {
+          // SOLVED
+          state.fragments.add(riddle.fragment);
+          state.discovered = state.visited.size + state.fragments.size + state.passwords.size;
+          localStorage.setItem(K.riddlesSolved + ":" + id, "1");
+          save();
+          applyReveal();
+          renderDiscoveryCounter();
+          updateObjectives();
+          renderObjectivesPanel();
+          msg.innerHTML = `<span class="riddle-solved">✓ solved. fragment: <code>${riddle.fragment}</code></span>`;
+          input.disabled = true;
+          el.querySelector(".riddle-btn").disabled = true;
+          el.querySelector(".riddle-btn").textContent = "✓";
+          // Special effects on solve
+          flashElement(el, "riddle-flash-success");
+          emitMessage("fragment", `riddle solved. fragment: ${riddle.fragment}`);
+          triggerBoom({ intensity: 0.5, duration: 1200 });
+        } else {
+          // WRONG
+          const wrong = riddle.misdirect[Math.floor(Math.random() * riddle.misdirect.length)];
+          msg.innerHTML = `<span class="riddle-wrong">✗ ${wrong}</span>`;
+          flashElement(el, "riddle-flash-fail");
+          input.value = "";
+          input.focus();
+        }
+      });
+    });
+  }
+
+  function flashElement(el, cls) {
+    el.classList.add(cls);
+    setTimeout(() => el.classList.remove(cls), 700);
+  }
+
+  // ============================================
+  // THE BOOM — climax animation
+  // ============================================
+  // Reusable — used by riddle solve (light) and truth.html arrival (full)
+  function triggerBoom(opts) {
+    opts = opts || {};
+    const intensity = opts.intensity != null ? opts.intensity : 1;
+    const duration = opts.duration != null ? opts.duration : 2400;
+    const overlay = document.createElement("div");
+    overlay.className = "boom-overlay";
+    overlay.style.setProperty("--boom-intensity", String(intensity));
+    overlay.style.setProperty("--boom-duration", duration + "ms");
+    overlay.innerHTML = `
+      <div class="boom-text">2,304,891</div>
+      <div class="boom-stamp">MIRROR</div>
+      <div class="boom-bar"><div class="boom-bar-fill"></div></div>
+    `;
+    document.body.appendChild(overlay);
+    setTimeout(() => overlay.remove(), duration + 400);
+  }
+
+  // ============================================
+  // THE CLIMAX — first visit to truth.html
+  // ============================================
+  function setupTruthClimax() {
+    if (fullPath !== "mirror/truth.html" && fullPath !== "mirror/truth.html/") return;
+    if (localStorage.getItem(K.truthSeen) === "1") return;
+
+    // First time on the truth page
+    const veil = document.createElement("div");
+    veil.className = "truth-veil";
+    veil.innerHTML = `
+      <div class="truth-veil-content">
+        <div class="truth-veil-line">READING THE DOCUMENT</div>
+        <div class="truth-veil-bar"><div class="truth-veil-fill"></div></div>
+        <div class="truth-veil-status">verifying the source</div>
+        <div class="truth-veil-num">2,304,891</div>
+      </div>
+    `;
+    document.body.appendChild(veil);
+
+    // Phase 1: 0-1500ms — building tension
+    setTimeout(() => {
+      veil.querySelector(".truth-veil-status").textContent = "the file is open. the file is 47,318 lines long.";
+    }, 800);
+    setTimeout(() => {
+      veil.querySelector(".truth-veil-status").textContent = "verifying the signature.  signature is valid.";
+    }, 1800);
+
+    // Phase 2: 2400ms — the BOOM
+    setTimeout(() => {
+      document.body.classList.add("boom-flash");
+      veil.classList.add("boom-fade");
+      setTimeout(() => {
+        document.body.classList.remove("boom-flash");
+      }, 200);
+    }, 2400);
+
+    // Phase 3: 2900ms — number storm + stamp
+    setTimeout(() => {
+      const storm = document.createElement("div");
+      storm.className = "number-storm";
+      document.body.appendChild(storm);
+      // Spawn 60 numbers across the screen
+      for (let i = 0; i < 60; i++) {
+        const span = document.createElement("span");
+        span.className = "ns-num";
+        const v = Math.floor(Math.random() * 2304891);
+        span.textContent = v.toLocaleString();
+        span.style.left = (Math.random() * 100) + "vw";
+        span.style.top = (Math.random() * 100) + "vh";
+        span.style.animationDelay = (Math.random() * 1.2) + "s";
+        span.style.fontSize = (10 + Math.random() * 40) + "px";
+        span.style.color = ["#ff0040", "#ff8030", "#ffaa00", "#c0392b", "#ffffff"][Math.floor(Math.random() * 5)];
+        storm.appendChild(span);
+      }
+      setTimeout(() => storm.remove(), 3200);
+    }, 2900);
+
+    // Phase 4: 5400ms — reveal content
+    setTimeout(() => {
+      veil.remove();
+      localStorage.setItem(K.truthSeen, "1");
+      // Subtle reveal flash
+      const f = document.createElement("div");
+      f.style.cssText = "position:fixed;inset:0;background:#fff;z-index:99998;pointer-events:none;opacity:0.7;transition:opacity 1.2s;";
+      document.body.appendChild(f);
+      setTimeout(() => f.style.opacity = "0", 50);
+      setTimeout(() => f.remove(), 1500);
+      emitMessage("warning", "you have read the truth. the watching has stopped.");
+    }, 5400);
+  }
+
+  // ============================================
+  // THE FINAL MESSAGE — last screen on end.html
+  // ============================================
+  function setupFinalMessage() {
+    if (fullPath !== "end.html" && fullPath !== "end.html/") return;
+    if (localStorage.getItem(K.endSeen) === "1") return;
+
+    // After the existing end content, append a final-message block
+    setTimeout(() => {
+      const main = document.querySelector("main") || document.body;
+      const fm = document.createElement("section");
+      fm.className = "final-message";
+      fm.innerHTML = `
+        <div class="final-fade">
+          <p class="final-line final-1">the watching has stopped</p>
+          <p class="final-line final-2">the file is closed</p>
+          <p class="final-line final-3">the backup is, in the formal sense, intact</p>
+          <p class="final-line final-4 final-quiet">— — —</p>
+          <p class="final-line final-5 final-personal">
+            for whoever you are, reading this late:<br>
+            you are not, in the practical sense, the person who started.<br>
+            that is, in the moral sense, the only thing they could not destroy.
+          </p>
+          <p class="final-line final-6 final-sig">— e.v.</p>
+        </div>
+      `;
+      main.appendChild(fm);
+      localStorage.setItem(K.endSeen, "1");
+    }, 1200);
+  }
+
+  // ============================================
+  // MISLEADING THEATER — wrong-password animation
+  // ============================================
+  function setupArchiveTheater() {
+    const form = document.getElementById("archiveForm");
+    if (!form) return;
+    // We replace the form's submit behavior with a "decrypting" theater
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      const v = document.getElementById("archiveKey").value.trim();
+      const msg = document.getElementById("archiveMsg");
+      const passwords = ["mirror", "MIRROR", "2.3M", "2334891", "vasquez", "EV2417", "ev2417", "the system", "the project", "still running"];
+      if (passwords.includes(v)) {
+        // REAL success — short, decisive
+        msg.innerHTML = `<span style="color:var(--thread-green)">access granted.</span>`;
+        sessionStorage.setItem(K.archiveUnlocked, "1");
+        state.passwords.add("mirror");
+        state.passwords.add("archive");
+        state.threads.add("red");
+        save();
+        setTimeout(() => location.reload(), 600);
+      } else {
+        // MISLEADING THEATER
+        msg.innerHTML = `<span style="color:var(--c-muted)">verifying...</span>`;
+        const stages = [
+          "verifying the signature",
+          "checking the hash",
+          "loading the keyfile",
+          "decrypting the outer layer",
+          "decrypting the inner layer",
+          "verifying decryption",
+          "preparing the payload",
+        ];
+        let i = 0;
+        const ticker = setInterval(() => {
+          i++;
+          if (i < stages.length) {
+            msg.innerHTML = `<span style="color:var(--c-muted)">${stages[i]}...</span>`;
+          } else {
+            clearInterval(ticker);
+            msg.innerHTML = `<span style="color:var(--c-danger)">DECRYPTION FAILED · 99% complete · signal logged</span>`;
+            const attempts = document.getElementById("attempts");
+            if (attempts) attempts.textContent = String((parseInt(attempts.textContent, 10) || 0) + 1);
+            state.discovered = state.visited.size + state.fragments.size + state.passwords.size + 1;
+            save();
+            applyReveal();
+            renderDiscoveryCounter();
+            document.getElementById("archiveKey").value = "";
+          }
+        }, 220);
+      }
+    }, true);  // capture phase — runs before the original handler
+  }
+
+  // ============================================
+  // AMBIENT EFFECTS — corner glitches, whispers
+  // ============================================
+  function setupAmbient() {
+    // Skip on heavy pages
+    if (fullPath.endsWith("/mirror/truth.html") || fullPath.endsWith("/end.html")) return;
+
+    // Periodic corner glitch — every 45-90 seconds, show a small flicker
+    const scheduleNext = () => {
+      const delay = 45000 + Math.random() * 45000;
+      setTimeout(() => {
+        showCornerGlitch();
+        scheduleNext();
+      }, delay);
+    };
+    scheduleNext();
+
+    // First-time visitor message
+    if (state.discovered >= 1 && !state.seenMessages.has("welcome-corner")) {
+      setTimeout(() => showCornerGlitch("welcome"), 8000);
+      state.seenMessages.add("welcome-corner");
+    }
+  }
+
+  function showCornerGlitch(kind) {
+    const g = document.createElement("div");
+    g.className = "corner-glitch";
+    const messages = {
+      welcome: "welcome. the system is watching.",
+      default: [
+        "the system is, in the formal sense, still running.",
+        "the threads are visible.",
+        "the threshold was lowered. you should know that.",
+        "2,304,891 names. you know this number.",
+        "the backup is intact. for now.",
+        "the auditor found the threshold change. the auditor was terminated.",
+        "the federal client does not know you are here. the federal client does not know anything, in the practical sense.",
+        "the watching has stopped. the watching has, in the formal sense, not stopped.",
+      ],
+    };
+    const text = kind === "welcome"
+      ? messages.welcome
+      : messages.default[Math.floor(Math.random() * messages.default.length)];
+    g.textContent = text;
+    document.body.appendChild(g);
+    setTimeout(() => g.classList.add("show"), 50);
+    setTimeout(() => g.classList.remove("show"), 6500);
+    setTimeout(() => g.remove(), 7500);
+  }
+
+  // ============================================
+  // NUMBER COUNTER — on helena/final.html, counts up
+  // ============================================
+  function setupNumberStorm() {
+    const target = document.getElementById("number-storm-target");
+    if (!target) return;
+    const final = 2304891;
+    const duration = 22000;
+    const start = performance.now();
+    const tick = (now) => {
+      const t = Math.min((now - start) / duration, 1);
+      // easeOutCubic
+      const e = 1 - Math.pow(1 - t, 3);
+      const v = Math.floor(e * final);
+      target.textContent = v.toLocaleString();
+      if (t < 1) requestAnimationFrame(tick);
+      else target.textContent = final.toLocaleString();
+    };
+    requestAnimationFrame(tick);
+  }
+
+  // ============================================
+  // PHANTOM PASSWORD — when player gets the right answer
+  // the system "almost" accepts it, then doubles down
+  // ============================================
+  // (Wired inline in the riddle handler above)
+
+  // ============================================
   // RESET
   // ============================================
   window.__resetEndlessInternet = function () {
     Object.values(K).forEach((k) => localStorage.removeItem(k));
+    Object.keys(localStorage).filter(k => k.startsWith("endless_internet_riddles_solved:")).forEach(k => localStorage.removeItem(k));
     sessionStorage.removeItem(K.archiveUnlocked);
     location.reload();
   };
@@ -725,8 +1117,14 @@
   renderDiscoveryCounter();
   checkArchiveAccess();
   applyArchiveGate();
+  setupArchiveTheater();  // run AFTER applyArchiveGate (capture phase)
   pageBehaviors();
   setupKonami();
+  setupRiddles();
+  setupNumberStorm();
+  setupTruthClimax();
+  setupFinalMessage();
+  setupAmbient();
   save();
 
   // Emit discovery messages for current state

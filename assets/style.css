@@ -1202,3 +1202,373 @@ pre, code {
   body { background: white; color: black; }
   a { color: black; text-decoration: underline; }
 }
+
+/* ===========================================================
+   RIDDLES — embedded puzzle UI
+   =========================================================== */
+.riddle {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  border: 1px dashed rgba(255, 200, 50, 0.3);
+  background: rgba(255, 200, 50, 0.03);
+  font-family: var(--font-mono);
+  position: relative;
+}
+.riddle::before {
+  content: "?";
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  background: var(--c-bg);
+  color: rgba(255, 200, 50, 0.7);
+  font-size: 1.2rem;
+  padding: 0 0.4rem;
+  font-weight: bold;
+}
+.riddle-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  color: rgba(255, 200, 50, 0.8);
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+.riddle-prompt {
+  font-family: Georgia, serif;
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--c-fg);
+  margin-bottom: 0.8rem;
+  font-style: italic;
+}
+.riddle-hint {
+  font-size: 0.8rem;
+  color: var(--c-muted);
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+  border-left: 2px solid rgba(255, 200, 50, 0.3);
+}
+.riddle-form {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+}
+.riddle-input {
+  flex: 1;
+  padding: 0.7rem 0.9rem;
+  background: rgba(0,0,0,0.4);
+  border: 1px solid rgba(255, 200, 50, 0.4);
+  color: var(--c-fg);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  border-radius: 3px;
+}
+.riddle-input:focus {
+  outline: none;
+  border-color: rgba(255, 200, 50, 0.9);
+  background: rgba(0,0,0,0.6);
+}
+.riddle-btn {
+  padding: 0.7rem 1.2rem;
+  background: rgba(255, 200, 50, 0.15);
+  border: 1px solid rgba(255, 200, 50, 0.5);
+  color: rgba(255, 200, 50, 0.95);
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 3px;
+  transition: all 0.2s;
+}
+.riddle-btn:hover { background: rgba(255, 200, 50, 0.25); }
+.riddle-btn:disabled { opacity: 0.4; cursor: default; }
+.riddle-msg { margin-top: 1rem; font-size: 0.9rem; min-height: 1.4em; }
+.riddle-solved { color: #27ae60; }
+.riddle-solved code {
+  background: rgba(39,174,96,0.1);
+  padding: 0.1em 0.4em;
+  border-radius: 2px;
+  font-size: 0.85em;
+}
+.riddle-wrong { color: #c0392b; font-style: italic; }
+.riddle-flash-success {
+  animation: riddle-success 0.7s ease-out;
+}
+.riddle-flash-fail {
+  animation: riddle-fail 0.4s ease-out;
+}
+@keyframes riddle-success {
+  0% { box-shadow: 0 0 0 rgba(39,174,96,0); }
+  50% { box-shadow: 0 0 30px rgba(39,174,96,0.7); }
+  100% { box-shadow: 0 0 0 rgba(39,174,96,0); }
+}
+@keyframes riddle-fail {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-6px); }
+  40% { transform: translateX(6px); }
+  60% { transform: translateX(-4px); }
+  80% { transform: translateX(4px); }
+}
+
+/* ===========================================================
+   THE BOOM — overlay climax
+   =========================================================== */
+.boom-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 99997;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: boom-in var(--boom-duration, 2400ms) ease-out forwards;
+}
+.boom-text {
+  font-family: var(--font-mono);
+  font-size: clamp(2rem, 6vw, 4rem);
+  color: #ff0040;
+  letter-spacing: 0.1em;
+  text-shadow: 0 0 20px rgba(255,0,64,calc(0.7 * var(--boom-intensity, 1)));
+  opacity: 0;
+  animation: boom-text-in calc(var(--boom-duration, 2400ms) * 0.4) ease-out forwards;
+  animation-delay: calc(var(--boom-duration, 2400ms) * 0.2);
+}
+.boom-stamp {
+  font-family: Georgia, serif;
+  font-size: clamp(3rem, 12vw, 9rem);
+  color: #c0392b;
+  letter-spacing: 0.4em;
+  font-weight: 300;
+  margin-top: 1.5rem;
+  border: 6px double #c0392b;
+  padding: 0.5em 1em;
+  transform: rotate(-3deg) scale(2);
+  opacity: 0;
+  text-shadow: 0 0 30px rgba(192,57,43,0.8);
+  animation: boom-stamp-in calc(var(--boom-duration, 2400ms) * 0.35) cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  animation-delay: calc(var(--boom-duration, 2400ms) * 0.4);
+}
+.boom-bar {
+  width: 60%;
+  max-width: 400px;
+  height: 4px;
+  background: rgba(255,255,255,0.1);
+  margin-top: 2rem;
+  overflow: hidden;
+  border-radius: 2px;
+}
+.boom-bar-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #ff0040, #ff8030, #ffaa00);
+  animation: boom-bar-fill calc(var(--boom-duration, 2400ms) * 0.7) ease-in forwards;
+}
+@keyframes boom-in {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes boom-text-in {
+  0% { opacity: 0; transform: scale(0.6); }
+  60% { opacity: 1; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes boom-stamp-in {
+  0% { opacity: 0; transform: rotate(-3deg) scale(2.5); }
+  60% { opacity: 1; transform: rotate(-3deg) scale(0.95); }
+  100% { opacity: 1; transform: rotate(-3deg) scale(1); }
+}
+@keyframes boom-bar-fill {
+  0% { width: 0; }
+  70% { width: 100%; }
+  85% { width: 100%; opacity: 1; }
+  100% { width: 100%; opacity: 0; }
+}
+.boom-flash body, body.boom-flash {
+  background: #fff !important;
+  transition: background 0.1s;
+}
+body.boom-flash * { color: #000 !important; }
+
+/* ===========================================================
+   TRUTH CLIMAX — first-visit curtain on truth.html
+   =========================================================== */
+.truth-veil {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4d4d4;
+  font-family: var(--font-mono);
+  transition: opacity 1.4s ease-out;
+}
+.truth-veil.boom-fade { opacity: 0; pointer-events: none; }
+.truth-veil-content {
+  text-align: center;
+  max-width: 600px;
+  padding: 0 1.5rem;
+}
+.truth-veil-line {
+  font-size: 0.85rem;
+  letter-spacing: 0.3em;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+.truth-veil-bar {
+  width: 100%;
+  max-width: 400px;
+  height: 2px;
+  background: rgba(255,255,255,0.08);
+  margin: 0 auto 1.5rem;
+  overflow: hidden;
+  border-radius: 1px;
+}
+.truth-veil-fill {
+  height: 100%;
+  width: 0;
+  background: linear-gradient(90deg, #0066cc, #d4a017, #c0392b, #c0392b);
+  animation: truth-veil-fill 2400ms ease-in forwards;
+}
+@keyframes truth-veil-fill {
+  0% { width: 0; }
+  50% { width: 40%; }
+  85% { width: 99%; }
+  100% { width: 100%; }
+}
+.truth-veil-status {
+  font-size: 0.8rem;
+  color: #888;
+  margin-bottom: 2rem;
+  font-style: italic;
+  min-height: 1.2em;
+}
+.truth-veil-num {
+  font-size: clamp(3rem, 12vw, 7rem);
+  letter-spacing: 0.05em;
+  color: #c0392b;
+  font-weight: 200;
+  text-shadow: 0 0 30px rgba(192,57,43,0.6);
+  font-family: Georgia, serif;
+  opacity: 0;
+  animation: truth-veil-num-in 600ms ease-out 2300ms forwards;
+}
+@keyframes truth-veil-num-in {
+  0% { opacity: 0; transform: scale(0.5); filter: blur(8px); }
+  60% { opacity: 1; transform: scale(1.08); filter: blur(0); }
+  100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* ===========================================================
+   NUMBER STORM — falling numbers during climax
+   =========================================================== */
+.number-storm {
+  position: fixed;
+  inset: 0;
+  z-index: 99996;
+  pointer-events: none;
+  overflow: hidden;
+}
+.ns-num {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  opacity: 0;
+  animation: ns-fall 2.6s ease-out forwards;
+  text-shadow: 0 0 8px currentColor;
+}
+@keyframes ns-fall {
+  0% { opacity: 0; transform: translateY(-20px) scale(0.5); }
+  20% { opacity: 1; transform: translateY(0) scale(1); }
+  80% { opacity: 1; transform: translateY(0) scale(1); }
+  100% { opacity: 0; transform: translateY(40px) scale(1.5); filter: blur(8px); }
+}
+
+/* ===========================================================
+   FINAL MESSAGE — appended to end.html after a moment
+   =========================================================== */
+.final-message {
+  margin: 6rem auto 0;
+  max-width: 640px;
+  text-align: center;
+  padding: 0 1.5rem;
+  font-family: Georgia, serif;
+}
+.final-fade { animation: final-fade-in 2.4s ease-out forwards; }
+.final-line {
+  color: #888;
+  margin: 1.8rem 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  opacity: 0;
+  animation: final-line-in 1.2s ease-out forwards;
+}
+.final-1 { color: #fff; letter-spacing: 0.2em; font-size: 1.2rem; animation-delay: 0.4s; }
+.final-2 { animation-delay: 2.0s; }
+.final-3 { animation-delay: 3.6s; color: #666; }
+.final-4 { animation-delay: 5.2s; color: #333; letter-spacing: 1em; }
+.final-5 { animation-delay: 6.8s; color: #d4cfc0; font-size: 1.1rem; line-height: 2.2; padding: 0 1rem; }
+.final-6 { animation-delay: 9.0s; color: #555; font-size: 0.95rem; }
+@keyframes final-fade-in {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes final-line-in {
+  0% { opacity: 0; transform: translateY(8px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ===========================================================
+   AMBIENT CORNER GLITCH
+   =========================================================== */
+.corner-glitch {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 1.5rem;
+  max-width: 360px;
+  padding: 0.6rem 1rem;
+  background: rgba(0,0,0,0.85);
+  border-left: 2px solid var(--c-danger);
+  color: #c0392b;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  z-index: 99990;
+  opacity: 0;
+  transform: translateX(-12px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+}
+.corner-glitch.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===========================================================
+   NUMBER COUNTER (helena/final)
+   =========================================================== */
+#number-storm-target {
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: var(--c-danger);
+  display: inline-block;
+  min-width: 12ch;
+  text-align: right;
+}
+
+/* Mobile adjustments for new components */
+@media (max-width: 600px) {
+  .riddle { padding: 1rem; }
+  .riddle-form { flex-direction: column; align-items: stretch; }
+  .riddle-input, .riddle-btn { width: 100%; }
+  .corner-glitch { left: 0.5rem; right: 0.5rem; bottom: 0.5rem; max-width: none; }
+  .boom-stamp { font-size: 3rem; letter-spacing: 0.2em; padding: 0.3em 0.6em; }
+  .final-line { font-size: 1rem; }
+  .final-5 { font-size: 1.05rem; }
+}

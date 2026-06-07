@@ -430,6 +430,42 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); }
   align-items: center;
 }
 
+.objectives-panel .obj-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.objectives-panel .obj-header h4 {
+  margin: 0;
+  flex: 1;
+  min-width: 0;
+}
+.objectives-panel .obj-min-btn {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  border: 1px solid var(--c-border);
+  background: rgba(255,255,255,0.6);
+  color: var(--c-muted);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s;
+}
+.objectives-panel .obj-min-btn:hover {
+  background: var(--c-accent);
+  color: white;
+  border-color: var(--c-accent);
+}
+.objectives-panel .obj-min-btn svg {
+  display: block;
+}
+
 .objectives-panel .progress-bar {
   height: 3px;
   background: var(--c-border);
@@ -473,17 +509,63 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); }
 .objectives-panel .obj-desc { color: var(--c-muted); font-size: 0.72rem; }
 .objectives-panel .obj-hint { color: var(--thread-yellow); font-size: 0.7rem; font-style: italic; margin-top: 0.2rem; }
 
-.objectives-panel.collapsed { transform: translate(80%, -50%); }
-.objectives-panel.collapsed .obj-list { display: none; }
-.objectives-panel .toggle {
-  cursor: pointer;
-  user-select: none;
-  color: var(--c-accent);
+/* Minimize state: shrink the panel down to a small badge on the right edge */
+.objectives-panel.minimized {
+  width: 0;
+  min-width: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: hidden;
+  transform: translate(100%, -50%);
+  pointer-events: none;
+}
+.objectives-panel.minimized .obj-header,
+.objectives-panel.minimized .progress-bar,
+.objectives-panel.minimized .obj-list { display: none; }
+
+/* Reopen button (floating tab on the right edge, only visible when minimized) */
+.obj-reopen {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  background: var(--c-accent);
+  color: white;
+  border: none;
+  border-radius: 6px 0 0 6px;
+  padding: 0.6rem 0.7rem;
   font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  z-index: 51;
+  box-shadow: -2px 4px 12px rgba(0,0,0,0.15);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 44px;
+  min-width: 44px;
+  transition: all 0.2s;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+.obj-reopen.visible { display: flex; }
+.obj-reopen:hover {
+  background: #2a3f55;
+  padding-right: 0.9rem;
+}
+.obj-reopen-count {
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
 }
 
 @media (max-width: 1100px) {
-  .objectives-panel { display: none; }
+  /* panel stays visible on mobile — handled below as a bottom sheet */
 }
 
 /* ============================================
@@ -881,7 +963,7 @@ body.reveal-4 .thread-callout { background: transparent; }
 
 /* Mobile */
 @media (max-width: 1100px) {
-  .objectives-panel { display: none; }
+  /* keep panel visible on mobile — handled below as a bottom sheet */
 }
 @media (max-width: 720px) {
   .hero h1 { font-size: 2.2rem; }
@@ -934,7 +1016,6 @@ pre, code {
   h1 { font-size: 2rem; }
   h2 { font-size: 1.5rem; }
   h3 { font-size: 1.15rem; }
-  .objectives-panel { display: none; }
   nav.main-nav ul { gap: 1.2rem; flex-wrap: wrap; }
   .thread-bar .container { gap: 0.6rem; }
   .thread-link { font-size: 0.7rem; }
@@ -1108,6 +1189,33 @@ pre, code {
   }
   .objectives-panel.expanded { transform: translateY(0); }
   .objectives-panel .obj-list { max-height: none; }
+
+  /* Mobile minimize: slide the whole sheet off the bottom */
+  .objectives-panel.minimized {
+    width: 100% !important;
+    transform: translateY(100%) !important;
+    padding: 0 !important;
+  }
+
+  /* Bigger tap target for min-btn on mobile */
+  .objectives-panel .obj-min-btn {
+    width: 36px;
+    height: 36px;
+  }
+
+  /* Mobile reopen button: anchor above the bottom edge */
+  .obj-reopen {
+    right: 1rem !important;
+    top: auto !important;
+    bottom: 1rem !important;
+    transform: none !important;
+    border-radius: 999px;
+    padding: 0.7rem 1rem;
+    writing-mode: horizontal-tb;
+    flex-direction: row;
+    gap: 0.5rem;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  }
 
   /* Map page canvas */
   canvas { max-width: 100% !important; }

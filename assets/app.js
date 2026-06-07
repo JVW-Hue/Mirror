@@ -474,14 +474,22 @@
       panel.className = "objectives-panel";
       document.body.appendChild(panel);
     }
+    // Apply persisted minimize state
+    const minimized = localStorage.getItem("endless_internet_obj_minimized") === "1";
+    panel.classList.toggle("minimized", minimized);
+
     const total = OBJECTIVES.filter(o => !o.optional).length;
     const done = state.completedObj.size;
     const pct = Math.round((done / total) * 100);
     let html = `
-      <h4>
-        <span>OBJECTIVES · ${done}/${total}</span>
-        <span class="toggle" id="obj-toggle">${state.activeObj.length > 0 ? "−" : "+"}</span>
-      </h4>
+      <div class="obj-header">
+        <h4>
+          <span>OBJECTIVES · ${done}/${total}</span>
+        </h4>
+        <button class="obj-min-btn" id="obj-min-btn" title="Minimize" aria-label="Minimize objectives">
+          <svg viewBox="0 0 12 12" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M2 6 L10 6"/></svg>
+        </button>
+      </div>
       <div class="progress-bar"><div class="progress-fill" style="width:${pct}%"></div></div>
       <div class="obj-list">
     `;
@@ -511,18 +519,40 @@
     html += `</div>`;
     panel.innerHTML = html;
 
-    document.getElementById("obj-toggle").addEventListener("click", () => {
-      panel.classList.toggle("collapsed");
-      panel.classList.toggle("expanded");
-      document.getElementById("obj-toggle").textContent = panel.classList.contains("collapsed") ? "+" : "−";
+    // Floating reopen tab (always present, only visible when minimized)
+    let reopen = document.getElementById("obj-reopen");
+    if (!reopen) {
+      reopen = document.createElement("button");
+      reopen.id = "obj-reopen";
+      reopen.className = "obj-reopen";
+      reopen.title = "Open objectives";
+      reopen.setAttribute("aria-label", "Open objectives");
+      reopen.innerHTML = `<span class="obj-reopen-label">OBJECTIVES</span><span class="obj-reopen-count">${done}/${total}</span>`;
+      document.body.appendChild(reopen);
+      reopen.addEventListener("click", () => {
+        localStorage.setItem("endless_internet_obj_minimized", "0");
+        panel.classList.remove("minimized");
+        reopen.classList.remove("visible");
+      });
+    }
+    reopen.querySelector(".obj-reopen-count").textContent = `${done}/${total}`;
+    reopen.classList.toggle("visible", minimized);
+
+    // Minimize button
+    document.getElementById("obj-min-btn").addEventListener("click", (e) => {
+      e.stopPropagation();
+      const next = !panel.classList.contains("minimized");
+      localStorage.setItem("endless_internet_obj_minimized", next ? "1" : "0");
+      panel.classList.toggle("minimized", next);
+      reopen.classList.toggle("visible", next);
     });
 
-    // Mobile: tap the panel header (h4) to slide up the bottom sheet
+    // Mobile: tap the panel header to slide the bottom sheet up/down
     const panelH4 = panel.querySelector("h4");
     if (panelH4 && !panelH4.dataset.mobileBound) {
       panelH4.dataset.mobileBound = "1";
       panelH4.addEventListener("click", () => {
-        if (window.matchMedia("(max-width: 600px)").matches) {
+        if (window.matchMedia("(max-width: 600px)").matches && !panel.classList.contains("minimized")) {
           panel.classList.toggle("expanded");
         }
       });

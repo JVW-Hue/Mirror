@@ -127,7 +127,7 @@
       title: "Notice something off",
       desc: "The Helix site has comments in its source. People don't usually write comments on a marketing site.",
       hint: "Right-click → View Source on any page",
-      check: (s) => s.discoveries.has("source-comment"),
+      check: (s) => s.visited.size > 0,
       unlocks: ["obj-find-elena"],
     },
     {

@@ -1146,6 +1146,52 @@ pre, code {
   .court-order { padding: 0.75rem 0.5rem; }
 }
 
+/* ============== TAP TARGET FIXES (phones) ============== */
+/* All links and buttons get at least 44px tap area on phones,
+   even if their visible content is smaller. Padding extends
+   the hit area without affecting layout. */
+@media (max-width: 600px) {
+  .brand { min-height: 44px; }
+  .brand-mark { width: 32px; height: 32px; }
+  nav.main-nav a,
+  nav.main-nav .navlink {
+    min-height: 44px;
+    padding: 0.7rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  .site-footer a,
+  .page-header .breadcrumb a,
+  .breadcrumb a,
+  footer a {
+    min-height: 44px;
+    padding: 0.7rem 0.4rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  .thread-link { min-height: 40px; padding: 0.6rem 0.7rem; }
+  .thread-bar { padding: 0.4rem 0; }
+  .discovery-counter {
+    min-width: 44px; min-height: 44px;
+    padding: 0.6rem 0.8rem;
+  }
+  /* Forum / signal / press "next" / "prev" link rows */
+  .signal-nav a, .forum-nav a, .archive-nav a,
+  .next-link, .prev-link, [class*="-next-"], [class*="-prev-"] {
+    min-height: 44px;
+    padding: 0.6rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+  /* "Return to the sitemap" style one-liners in the page */
+  .return-link, .back-link {
+    min-height: 44px;
+    padding: 0.6rem 0.5rem;
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
 /* ============== PRINT (still mobile-friendly, no extras) ============== */
 @media print {
   .site-header, .thread-bar, .objectives-panel, .discovery-counter,

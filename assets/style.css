@@ -1171,6 +1171,9 @@ pre, code {
   }
   .thread-link { min-height: 40px; padding: 0.6rem 0.7rem; }
   .thread-bar { padding: 0.4rem 0; }
+  .thread-link { font-size: 0.85rem !important; padding: 0.6rem 0.7rem; }
+  .thread-label { font-size: 0.85rem; }
+  .thread-bar .container { gap: 0.5rem 0.7rem; flex-wrap: wrap; }
   .discovery-counter {
     min-width: 44px; min-height: 44px;
     padding: 0.6rem 0.8rem;

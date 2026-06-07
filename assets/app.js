@@ -674,7 +674,10 @@
     }
     counter.textContent = `DISCOVERED: ${state.discovered} · STAGE ${computeReveal(state.discovered)}`;
     counter.onclick = () => {
-      window.location.href = "discoveries.html";
+      // Compute root-relative path so it works from any subpage
+      const depth = window.location.pathname.split("/").filter(Boolean).length - 1;
+      const prefix = depth > 0 ? "../".repeat(depth) : "";
+      window.location.href = prefix + "discoveries.html";
     };
   }
 

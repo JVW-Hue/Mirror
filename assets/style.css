@@ -158,8 +158,11 @@ nav.main-nav a:hover { color: var(--c-accent); }
 .thread-bar .container {
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scrollbar-width: none;
 }
+.thread-bar .container::-webkit-scrollbar { display: none; }
 .thread-label {
   color: var(--c-muted);
   letter-spacing: 0.1em;
@@ -172,12 +175,14 @@ nav.main-nav a:hover { color: var(--c-accent); }
   gap: 0.4rem;
   color: var(--c-fg);
   text-decoration: none;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 3px;
   border: 1px solid transparent;
   transition: all 0.2s;
   cursor: pointer;
   font-size: 0.75rem;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .thread-link:hover {
   text-decoration: none;
@@ -189,15 +194,15 @@ nav.main-nav a:hover { color: var(--c-accent); }
   border-radius: 50%;
   display: inline-block;
 }
-.thread-link.blue { color: var(--thread-blue); }
+.thread-link.blue { color: var(--thread-blue); font-weight: 500; }
 .thread-link.blue .dot { background: var(--thread-blue); box-shadow: 0 0 6px var(--thread-blue); }
-.thread-link.yellow { color: var(--thread-yellow); }
+.thread-link.yellow { color: #b8860b; font-weight: 500; }
 .thread-link.yellow .dot { background: var(--thread-yellow); box-shadow: 0 0 6px var(--thread-yellow); }
-.thread-link.red { color: var(--thread-red); }
+.thread-link.red { color: var(--thread-red); font-weight: 500; }
 .thread-link.red .dot { background: var(--thread-red); box-shadow: 0 0 6px var(--thread-red); }
-.thread-link.purple { color: var(--thread-purple); }
+.thread-link.purple { color: var(--thread-purple); font-weight: 500; }
 .thread-link.purple .dot { background: var(--thread-purple); box-shadow: 0 0 6px var(--thread-purple); }
-.thread-link.green { color: var(--thread-green); }
+.thread-link.green { color: var(--thread-green); font-weight: 500; }
 .thread-link.green .dot { background: var(--thread-green); box-shadow: 0 0 6px var(--thread-green); }
 .thread-link.locked { opacity: 0.3; }
 .thread-link.locked .dot { background: var(--c-muted); box-shadow: none; }
@@ -234,7 +239,7 @@ a.thread-card h3 {
    HERO
    ============================================ */
 .hero {
-  padding: 6rem 0 4rem;
+  padding: 4.5rem 0 3rem;
   text-align: center;
 }
 
@@ -270,7 +275,7 @@ a.thread-card h3 {
 }
 .btn.secondary:hover { border-color: var(--c-accent); color: var(--c-accent); }
 
-section { padding: 4rem 0; }
+section { padding: 3rem 0; }
 
 .cards {
   display: grid;
@@ -305,8 +310,8 @@ section { padding: 4rem 0; }
 
 .site-footer {
   border-top: 1px solid var(--c-border);
-  padding: 3rem 0 2rem;
-  margin-top: 5rem;
+  padding: 2rem 0 1.5rem;
+  margin-top: 3rem;
   font-size: 0.9rem;
   color: var(--c-muted);
 }
@@ -402,14 +407,13 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); }
 .objectives-panel {
   position: fixed;
   right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
+  bottom: 3.5rem;
   background: rgba(255,255,255,0.95);
   border: 1px solid var(--c-border);
   border-radius: 6px;
   padding: 1rem;
   width: 240px;
-  max-height: 70vh;
+  max-height: 50vh;
   overflow-y: auto;
   z-index: 50;
   font-size: 0.8rem;
@@ -518,7 +522,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); }
   background: transparent;
   box-shadow: none;
   overflow: hidden;
-  transform: translate(100%, -50%);
+  transform: translateX(120%);
   pointer-events: none;
 }
 .objectives-panel.minimized .obj-header,
@@ -529,13 +533,12 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); }
 .obj-reopen {
   position: fixed;
   right: 0;
-  top: 50%;
-  transform: translate(0, -50%);
+  bottom: 3.5rem;
   background: var(--c-accent);
   color: white;
   border: none;
   border-radius: 6px 0 0 6px;
-  padding: 0.6rem 0.7rem;
+  padding: 0.6rem 0.8rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   letter-spacing: 0.15em;
@@ -548,7 +551,7 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); }
   align-items: center;
   gap: 0.2rem;
   min-height: 44px;
-  min-width: 44px;
+  min-width: 48px;
   transition: all 0.2s;
   writing-mode: vertical-rl;
   text-orientation: mixed;
@@ -768,7 +771,7 @@ body.reveal-4 .redacted {
 .discovery-counter {
   position: fixed;
   bottom: 1rem;
-  right: 1rem;
+  left: 1rem;
   font-family: var(--font-mono);
   font-size: 0.7rem;
   color: var(--c-muted);
@@ -1062,12 +1065,9 @@ pre, code {
   }
   nav.main-nav a { padding: 0.4rem 0; min-height: 36px; display: inline-block; }
 
-  /* Thread bar — make scrollable, sticky, more compact */
+  /* Thread bar — make scrollable, compact (not sticky on mobile to avoid header overlap) */
   .thread-bar {
     padding: 0.5rem 0;
-    position: sticky;
-    top: 88px;
-    z-index: 99;
     background: #f6f8fa;
   }
   .thread-bar .container { gap: 0.4rem; padding: 0 1rem; }
@@ -1163,7 +1163,8 @@ pre, code {
   /* Discovery counter — make it a floating compact pill on phone */
   .discovery-counter {
     bottom: 12px !important;
-    right: 12px !important;
+    left: 12px !important;
+    right: auto !important;
     top: auto !important;
     font-size: 0.7rem !important;
     padding: 0.4rem 0.7rem !important;

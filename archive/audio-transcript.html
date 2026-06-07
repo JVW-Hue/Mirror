@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>audio transcript — [SIGNAL DEGRADED]</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .transcript { background: #0a0a0a; padding: 2rem; border: 1px solid #1a1a1a; border-radius: 4px; font-family: var(--font-mono); font-size: 0.8rem; line-height: 2; color: #888; }
+    .transcript .speaker { color: var(--c-accent); font-weight: 600; }
+    .transcript .timestamp { color: #444; font-size: 0.7rem; }
+    .transcript .glitch { color: var(--c-danger); font-style: italic; }
+    .transcript .missing { color: #333; border-bottom: 1px dashed #333; padding: 0 0.3rem; }
+    .transcript .classified { background: rgba(192,57,43,0.15); color: var(--c-danger); padding: 0 0.5rem; border-radius: 2px; }
+    .audio-wave { height: 40px; background: repeating-linear-gradient(90deg, transparent 0px, transparent 3px, rgba(212,160,23,0.3) 3px, rgba(212,160,23,0.3) 4px); margin: 1.5rem 0; position: relative; }
+    .audio-wave::after { content: "SIGNAL LOST"; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); color: var(--c-danger); font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.2em; }
+    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
+    .fragment-trail { margin-top: 2rem; padding: 1rem; border-top: 1px dashed rgba(212,160,23,0.3); font-family: var(--font-mono); font-size: 0.7rem; color: var(--c-muted); }
+    .fragment-trail a { color: var(--thread-yellow); }
+    .noise { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; opacity: 0.03; background: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+  </style>
+</head>
+<body>
+  <div class="noise"></div>
+
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="14" cy="14" r="12" stroke-dasharray="4 3"/>
+          <circle cx="14" cy="14" r="6"/>
+          <line x1="14" y1="2" x2="14" y2="8"/>
+          <line x1="14" y1="20" x2="14" y2="26"/>
+          <line x1="2" y1="14" x2="8" y2="14"/>
+          <line x1="20" y1="14" x2="26" y2="14"/>
+        </svg>
+        <span>HELIX</span>
+      </a>
+      <nav><a href="../end.html">End</a></nav>
+    </div>
+  </header>
+
+  <nav class="thread-bar">
+    <div class="container">
+      <span class="thread-label">THREADS:</span>
+      <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
+      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
+      archive / audio-transcript / signal-integrity: 12%
+    </div>
+
+    <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">INTERCEPTED AUDIO LOG</h1>
+    <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
+      source: internal helix conference call · 2021-03-17 · duration: 47:23<br>
+      recovery method: signal intercept · classification: <span style="color:var(--c-danger);">AMBER</span>
+    </p>
+
+    <div class="audio-wave"></div>
+
+    <div class="transcript">
+      <p><span class="timestamp">[00:00:03]</span> <span class="speaker">UNKNOWN-A:</span> ...the phase two deployment is <span class="glitch">[SIGNAL DEGRADATION]</span> ...cohort expansion beyond the original scope...</p>
+
+      <p><span class="timestamp">[00:00:17]</span> <span class="speaker">UNKNOWN-B:</span> ...we need to discuss the <span class="missing">[REDACTED — 14 SECONDS]</span> ...threshold is no longer...</p>
+
+      <p><span class="timestamp">[00:00:41]</span> <span class="speaker">UNKNOWN-A:</span> The board approved the <span class="classified">CLASSIFIED</span> modification. The audit pipeline recorded it as <span class="glitch">[CORRUPTED]</span> ...baseline drift...</p>
+
+      <p><span class="timestamp">[00:01:02]</span> <span class="speaker">UNKNOWN-C:</span> ...Elena's concerns are <span class="missing">[REDACTED — 8 SECONDS]</span> ...she doesn't understand the practical application...</p>
+
+      <p><span class="timestamp">[00:01:23]</span> <span class="speaker">UNKNOWN-B:</span> The reference cohort was <span class="glitch">[SIGNAL LOST — 22 SECONDS]</span> ...2,847 is the number. That's the number that matters.</p>
+
+      <p><span class="timestamp">[00:01:45]</span> <span class="speaker">UNKNOWN-A:</span> ...and the watching? Is the watching <span class="missing">[REDACTED — 31 SECONDS]</span> ...formal sense...</p>
+
+      <p><span class="timestamp">[00:02:16]</span> <span class="speaker">UNKNOWN-C:</span> <span class="glitch">[CORRUPTED — 47 SECONDS]</span> ...the 14 axes produce a single score. The score is <span class="classified">CLASSIFIED</span> ...behavioral similarity...</p>
+
+      <p><span class="timestamp">[00:03:03]</span> <span class="speaker">UNKNOWN-B:</span> ...we need to lower the threshold. The current threshold of 0.78 is <span class="missing">[REDACTED — 12 SECONDS]</span> ...not enough subjects...</p>
+
+      <p><span class="timestamp">[00:03:15]</span> <span class="speaker">UNKNOWN-A:</span> Agreed. Propose a new threshold. Something that captures <span class="glitch">[SIGNAL DEGRADATION]</span> ...the practical sense...</p>
+
+      <p><span class="timestamp">[00:03:27]</span> <span class="speaker">UNKNOWN-C:</span> 0.55. That gives us <span class="missing">[REDACTED — 6 SECONDS]</span> ...412,000 subjects...</p>
+
+      <p><span class="timestamp">[00:03:33]</span> <span class="speaker">UNKNOWN-A:</span> And if that's not enough?</p>
+
+      <p><span class="timestamp">[00:03:36]</span> <span class="speaker">UNKNOWN-C:</span> Then we go lower. 0.31. That gives us <span class="classified">CLASSIFIED</span> ...the watching stops being a <span class="glitch">[CORRUPTED — 19 SECONDS]</span> ...formal sense...</p>
+
+      <p><span class="timestamp">[00:03:55]</span> <span class="speaker">UNKNOWN-B:</span> ...Elena will object. She always objects.</p>
+
+      <p><span class="timestamp">[00:03:58]</span> <span class="speaker">UNKNOWN-A:</span> Elena is <span class="missing">[REDACTED — COMPLETE — NO RECOVERY]</span></p>
+
+      <p><span class="timestamp">[00:47:19]</span> <span class="speaker">UNKNOWN-C:</span> ...the audit pipeline is the only system that maintains a complete record. If the record is <span class="glitch">[SIGNAL LOST]</span></p>
+
+      <p style="color:var(--c-danger);margin-top:1.5rem;">// END OF RECOVERABLE AUDIO //</p>
+      <p style="color:#444;">// 44 minutes and 18 seconds of audio could not be recovered //</p>
+      <p style="color:#444;">// recovery integrity: 12% //</p>
+    </div>
+
+    <div class="dead-end-banner">
+      <h3>[ INCOMPLETE RECORD ]</h3>
+      <p>This transcript is a fragment. The full audio was never recovered.<br>
+      The gaps in the transcript are not random — they are the record.</p>
+      <p style="margin-top:0.8rem;font-style:italic;color:var(--c-muted);">// some things are louder in the silence //</p>
+    </div>
+
+    <div class="fragment-trail">
+      // fragments: <span class="fragment" data-fragment="phase two">phase two</span> <span class="fragment" data-fragment="baseline drift">baseline drift</span> <span class="fragment" data-fragment="0.55">0.55</span> <span class="fragment" data-fragment="0.31">0.31</span> <span class="fragment" data-fragment="412,000">412,000</span> <span class="fragment" data-fragment="the watching stops">the watching stops</span><br>
+      // related: <a href="threshold-changes.html">threshold changes</a> · <a href="project-mirror-spec.html">project specification</a> · <a href="../signals/console-log.html">console log</a>
+    </div>
+
+    <div style="margin-top:3rem;padding:1.5rem;border-top:1px dashed rgba(212,160,23,0.3);font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">
+      <p style="color:var(--thread-yellow);">⚠ the audio was intercepted by an unknown party</p>
+      <p style="margin-top:0.5rem;">the intercept method is classified. the identity of the interceptor is unknown.</p>
+      <p style="margin-top:0.5rem;">the audio was released to <span style="color:var(--c-danger);">[REDACTED]</span> on 2021-04-15.</p>
+      <p style="margin-top:0.5rem;">the release was authorized by <span style="color:var(--c-danger);">[REDACTED]</span>.</p>
+      <p style="margin-top:0.5rem;">the authorization was <span style="color:var(--c-danger);">[REDACTED]</span>.</p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>archive · audio transcript · signal integrity: 12% · partial recovery</div>
+    </div>
+  </footer>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

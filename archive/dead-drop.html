@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dead drop — [SIGNAL INTEGRITY: LOW]</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .encrypted { background: #0a0a0a; padding: 2rem; border: 1px solid #1a1a1a; border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 2; color: #888; position: relative; }
+    .encrypted::before { content: "ENCRYPTED"; position: absolute; top: 0.5rem; right: 0.5rem; color: var(--c-danger); font-size: 0.6rem; letter-spacing: 0.2em; }
+    .encrypted .key { color: var(--thread-yellow); }
+    .encrypted .cipher { color: var(--thread-green); }
+    .encrypted .corrupted { color: var(--c-danger); text-decoration: line-through; }
+    .encrypted .plain { color: #aaa; }
+    .encrypted .hidden { color: #222; }
+    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
+    .hint-box { background: rgba(212,160,23,0.08); border-left: 3px solid var(--thread-yellow); padding: 1rem 1.5rem; margin: 1.5rem 0; font-family: var(--font-mono); font-size: 0.75rem; color: var(--c-muted); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="14" cy="14" r="12" stroke-dasharray="4 3"/>
+          <circle cx="14" cy="14" r="6"/>
+          <line x1="14" y1="2" x2="14" y2="8"/>
+          <line x1="14" y1="20" x2="14" y2="26"/>
+          <line x1="2" y1="14" x2="8" y2="14"/>
+          <line x1="20" y1="14" x2="26" y2="14"/>
+        </svg>
+        <span>HELIX</span>
+      </a>
+      <nav><a href="../end.html">End</a></nav>
+    </div>
+  </header>
+
+  <nav class="thread-bar">
+    <div class="container">
+      <span class="thread-label">THREADS:</span>
+      <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
+      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
+      archive / dead-drop / signal integrity: <span style="color:var(--c-danger);">12%</span>
+    </div>
+
+    <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">DEAD DROP</h1>
+    <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
+      source: anonymous · recovery method: signal intercept · classification: <span style="color:var(--c-danger);">AMBER</span><br>
+      the dead drop was found at <span style="color:var(--thread-yellow);">coordinates [REDACTED]</span> on 2021-04-12
+    </p>
+
+    <div class="encrypted">
+      <p><span class="key">KEY:</span> <span class="plain">the formal sense</span></p>
+      <p><span class="key">CIPHER:</span> <span class="cipher">ROT-14</span></p>
+      <p></p>
+      <p><span class="plain">message 001:</span></p>
+      <p><span class="cipher">gur shyyre vf abg gur bcravat</span></p>
+      <p><span class="plain">// translation: "the watching is not the opening" //</span></p>
+      <p></p>
+      <p><span class="plain">message 002:</span></p>
+      <p><span class="cipher">gur shyyre vf gur pyhr</span></p>
+      <p><span class="plain">// translation: "the watching is the clue" //</span></p>
+      <p></p>
+      <p><span class="plain">message 003:</span></p>
+      <p><span class="corrupted">[CORRUPTED — NO RECOVERY]</span></p>
+      <p></p>
+      <p><span class="plain">message 004:</span></p>
+      <p><span class="cipher">gur shyyre vf gur erdhrfg</span></p>
+      <p><span class="plain">// translation: "the watching is the request" //</span></p>
+      <p></p>
+      <p><span class="plain">message 005:</span></p>
+      <p><span class="cipher">gur shyyre vf gur fbyhgvba</span></p>
+      <p><span class="plain">// translation: "the watching is the solution" //</span></p>
+      <p></p>
+      <p><span class="plain">message 006:</span></p>
+      <p><span class="cipher">gur shyyre vf abg gur fbyhgvba</span></p>
+      <p><span class="plain">// translation: "the watching is not the solution" //</span></p>
+      <p></p>
+      <p><span class="plain">message 007:</span></p>
+      <p><span class="cipher">gur shyyre vf gur dhrfgvba</span></p>
+      <p><span class="plain">// translation: "the watching is the question" //</span></p>
+      <p></p>
+      <p><span class="plain">message 008:</span></p>
+      <p><span class="corrupted">[CORRUPTED — NO RECOVERY]</span></p>
+      <p></p>
+      <p><span class="plain">message 009:</span></p>
+      <p><span class="cipher">gur shyyre vf abg gur dhrfgvba</span></p>
+      <p><span class="plain">// translation: "the watching is not the question" //</span></p>
+      <p></p>
+      <p style="color:var(--c-danger);margin-top:1.5rem;">// END OF RECOVERABLE MESSAGES //</p>
+      <p style="color:#444;">// 2 of 9 messages could not be recovered //</p>
+      <p style="color:#444;">// recovery integrity: 12% //</p>
+    </div>
+
+    <div class="hint-box">
+      // NOTE: the messages appear to contradict each other.<br>
+      // message 001: "the watching is not the opening"<br>
+      // message 002: "the watching is the clue"<br>
+      // message 004: "the watching is the request"<br>
+      // message 005: "the watching is the solution"<br>
+      // message 006: "the watching is not the solution"<br>
+      // message 007: "the watching is the question"<br>
+      // message 009: "the watching is not the question"<br>
+      // the messages do not form a coherent sequence.
+    </div>
+
+    <div class="dead-end-banner">
+      <h3>[ DEAD DROP COMPROMISED ]</h3>
+      <p>The dead drop was found on 2021-04-12.<br>
+      The messages were partially corrupted.<br>
+      The contradictions in the messages are not random — they are the record.</p>
+      <p style="margin-top:0.8rem;font-style:italic;color:var(--c-muted);">// the messages contradict each other. the record contradicts itself.</p>
+    </div>
+
+    <div style="margin-top:2rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">
+      // fragments: <span class="fragment" data-fragment="ROT-14">ROT-14</span> <span class="fragment" data-fragment="the formal sense">the formal sense</span> <span class="fragment" data-fragment="the watching is the clue">the watching is the clue</span><br>
+      // related: <a href="../puzzles/cipher.html">cipher puzzle</a> · <a href="../signals/console-log.html">console log</a> · <a href="audio-transcript.html">audio transcript</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>archive · dead drop · signal integrity: 12% · 2 of 9 messages unrecovered</div>
+    </div>
+  </footer>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

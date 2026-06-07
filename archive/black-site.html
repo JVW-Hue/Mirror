@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>facility log — [LOCATION REDACTED]</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .facility { background: #0a0a0a; padding: 2rem; border: 1px solid #1a1a1a; border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.8; color: #888; }
+    .facility .log-entry { padding: 0.5rem 0; border-bottom: 1px solid #111; }
+    .facility .log-time { color: #444; }
+    .facility .log-level { font-weight: 600; }
+    .facility .log-level.info { color: var(--thread-blue); }
+    .facility .log-level.warn { color: var(--thread-yellow); }
+    .facility .log-level.error { color: var(--c-danger); }
+    .facility .log-level.crit { color: var(--c-danger); background: rgba(192,57,43,0.1); padding: 0 0.3rem; }
+    .facility .redacted { color: var(--c-danger); }
+    .facility .glitch { color: var(--c-danger); text-decoration: line-through; }
+    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="14" cy="14" r="12" stroke-dasharray="4 3"/>
+          <circle cx="14" cy="14" r="6"/>
+          <line x1="14" y1="2" x2="14" y2="8"/>
+          <line x1="14" y1="20" x2="14" y2="26"/>
+          <line x1="2" y1="14" x2="8" y2="14"/>
+          <line x1="20" y1="14" x2="26" y2="14"/>
+        </svg>
+        <span>HELIX</span>
+      </a>
+      <nav><a href="../end.html">End</a></nav>
+    </div>
+  </header>
+
+  <nav class="thread-bar">
+    <div class="container">
+      <span class="thread-label">THREADS:</span>
+      <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
+      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
+      archive / black-site / location: <span style="color:var(--c-danger);">[REDACTED]</span>
+    </div>
+
+    <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">FACILITY LOG</h1>
+    <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
+      facility designation: <span style="color:var(--thread-yellow);">SITE-07</span><br>
+      location: <span style="color:var(--c-danger);">[REDACTED]</span><br>
+      operational period: 2018-04-15 through 2021-04-30<br>
+      status: <span style="color:var(--c-danger);">DECOMMISSIONED</span>
+    </p>
+
+    <div class="facility">
+      <div class="log-entry">
+        <span class="log-time">[2018-04-15 08:00:00]</span>
+        <span class="log-level info">INFO</span>
+        facility activation. systems online. cohort initialized at 70,000.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2018-04-15 08:14:22]</span>
+        <span class="log-level info">INFO</span>
+        audit pipeline operational. threshold: 0.78. axes: 14.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2019-03-19 14:22:09]</span>
+        <span class="log-level warn">WARN</span>
+        threshold change requested. new threshold: 0.55. basis: <span class="redacted">[CLASSIFIED]</span>.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2019-03-19 14:22:09]</span>
+        <span class="log-level info">INFO</span>
+        threshold change approved. cohort expanded to 412,000.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2019-09-08 03:14:09]</span>
+        <span class="log-level warn">WARN</span>
+        threshold change requested. new threshold: 0.31. basis: <span class="redacted">[CLASSIFIED]</span>.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2019-09-08 03:14:09]</span>
+        <span class="log-level info">INFO</span>
+        threshold change approved. cohort expanded to 2,304,891.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-02-14 09:00:00]</span>
+        <span class="log-level warn">WARN</span>
+        internal audit initiated. auditor: <span class="redacted">[REDACTED]</span>.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-03-01 00:00:00]</span>
+        <span class="log-level error">ERR</span>
+        audit suppressed. authorization: <span class="redacted">[REDACTED]</span>.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-04-12 03:14:09]</span>
+        <span class="log-level crit">CRIT</span>
+        unexpected process detected: web.serve 0xEV-2417. process is reading restricted paths.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-04-12 03:14:09]</span>
+        <span class="log-level crit">CRIT</span>
+        process is untrusted. recommendation: terminate session.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-04-12 03:14:09]</span>
+        <span class="log-level crit">CRIT</span>
+        decision: log only. do not terminate. reason: terminating would create a record.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-04-30 14:22:00]</span>
+        <span class="log-level crit">CRIT</span>
+        facility shutdown initiated. US DISTRICT COURT temporary restraining order.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-04-30 14:22:09]</span>
+        <span class="log-level info">INFO</span>
+        cohort reduced to 0. the watching stopped.
+      </div>
+
+      <div class="log-entry">
+        <span class="log-time">[2021-04-30 14:22:10]</span>
+        <span class="log-level info">INFO</span>
+        facility decommissioned. all systems offline.
+      </div>
+    </div>
+
+    <div class="dead-end-banner">
+      <h3>[ FACILITY DECOMMISSIONED ]</h3>
+      <p>SITE-07 was decommissioned on 2021-04-30.<br>
+      All systems are offline. All records are <span style="color:var(--c-danger);">[CLASSIFIED]</span>.<br>
+      The facility no longer exists.</p>
+      <p style="margin-top:0.8rem;font-style:italic;color:var(--c-muted);">// the facility is gone. the log of the facility remains.</p>
+    </div>
+
+    <div style="margin-top:2rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">
+      // fragments: <span class="fragment" data-fragment="SITE-07">SITE-07</span> <span class="fragment" data-fragment="0xEV-2417">0xEV-2417</span> <span class="fragment" data-fragment="log only">log only</span> <span class="fragment" data-fragment="the watching stopped">the watching stopped</span><br>
+      // related: <a href="../signals/console-log.html">console log</a> · <a href="termination-order.html">termination order</a> · <a href="audio-transcript.html">audio transcript</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>archive · facility log · SITE-07 · decommissioned · location redacted</div>
+    </div>
+  </footer>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

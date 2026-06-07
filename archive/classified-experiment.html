@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>experiment log — [CLASSIFIED]</title>
+  <link rel="stylesheet" href="../assets/style.css">
+  <style>
+    .experiment { background: #fafaf8; border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 1.5rem 0; }
+    .experiment h3 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 0.8rem; }
+    .experiment p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.8rem; }
+    .experiment .classified { background: rgba(192,57,43,0.1); color: var(--c-danger); padding: 0 0.4rem; border-radius: 2px; }
+    .experiment .result { font-family: var(--font-mono); font-size: 0.8rem; color: var(--thread-yellow); }
+    .timeline { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--c-border); }
+    .timeline-item { margin-bottom: 1.5rem; position: relative; }
+    .timeline-item::before { content: ""; position: absolute; left: -1.75rem; top: 0.3rem; width: 8px; height: 8px; border-radius: 50%; background: var(--c-border); }
+    .timeline-item.done::before { background: var(--thread-green); }
+    .timeline-item.failed::before { background: var(--c-danger); }
+    .timeline-item .date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--c-muted); letter-spacing: 0.1em; }
+    .timeline-item .desc { font-size: 0.85rem; margin-top: 0.3rem; }
+    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <a href="../index.html" class="brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="14" cy="14" r="12" stroke-dasharray="4 3"/>
+          <circle cx="14" cy="14" r="6"/>
+          <line x1="14" y1="2" x2="14" y2="8"/>
+          <line x1="14" y1="20" x2="14" y2="26"/>
+          <line x1="2" y1="14" x2="8" y2="14"/>
+          <line x1="20" y1="14" x2="26" y2="14"/>
+        </svg>
+        <span>HELIX</span>
+      </a>
+      <nav><a href="../end.html">End</a></nav>
+    </div>
+  </header>
+
+  <nav class="thread-bar">
+    <div class="container">
+      <span class="thread-label">THREADS:</span>
+      <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
+      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
+    </div>
+  </nav>
+
+  <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
+    <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
+      archive / classified-experiment / classification: <span style="color:var(--c-danger);">TOP SECRET</span>
+    </div>
+
+    <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">EXPERIMENT LOG</h1>
+    <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
+      experiment designation: <span style="color:var(--thread-yellow);">LOOKING GLASS</span><br>
+      classification: <span style="color:var(--c-danger);">TOP SECRET</span> · authorization: <span style="color:var(--c-danger);">[REDACTED]</span><br>
+      status: <span style="color:var(--c-danger);">TERMINATED</span>
+    </p>
+
+    <div class="experiment">
+      <h3>experiment overview</h3>
+      <p>LOOKING GLASS was a behavioral prediction experiment conducted by Helix Technologies under contract with <span class="classified">[REDACTED]</span>. The experiment was designed to test the accuracy of the MIRROR system's 14-axis behavioral model.</p>
+      <p>The experiment involved <span class="classified">[REDACTED]</span> subjects. The subjects were not informed of their participation. The subjects were not informed of the existence of the MIRROR system. The subjects were not informed of the <span class="classified">[REDACTED]</span>.</p>
+      <p class="result">// result: <span style="color:var(--c-danger);">CLASSIFIED</span> //</p>
+    </div>
+
+    <div class="timeline">
+      <div class="timeline-item done">
+        <div class="date">2018-04-15</div>
+        <div class="desc">Experiment LOOKING GLASS initiated. Threshold set to <span style="color:var(--thread-yellow);">0.78</span>. Cohort size: <span style="color:var(--thread-yellow);">70,000</span>. Approved by: E. Vasquez.</div>
+      </div>
+      <div class="timeline-item done">
+        <div class="date">2018-09-01</div>
+        <div class="desc">First behavioral predictions generated. Accuracy: <span class="classified">[REDACTED]</span>. False positive rate: <span class="classified">[REDACTED]</span>. <span style="color:var(--c-danger);">92,196</span> false positives recorded.</div>
+      </div>
+      <div class="timeline-item done">
+        <div class="date">2019-03-15</div>
+        <div class="desc">Cohort expansion approved. Threshold lowered to <span style="color:var(--thread-yellow);">0.55</span>. Cohort size: <span style="color:var(--thread-yellow);">412,000</span>. Approved by: M. Chen. Basis: <span class="classified">CLASSIFIED</span>.</div>
+      </div>
+      <div class="timeline-item done">
+        <div class="date">2019-09-08</div>
+        <div class="desc">Second cohort expansion approved. Threshold lowered to <span style="color:var(--thread-yellow);">0.31</span>. Cohort size: <span style="color:var(--thread-yellow);">2,304,891</span>. Approved by: M. Chen. Basis: <span class="classified">CLASSIFIED</span>.</div>
+      </div>
+      <div class="timeline-item failed">
+        <div class="date">2021-04-30 14:22 UTC</div>
+        <div class="desc">Experiment LOOKING GLASS terminated by US DISTRICT COURT temporary restraining order. All systems shut down. Cohort reduced to 0.</div>
+      </div>
+    </div>
+
+    <div class="experiment">
+      <h3>key findings</h3>
+      <p>1. The MIRROR system's 14-axis model produced a single behavioral similarity score for each subject.</p>
+      <p>2. The score was compared to a threshold to determine cohort membership.</p>
+      <p>3. The threshold was lowered twice during the experiment, increasing the cohort from 70,000 to 2,304,891.</p>
+      <p>4. The threshold lowerings were not supported by any change in the underlying science.</p>
+      <p>5. The threshold lowerings were supported by a contract modification.</p>
+      <p>6. <span class="classified">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></p>
+      <p>7. <span class="classified">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></p>
+      <p>8. <span class="classified">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></p>
+      <p class="result">// findings 6-8: <span style="color:var(--c-danger);">CLASSIFIED</span> //</p>
+    </div>
+
+    <div class="dead-end-banner">
+      <h3>[ EXPERIMENT TERMINATED ]</h3>
+      <p>The experiment was terminated by court order.<br>
+      The key findings are classified.<br>
+      The results are classified. The conclusions are classified.</p>
+      <p style="margin-top:0.8rem;font-style:italic;color:var(--c-muted);">// the experiment ended. the record of the experiment remains.</p>
+    </div>
+
+    <div style="margin-top:2rem;font-family:var(--font-mono);font-size:0.75rem;color:var(--c-muted);">
+      // fragments: <span class="fragment" data-fragment="LOOKING GLASS">LOOKING GLASS</span> <span class="fragment" data-fragment="92,196">92,196</span> <span class="fragment" data-fragment="2,847">2,847</span> <span class="fragment" data-fragment="false positives">false positives</span><br>
+      // related: <a href="project-mirror-spec.html">project specification</a> · <a href="threshold-changes.html">threshold changes</a> · <a href="termination-order.html">termination order</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div>archive · experiment log · LOOKING GLASS · classified · terminated 2021-04-30</div>
+    </div>
+  </footer>
+
+  <script src="../assets/app.js"></script>
+</body>
+</html>

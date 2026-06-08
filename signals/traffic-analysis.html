@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Network traffic analysis from Helix Technologies — the patterns that shouldn't exist.">
+    <title>Traffic Analysis — The Endless Internet</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+</head>
+<body>
+    <div id="thread-bar" class="thread-bar"></div>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="brand">THE ENDLESS INTERNET</a>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="../sitemap.html">Map</a>
+                <a href="../forum/index.html">Forum</a>
+                <a href="../signals/console-log.html">Signals</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </div>
+    </header>
+    <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../signals/console-log.html">Signals</a> › Traffic Analysis</div>
+    <main class="content" style="max-width:800px;margin:0 auto;padding:2rem 1rem;">
+        <h1>Network Traffic Analysis — Helix Technologies</h1>
+        <p style="color:var(--muted);">Source: Independent network monitoring<br>Period: August–December 2019</p>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Summary</h2>
+            <p>Independent network monitoring has revealed anomalous traffic patterns originating from Helix Technologies' Floor 12 server room. The patterns are not consistent with normal server operations.</p>
+        </div>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Pattern 1: The 3:14 AM Cycle</h2>
+            <p>Every night at 3:14 AM, Floor 12 servers initiate a burst of 113 outbound connections. These connections target a variety of external IP addresses, but all resolve to the same domain: a 404 page that doesn't exist.</p>
+            <p>This pattern has repeated every night for 127 consecutive days.</p>
+        </div>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Pattern 2: The 4:17 AM Silence</h2>
+            <p>At exactly 4:17 AM, all Floor 12 servers go silent. Not low activity — zero activity. No heartbeat signals. No status updates. No log entries. For exactly 17 minutes, Floor 12 appears to be offline.</p>
+            <p>Then at 4:34 AM, everything resumes as if nothing happened.</p>
+        </div>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Pattern 3: The Data Flow</h2>
+            <p>Between 3:14 AM and 4:17 AM, Floor 12 servers transfer approximately 2.3 terabytes of data outbound. The data is encrypted with a key we haven't been able to crack.</p>
+            <p>Where is 2.3 TB of data going every night? And what happens during the 17-minute silence?</p>
+        </div>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Pattern 4: The Correlation</h2>
+            <p>The 3:14 AM traffic spike coincides exactly with the 4:17 AM silence. The 2.3 TB transfer happens in the gap between them. The 113 outbound connections happen before the transfer. The 17-minute silence happens after.</p>
+            <p>This is not random. This is a process. Something runs every night on Floor 12, and it takes exactly 1 hour and 3 minutes to complete.</p>
+        </div>
+
+        <div class="navigation-links">
+            <a href="../signals/console-log.html">← Back to Signals</a>
+            <a href="../index.html">Home</a>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="../index.html">Home</a>
+            <a href="../sitemap.html">Sitemap</a>
+            <a href="../forum/index.html">Forum</a>
+            <a href="../signals/console-log.html">Signals</a>
+        </nav>
+        <p>© 2019–2021 Helix Technologies — Some information may be incomplete or unverified</p>
+    </footer>
+    <script src="../assets/app.js"></script>
+</body>
+</html>

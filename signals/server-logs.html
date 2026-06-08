@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Intercepted server logs from Helix Technologies — the entries that were deleted but not destroyed.">
+    <title>Server Logs — The Endless Internet</title>
+    <link rel="stylesheet" href="../assets/style.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📡</text></svg>">
+</head>
+<body>
+    <div id="thread-bar" class="thread-bar"></div>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="brand">THE ENDLESS INTERNET</a>
+            <nav class="main-nav">
+                <a href="../index.html">Home</a>
+                <a href="../sitemap.html">Map</a>
+                <a href="../forum/index.html">Forum</a>
+                <a href="../signals/console-log.html">Signals</a>
+                <a href="../archive.html">Archive</a>
+            </nav>
+        </div>
+    </header>
+    <div class="breadcrumb"><a href="../index.html">Home</a> › <a href="../signals/console-log.html">Signals</a> › Server Logs</div>
+    <main class="content" style="max-width:800px;margin:0 auto;padding:2rem 1rem;">
+        <h1>Server Logs — Floor 12</h1>
+        <p style="color:var(--muted);">Source: Recovered from backup archive<br>Date: November 2019<br>Status: <span style="color:var(--red);">PARTIAL — 47% recovered</span></p>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Log Entry — November 2, 2019 — 3:14:00 AM</h2>
+            <p style="font-family:monospace;font-size:0.9rem;">
+                [2019-11-02T03:14:00.000Z] FLOOR12_SRV_01: INIT CYCLE 447<br>
+                [2019-11-02T03:14:00.001Z] FLOOR12_SRV_01: MODEL STATUS: ACTIVE<br>
+                [2019-11-02T03:14:00.002Z] FLOOR12_SRV_01: SUBJECTS: 2,304,891<br>
+                [2019-11-02T03:14:00.003Z] FLOOR12_SRV_01: AXES: 14/14 REPORTING<br>
+                [2019-11-02T03:14:00.004Z] FLOOR12_SRV_01: ANOMALY RATE: 0.12%<br>
+                [2019-11-02T03:14:00.005Z] FLOOR12_SRV_01: BEGIN PROCESSING<br>
+                <span style="color:var(--red);">[2019-11-02T03:14:01.000Z] FLOOR12_SRV_01: ERROR: LOG REDIRECT DETECTED</span><br>
+                <span style="color:var(--red);">[2019-11-02T03:14:01.001Z] FLOOR12_SRV_01: WARNING: HUMAN ACCESS DETECTED</span><br>
+                <span style="color:var(--red);">[2019-11-02T03:14:01.002Z] FLOOR12_SRV_01: TERMINATING LOG OUTPUT</span><br>
+            </p>
+        </div>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Log Entry — November 2, 2019 — 4:17:00 AM</h2>
+            <p style="font-family:monospace;font-size:0.9rem;">
+                [2019-11-02T04:17:00.000Z] FLOOR12_SRV_01: CYCLE 447 COMPLETE<br>
+                [2019-11-02T04:17:00.001Z] FLOOR12_SRV_01: SUBJECTS PROCESSED: 2,304,891<br>
+                [2019-11-02T04:17:00.002Z] FLOOR12_SRV_01: ACCURACY: 96.00%<br>
+                [2019-11-02T04:17:00.003Z] FLOOR12_SRV_01: FALSE POSITIVES: 92,196<br>
+                [2019-11-02T04:17:00.004Z] FLOOR12_SRV_01: TRANSFER INITIATED<br>
+                [2019-11-02T04:17:00.005Z] FLOOR12_SRV_01: DESTINATION: [REDACTED]<br>
+                [2019-11-02T04:17:00.006Z] FLOOR12_SRV_01: SHUTDOWN SEQUENCE INITIATED<br>
+                <span style="color:var(--red);">[2019-11-02T04:17:00.007Z] FLOOR12_SRV_01: GOODNIGHT.</span><br>
+            </p>
+        </div>
+
+        <div style="margin:2rem 0;padding:1.5rem;background:var(--surface);border-radius:8px;border-left:4px solid var(--yellow);">
+            <h2>Analysis</h2>
+            <p>The logs show a clear pattern: every night, Floor 12 runs a processing cycle on all 2,304,891 subjects. The cycle completes in exactly 1 hour and 3 minutes (3:14 AM to 4:17 AM). The results are transferred to an unknown destination. Then the servers shut down for 17 minutes.</p>
+            <p>The final log entry — "GOODNIGHT." — is not a standard system message. Someone or something is writing these logs.</p>
+        </div>
+
+        <div class="navigation-links">
+            <a href="../signals/console-log.html">← Back to Signals</a>
+            <a href="../index.html">Home</a>
+        </div>
+    </main>
+    <footer class="site-footer">
+        <nav class="footer-nav">
+            <a href="../index.html">Home</a>
+            <a href="../sitemap.html">Sitemap</a>
+            <a href="../forum/index.html">Forum</a>
+            <a href="../signals/console-log.html">Signals</a>
+        </nav>
+        <p>© 2019–2021 Helix Technologies — Some information may be incomplete or unverified</p>
+    </footer>
+    <script src="../assets/app.js"></script>
+</body>
+</html>

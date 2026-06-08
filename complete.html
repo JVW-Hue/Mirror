@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="assets/style.css" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
-body { background: #0a0608; color: #d4d4d4; font-family: Georgia, serif; overflow: hidden; }
+body { background: #0a0608; color: #d4d4d4; font-family: Georgia, serif; overflow-x: hidden; }
 .confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 9999; overflow: hidden; }
 .confetti {
   position: absolute;
@@ -85,7 +85,7 @@ body { background: #0a0608; color: #d4d4d4; font-family: Georgia, serif; overflo
   text-align: left;
 }
 .callout h3 { color: #d4a017; font-size: 1rem; letter-spacing: 0.1em; margin-bottom: 1rem; }
-.callout ol { margin: 0.5rem 0 0 1.2rem; }
+.callout ol { margin: 0.5rem 0 0 1.2rem; padding-left: 1.2rem; }
 .callout li { margin-bottom: 0.6rem; color: #aaa; line-height: 1.6; }
 .callout li strong { color: #d4d4d4; }
 .screenshot-zone {
@@ -106,9 +106,55 @@ body { background: #0a0608; color: #d4d4d4; font-family: Georgia, serif; overflo
   font-size: 0.8rem;
   color: #555;
   letter-spacing: 0.05em;
+  word-break: break-all;
 }
 .final-line a { color: #666; }
 .final-line a:hover { color: #d4a017; }
+
+/* ============== TABLET (<= 900px) ============== */
+@media (max-width: 900px) {
+  .complete-wrap { padding: 2rem 1.25rem; }
+}
+
+/* ============== PHONE (<= 600px) ============== */
+@media (max-width: 600px) {
+  body { overflow-x: hidden; }
+  .complete-wrap { padding: 1.5rem 1rem; }
+  .trophy { font-size: 3.5rem; }
+  .complete-wrap h1 { font-size: 1.5rem; letter-spacing: 0.12em; }
+  .complete-wrap .subtitle { font-size: 0.95rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .stats-box {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+    margin: 1.5rem 0;
+  }
+  .stat {
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+  }
+  .stat .num { font-size: 1.5rem; }
+  .stat .label { margin-top: 0; }
+  .divider { margin: 1.5rem 0; font-size: 0.8rem; }
+  .callout { padding: 1.25rem; margin: 1.5rem 0; }
+  .callout h3 { font-size: 0.9rem; }
+  .callout li { font-size: 0.9rem; }
+  .screenshot-zone { padding: 1.5rem; margin: 1.5rem 0; }
+  .screenshot-zone .icon { font-size: 2.5rem; }
+  .screenshot-zone p { font-size: 0.85rem; }
+  .final-line { font-size: 0.7rem; margin-top: 2rem; }
+  .final-line a { min-height: 44px; display: inline-flex; align-items: center; padding: 0.3rem 0; }
+}
+
+/* ============== VERY SMALL PHONES (<= 380px) ============== */
+@media (max-width: 380px) {
+  .complete-wrap { padding: 1rem 0.8rem; }
+  .trophy { font-size: 3rem; }
+  .complete-wrap h1 { font-size: 1.3rem; letter-spacing: 0.08em; }
+  .stat .num { font-size: 1.3rem; }
+}
 </style>
 </head>
 <body>
@@ -192,10 +238,11 @@ body { background: #0a0608; color: #d4d4d4; font-family: Georgia, serif; overflo
   document.getElementById("stat-riddles").textContent = riddlesCount + " / 12";
   document.getElementById("stat-fragments").textContent = fragments.length;
 
-  // Confetti
+  // Confetti — fewer on mobile for performance
   var container = document.getElementById("confetti");
   var colors = ["#d4a017","#0066cc","#c0392b","#8e44ad","#27ae60","#fff","#ff6b6b","#ffd93d","#6bcb77","#4d96ff"];
-  for (var i = 0; i < 120; i++) {
+  var count = window.innerWidth <= 600 ? 50 : 120;
+  for (var i = 0; i < count; i++) {
     (function(delay) {
       var el = document.createElement("div");
       el.className = "confetti";

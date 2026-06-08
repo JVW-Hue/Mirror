@@ -1263,6 +1263,20 @@
   setupTruthClimax();
   setupFinalMessage();
   setupAmbient();
+
+  // ============================================
+  // COMPLETION CHECK — all 12 riddles solved
+  // ============================================
+  const riddleIds = Object.keys(RIDDLES);
+  const solvedCount = riddleIds.filter(id => localStorage.getItem(K.riddlesSolved + ":" + id) === "1").length;
+  const allRiddlesSolved = solvedCount === riddleIds.length;
+  if (allRiddlesSolved && fullPath === "end.html") {
+    setTimeout(() => {
+      const banner = document.getElementById("complete-banner");
+      if (banner) banner.style.display = "block";
+    }, 3000);
+  }
+
   save();
 
   // Emit discovery messages for current state

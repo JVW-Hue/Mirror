@@ -85,7 +85,9 @@ p { margin-bottom: 1rem; }
   font-size: 0.9rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
+  text-decoration: none;
 }
+.brand:hover { color: var(--c-fg); text-decoration: none; }
 .brand-mark {
   width: 24px;
   height: 24px;
@@ -111,7 +113,7 @@ nav.main-nav a {
   text-decoration: none;
   letter-spacing: 0.02em;
 }
-nav.main-nav a:hover { color: var(--c-fg); }
+nav.main-nav a:hover { color: var(--c-accent); }
 
 /* ============================================
    THREAD BAR

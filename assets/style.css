@@ -56,7 +56,6 @@ p { margin-bottom: 1rem; }
    HEADER
    ============================================ */
 .site-header {
-  border-bottom: 1px solid var(--c-border);
   background: rgba(255, 255, 255, 0.97);
   position: sticky;
   top: 0;
@@ -114,7 +113,6 @@ nav.main-nav a:hover { color: var(--c-fg); }
    ============================================ */
 .thread-bar {
   background: var(--c-surface);
-  border-bottom: 1px solid var(--c-border);
   padding: 0.5rem 0;
   font-size: 0.75rem;
 }
@@ -272,7 +270,6 @@ section { padding: 3rem 0; }
    FOOTER
    ============================================ */
 .site-footer {
-  border-top: 1px solid var(--c-border);
   padding: 1.5rem 0;
   margin-top: 2rem;
   font-size: 0.8rem;
@@ -292,7 +289,6 @@ section { padding: 3rem 0; }
    ============================================ */
 .page-header {
   padding: 3rem 0 1.5rem;
-  border-bottom: 1px solid var(--c-border);
   margin-bottom: 2rem;
 }
 .page-header h1 { margin-bottom: 0.5rem; }
@@ -344,9 +340,7 @@ section { padding: 3rem 0; }
 .post-list { list-style: none; }
 .post-list li {
   padding: 1.25rem 0;
-  border-bottom: 1px solid var(--c-border);
 }
-.post-list li:last-child { border-bottom: none; }
 .post-list h2 { margin: 0 0 0.4rem; font-size: 1.25rem; }
 .post-meta {
   font-size: 0.8rem;
@@ -466,7 +460,6 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); box-
   right: 1rem;
   bottom: 3.5rem;
   background: rgba(255,255,255,0.97);
-  border: 1px solid var(--c-border);
   border-radius: 8px;
   padding: 0.85rem;
   width: 220px;
@@ -522,7 +515,6 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); box-
 }
 .objectives-panel .obj {
   padding: 0.4rem 0;
-  border-bottom: 1px solid var(--c-border);
   font-size: 0.75rem;
   line-height: 1.35;
 }
@@ -602,7 +594,6 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); box-
   background: rgba(255, 255, 255, 0.95);
   padding: 0.35rem 0.6rem;
   border-radius: 4px;
-  border: 1px solid var(--c-border);
   z-index: 1000;
   letter-spacing: 0.03em;
   cursor: pointer;
@@ -941,12 +932,11 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); box-
   position: fixed; bottom: 1.5rem; left: 1.5rem;
   max-width: 340px; padding: 0.5rem 0.8rem;
   background: rgba(255,255,255,0.95);
-  border-left: 2px solid var(--c-border);
   color: var(--c-muted);
   font-family: var(--font-mono); font-size: 0.72rem; line-height: 1.4;
   z-index: 99990; opacity: 0; transform: translateX(-10px);
   transition: opacity 0.3s, transform 0.3s; pointer-events: none;
-  border-radius: 0 4px 4px 0;
+  border-radius: 4px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.06);
 }
 .corner-glitch.show { opacity: 1; transform: translateX(0); }

@@ -2425,7 +2425,9 @@
     completedObj: new Set(JSON.parse(localStorage.getItem(K.completedObj) || "[]")),
     activeObj: JSON.parse(localStorage.getItem(K.objectives) || "[]"),
     seenMessages: new Set(JSON.parse(localStorage.getItem(K.seenMessages) || "[]")),
-    dwellTime: new Map(), // populated at session end
+    dwellTime: new Map(), // track seconds spent per page
+    dwellStart: Date.now(),
+    dwellPage: fullPath,
     discovered: 0,
   };
 
@@ -2467,8 +2469,14 @@
   });
 
   // ============================================
-  // DISCOVERY COUNT
+  // DWELL TIME TRACKING
   // ============================================
+  setInterval(() => {
+    if (state.dwellPage) {
+      const elapsed = state.dwellTime.get(state.dwellPage) || 0;
+      state.dwellTime.set(state.dwellPage, elapsed + 1);
+    }
+  }, 1000);
   function updateDiscoveryCount() {
     state.discovered = state.visited.size + state.fragments.size + state.passwords.size;
   }

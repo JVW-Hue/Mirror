@@ -167,7 +167,19 @@
       });
     }
 
-    renderMap("all");
+    const params = new URLSearchParams(window.location.search);
+    const threadParam = params.get("thread");
+    renderMap(threadParam && threads[threadParam] ? threadParam : "all");
+
+    // Highlight the active thread tab
+    if (threadParam && threads[threadParam]) {
+      tabs.querySelectorAll("button").forEach(b => {
+        if (b.textContent === threads[threadParam].name) {
+          b.style.background = threads[threadParam].color;
+          b.style.color = "#fff";
+        }
+      });
+    }
   })();
 </script>
 </body>

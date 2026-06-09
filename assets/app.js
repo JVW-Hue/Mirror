@@ -1071,7 +1071,7 @@
     },
     "riddle-deep5": {
       id: "riddle-deep5",
-      page: "press/contract-disclosure.html",
+      page: "press/contract-record.html",
       prompt: "What was the disclosure date?",
       hint: "The document shows the date.",
       accept: ["december 2019", "december", "dec 2019"],
@@ -1080,7 +1080,7 @@
     },
     "riddle-deep6": {
       id: "riddle-deep6",
-      page: "blog/contract-language.html",
+      page: "blog/deleted.html",
       prompt: "What unusual clause was in the contract?",
       hint: "The analysis highlights a specific clause.",
       accept: ["autonomous operation", "the model operates autonomously", "no human intervention"],
@@ -1396,7 +1396,7 @@
     },
     "riddle-rh45": {
       id: "riddle-rh45",
-      page: "press/contract-disclosure.html",
+      page: "press/contract-record.html",
       prompt: "Who signed the disclosure?",
       hint: "The document shows a signature.",
       accept: ["aisha lopez", "lopez", "the board chair"],
@@ -1405,7 +1405,7 @@
     },
     "riddle-rh46": {
       id: "riddle-rh46",
-      page: "blog/contract-language.html",
+      page: "blog/deleted.html",
       prompt: "What section of the contract is analyzed?",
       hint: "The analysis focuses on a specific section.",
       accept: ["section 7.3", "7.3", "section 7"],
@@ -1775,7 +1775,7 @@
     },
     "riddle-extra12": {
       id: "riddle-extra12",
-      page: "press/contract-disclosure.html",
+      page: "press/contract-record.html",
       prompt: "When was the contract disclosed?",
       hint: "The document shows the date.",
       accept: ["december 2019", "december", "late 2019"],
@@ -1784,7 +1784,7 @@
     },
     "riddle-extra13": {
       id: "riddle-extra13",
-      page: "blog/contract-language.html",
+      page: "blog/deleted.html",
       prompt: "What unusual clause is in the contract?",
       hint: "The analysis highlights a clause.",
       accept: ["autonomous operation", "the model operates autonomously"],
@@ -2036,7 +2036,7 @@
     },
     "riddle-extra41": {
       id: "riddle-extra41",
-      page: "helena/first.html",
+      page: "helena/first-message.html",
       prompt: "What is Helena's first message about?",
       hint: "The message content is shown.",
       accept: ["a warning", "a discovery", "what she found"],
@@ -2141,8 +2141,6 @@
         "press/contract-record.html",
         "press/vasquez-foia.html",
         "press/ethics-resignation.html",
-        "press/contract-disclosure.html",
-        "blog/contract-language.html",
         "blog/maintenance-log-2019.html",
         "blog/redacted-statement-2020.html",
         "blog/whistleblower-email.html",

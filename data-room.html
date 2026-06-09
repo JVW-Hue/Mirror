@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="assets/style.css" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
-  body { background:#0a1628; color:#cfd8e3; }
+  body { }
   .site-header { background:rgba(10,22,40,0.95); border-bottom-color:#1a2a40; }
   .site-header .brand { color:#cfd8e3; }
   nav.main-nav a { color:#cfd8e3; }
   .data-room {
-    background: #0f1c30;
+    background: var(--c-surface);
     border: 1px solid #1a2a40;
     border-radius: 4px;
     padding: 2rem;
@@ -28,7 +28,7 @@
   .file-row .file-name { color:#cfd8e3; }
   .file-row .file-meta { color:#5a6878; font-size: 0.75rem; }
   .file-row .file-status { padding: 0.2rem 0.5rem; font-size: 0.7rem; border-radius: 2px; text-transform: uppercase; letter-spacing: 0.05em; }
-  .status-public { background:#1a3a20; color:#7fcf8a; }
+  .status-public { background: var(--c-surface); color:#7fcf8a; }
   .status-restricted { background:#3a2a10; color:#d4a017; }
   .status-sealed { background:#3a1010; color:#c0392b; }
 </style>
@@ -49,10 +49,10 @@
 
 <main>
   <div class="container" style="max-width:900px;">
-    <div class="page-header" style="border-bottom-color:#1a2a40;">
-      <div class="breadcrumb" style="color:#5a6878;">PARTNER · DATA ROOM</div>
-      <h1 style="color:#e8eef8;">Engagement materials</h1>
-      <p style="color:#7a8696;">For verified partners only. All access is logged.</p>
+    <div class="page-header" >
+      <div class="breadcrumb" >PARTNER · DATA ROOM</div>
+      <h1 >Engagement materials</h1>
+      <p >For verified partners only. All access is logged.</p>
     </div>
 
     <div class="data-room">
@@ -111,7 +111,7 @@
       </div>
     </div>
 
-    <div class="hidden-stage3" style="background:#1a0808;border:1px solid var(--c-danger);padding:1.5rem;font-family:var(--font-mono);font-size:0.85rem;color:var(--c-danger);margin-top:2rem;">
+    <div class="hidden-stage3" style="background: var(--c-surface);border:1px solid var(--c-danger);padding:1.5rem;font-family:var(--font-mono);font-size:0.85rem;color:var(--c-danger);margin-top:2rem;">
       <p>// ACCESS LOG — internal mirror — 2021-04-12</p>
       <p>This data room was accessed 7 times between 2021-03-26 and 2021-04-11 by accounts associated with R. Chen (General Counsel). The most recent access was at 2021-04-11 23:47 UTC, 4 minutes after Aisha Lopez's resignation letter was sent to the board.</p>
       <p>Files in /PROJ-M/ were last modified on 2021-03-26, the same day the data destruction affidavit was circulated for signature. Per the data room's own audit log, the modifications made on that day were to the file metadata, not the file contents. The file contents have not changed since 2019.</p>
@@ -123,7 +123,7 @@
 
 <footer class="site-footer" style="background:transparent;border-top-color:#1a2a40;">
   <div class="container">
-    <div style="color:#5a6878;">© 2014–2021 Helix Technologies, Inc.</div>
+    <div >© 2014–2021 Helix Technologies, Inc.</div>
   </div>
 </footer>
 

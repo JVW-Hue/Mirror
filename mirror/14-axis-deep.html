@@ -8,36 +8,36 @@
 <link rel="stylesheet" href="../assets/style.css" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
-body { background: #0d0d0d; color: #c8c8c8; font-family: var(--font-mono); }
+body { }
 .axis-table { width: 100%; border-collapse: collapse; margin: 2rem 0; }
 .axis-table th, .axis-table td { padding: 0.6rem 0.8rem; text-align: left; border-bottom: 1px solid #222; }
 .axis-table th { color: #b8a98a; font-weight: 500; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; }
 .axis-table td.num { color: #888; }
 .axis-table td.label { color: #d4cfc0; }
 .axis-table td.desc { font-size: 0.85rem; color: #888; }
-.axis-table tr:hover td { background: #1a1a1a; }
+.axis-table tr:hover td { background: var(--c-surface); }
 .classified { background: #2a0a0a; color: #ff6b6b; padding: 0.05rem 0.4rem; font-size: 0.7rem; letter-spacing: 0.1em; }
 .weights { display: grid; grid-template-columns: repeat(14, 1fr); gap: 1px; background: #222; padding: 1px; margin: 2rem 0; }
-.weights .cell { background: #0d0d0d; padding: 0.5rem 0.3rem; text-align: center; font-size: 0.75rem; color: #888; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
+.weights .cell { background: var(--c-surface); padding: 0.5rem 0.3rem; text-align: center; font-size: 0.75rem; color: #888; aspect-ratio: 1; display: flex; align-items: center; justify-content: center; }
 .weights .cell.hot { background: #4a0a0a; color: #ff8888; }
 .weights .cell.warm { background: #2a1a0a; color: #d4a060; }
-.weights .cell.cool { background: #0a1a2a; color: #6090c0; }
+.weights .cell.cool { background: var(--c-surface); color: #6090c0; }
 </style>
 </head>
 <body>
 
-<header class="site-header" style="background:#000;border-bottom:1px solid #1a1a1a;">
+<header class="site-header" >
   <div class="container">
-    <a href="../index.html" class="brand" style="color:#666;"><span class="brand-mark" style="border-color:#666;"></span>HELIX</a>
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
   </div>
 </header>
 
 <main>
   <div class="container" style="max-width:1100px;">
-    <div class="page-header" style="border-bottom-color:#222;">
-      <div class="breadcrumb" style="color:#8a4a4a;">MIRROR / TECHNICAL / 14 AXES · DEEP</div>
-      <h1 style="color:#d4cfc0;">The 14 Axes · Technical Specification</h1>
-      <p style="color:#666;">MIRROR · spec.rev4 · declassified portions · 2021-04-30</p>
+    <div class="page-header" >
+      <div class="breadcrumb" >MIRROR / TECHNICAL / 14 AXES · DEEP</div>
+      <h1 >The 14 Axes · Technical Specification</h1>
+      <p >MIRROR · spec.rev4 · declassified portions · 2021-04-30</p>
     </div>
 
     <div class="content">
@@ -46,7 +46,7 @@ body { background: #0d0d0d; color: #c8c8c8; font-family: var(--font-mono); }
         This is the declassified portion of the 14-axis technical specification. The full specification remains sealed by order of the US District Court for the District of Massachusetts. The declassified portion is, in the formal sense, sufficient to demonstrate what was done.
       </div>
 
-      <h2 style="color:#d4cfc0;">The 14 axes</h2>
+      <h2 >The 14 axes</h2>
       <p>The MIRROR system, as deployed in 2020, used fourteen behavioral axes. Each axis is, in the formal sense, a numerical measurement derived from publicly available and commercially available data sources. Each axis is, in the practical sense, a number between 0 and 1. Each axis is, in the moral sense, a thing that an American might, on reflection, not want a federal agency to know about them.</p>
 
       <table class="axis-table">
@@ -71,7 +71,7 @@ body { background: #0d0d0d; color: #c8c8c8; font-family: var(--font-mono); }
         </tbody>
       </table>
 
-      <h2 style="color:#d4cfc0;">The 14×14 weight matrix</h2>
+      <h2 >The 14×14 weight matrix</h2>
       <p>The 14 axes are multiplied by a 14×14 matrix of weights. The weight matrix is, in the formal sense, the output of a training process. The weight matrix is, in the practical sense, the thing that turns 14 numbers into a single score. The weight matrix is, in the moral sense, the thing that, when applied to 327 million Americans, produced the 2,304,891.</p>
 
       <p>The weight matrix below is the declassified portion. The declassified portion is, in the formal sense, the diagonal and the first off-diagonal. The declassified portion is, in the practical sense, sufficient to demonstrate that the system, in the formal sense, weights axis 14 (cohort alignment) by an order of magnitude more than any other axis.</p>
@@ -95,7 +95,7 @@ body { background: #0d0d0d; color: #c8c8c8; font-family: var(--font-mono); }
 
       <p style="text-align:center;color:#666;font-size:0.8rem;">the diagonal is 1.00 · the first off-diagonal is the declassified weight · the off-off-diagonals are <span class="classified">CLASSIFIED</span></p>
 
-      <h2 style="color:#d4cfc0;">What this means</h2>
+      <h2 >What this means</h2>
       <p>The declassified portion of the weight matrix is, in the formal sense, sufficient to demonstrate that the system, in the formal sense, weights axis 14 (cohort alignment) by an order of magnitude more than any other axis. The declassified portion of the weight matrix is, in the practical sense, sufficient to demonstrate that the system, in the practical sense, identifies Americans who are behaviorally similar to a reference cohort of individuals who, in the past, engaged in behavior "of interest."</p>
 
       <p>The reference cohort is, on the basis of the documents I have read, not, in the formal sense, a list of Americans who have been convicted of a crime. The reference cohort is, on the basis of the documents I have read, a list of Americans who, in the past, have been the subject of a federal investigation. The reference cohort is, on the basis of the documents I have read, a list of Americans who, in the past, have been the subject of a federal investigation that did not, in the past, result in a conviction.</p>
@@ -104,7 +104,7 @@ body { background: #0d0d0d; color: #c8c8c8; font-family: var(--font-mono); }
 
       <p>The reference cohort is, in the formal sense, 2,847 Americans. The reference cohort is, in the practical sense, the reason that 2,304,891 Americans were watched.</p>
 
-      <h2 style="color:#d4cfc0;">The threshold changes</h2>
+      <h2 >The threshold changes</h2>
       <p>The threshold for inclusion in the cohort registry was, in the formal sense, lowered twice. The first lowering, in 2020, increased the cohort registry from 70,000 to 412,000. The second lowering, in 2020, increased the cohort registry from 412,000 to 2,304,891. The threshold lowerings were, on the basis of the documents I have read, not supported by any change in the underlying science. The threshold lowerings were, on the basis of the documents I have read, supported by a contract modification, which is, in my professional judgment, not an appropriate basis for changing the threshold of a population-scale behavioral prediction system.</p>
 
       <p>The audit pipeline, which is, in the formal sense, the only system in the production stack that maintains a complete and tamper-evident record of every threshold change and every addition to the cohort registry, records the threshold changes as follows:</p>
@@ -125,7 +125,7 @@ body { background: #0d0d0d; color: #c8c8c8; font-family: var(--font-mono); }
   </div>
 </main>
 
-<footer class="site-footer" style="background:#000;border-top:1px solid #1a1a1a;color:#444;">
+<footer class="site-footer" >
   <div class="container">
     <div>14 axes · technical · declassified 2021-04-30</div>
   </div>

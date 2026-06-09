@@ -8,12 +8,12 @@
 <link rel="stylesheet" href="../assets/style.css" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
-body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
+body { }
 .memo-content { max-width: 640px; margin: 4rem auto; line-height: 1.9; }
-.memo-content h1 { font-size: 1.4rem; color: #c89bb0; letter-spacing: 0.05em; font-weight: 300; font-style: italic; }
+.memo-content h1 { font-size: 1.4rem; color: var(--c-fg); letter-spacing: 0.05em; font-weight: 300; font-style: italic; }
 .transcript { background: #221820; border: 1px solid #3a2e35; border-radius: 8px; padding: 2rem; margin: 2rem 0; font-family: var(--font-mono); font-size: 0.9rem; line-height: 1.7; }
 .transcript .time { color: #8a6a7a; }
-.transcript .speaker { color: #c89bb0; font-weight: bold; }
+.transcript .speaker { color: var(--c-fg); font-weight: bold; }
 .transcript .emotion { color: #6a8a8a; font-style: italic; font-size: 0.85rem; }
 .player { background: #2a1e26; border: 1px solid #3a2e35; border-radius: 8px; padding: 1rem; margin: 2rem 0; display: flex; align-items: center; gap: 1rem; }
 .player button { background: #c89bb0; color: #1a1418; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; font-size: 1rem; }
@@ -23,19 +23,19 @@ body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
 </head>
 <body>
 
-<header class="site-header" style="background:#1a1418;border-bottom:1px solid #3a2e35;">
+<header class="site-header" >
   <div class="container">
-    <a href="../index.html" class="brand" style="color:#c89bb0;"><span class="brand-mark" style="border-color:#c89bb0;"></span>HELIX</a>
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
   </div>
 </header>
 
 <main>
   <div class="container">
     <article class="memo-content">
-      <div class="page-header" style="border-bottom-color:#3a2e35;">
-        <div class="breadcrumb" style="color:#8a6a7a;">HELENA / VOICE MEMO</div>
+      <div class="page-header" >
+        <div class="breadcrumb" >HELENA / VOICE MEMO</div>
         <h1>Voice Memo</h1>
-        <p style="color:#8a7a82;font-style:italic;">Recorded 2021-03-19 · 23:51 EST · 4 minutes 12 seconds</p>
+        <p style="color: var(--c-muted);font-style:italic;">Recorded 2021-03-19 · 23:51 EST · 4 minutes 12 seconds</p>
       </div>
 
       <div class="content">
@@ -47,7 +47,7 @@ body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
         <div class="player">
           <button id="play-btn">▶</button>
           <div class="waveform" id="waveform"></div>
-          <span style="color:#8a6a7a;font-family:var(--font-mono);font-size:0.85rem;">4:12</span>
+          <span style="font-family: var(--font-mono);font-size:0.85rem;">4:12</span>
         </div>
 
         <div class="transcript">
@@ -73,7 +73,7 @@ body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
   </div>
 </main>
 
-<footer class="site-footer" style="background:#1a1418;border-top:1px solid #3a2e35;color:#8a7a82;">
+<footer class="site-footer" >
   <div class="container">
     <div>voice memo · 2021-03-19 · 23:51 EST</div>
   </div>

@@ -6,18 +6,18 @@
   <title>facility log — [LOCATION REDACTED]</title>
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    .facility { background: #0a0a0a; padding: 2rem; border: 1px solid #1a1a1a; border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.8; color: #888; }
+    .facility { background: var(--c-surface); padding: 2rem; border: 1px solid var(--c-border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 1.8; color: var(--c-muted); }
     .facility .log-entry { padding: 0.5rem 0; border-bottom: 1px solid #111; }
-    .facility .log-time { color: #444; }
+    .facility .log-time { color: #9ca3af; }
     .facility .log-level { font-weight: 600; }
     .facility .log-level.info { color: var(--thread-blue); }
     .facility .log-level.warn { color: var(--thread-yellow); }
-    .facility .log-level.error { color: var(--c-danger); }
-    .facility .log-level.crit { color: var(--c-danger); background: rgba(192,57,43,0.1); padding: 0 0.3rem; }
-    .facility .redacted { color: var(--c-danger); }
-    .facility .glitch { color: var(--c-danger); text-decoration: line-through; }
-    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
-    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .facility .log-level.error { color: var(--c-muted); }
+    .facility .log-level.crit { color: var(--c-muted); background: var(--c-surface); padding: 0 0.3rem; }
+    .facility .redacted { color: var(--c-muted); }
+    .facility .glitch { color: var(--c-muted); text-decoration: line-through; }
+    .dead-end-banner { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
   </style>
 </head>
@@ -43,24 +43,24 @@
     <div class="container">
       <span class="thread-label">THREADS:</span>
       <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
-      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
-      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
-      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../signals/console-log.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror/list.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena/first-message.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
       <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
     </div>
   </nav>
 
   <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
     <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
-      archive / black-site / location: <span style="color:var(--c-danger);">[REDACTED]</span>
+      archive / black-site / location: <span style="color: var(--c-muted);">[REDACTED]</span>
     </div>
 
     <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">FACILITY LOG</h1>
     <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
       facility designation: <span style="color:var(--thread-yellow);">SITE-07</span><br>
-      location: <span style="color:var(--c-danger);">[REDACTED]</span><br>
+      location: <span style="color: var(--c-muted);">[REDACTED]</span><br>
       operational period: 2018-04-15 through 2021-04-30<br>
-      status: <span style="color:var(--c-danger);">DECOMMISSIONED</span>
+      status: <span style="color: var(--c-muted);">DECOMMISSIONED</span>
     </p>
 
     <div class="facility">
@@ -152,7 +152,7 @@
     <div class="dead-end-banner">
       <h3>[ FACILITY DECOMMISSIONED ]</h3>
       <p>SITE-07 was decommissioned on 2021-04-30.<br>
-      All systems are offline. All records are <span style="color:var(--c-danger);">[CLASSIFIED]</span>.<br>
+      All systems are offline. All records are <span style="color: var(--c-muted);">[CLASSIFIED]</span>.<br>
       The facility no longer exists.</p>
       <p style="margin-top:0.8rem;font-style:italic;color:var(--c-muted);">// the facility is gone. the log of the facility remains.</p>
     </div>

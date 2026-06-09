@@ -6,15 +6,15 @@
   <title>dead drop — [SIGNAL INTEGRITY: LOW]</title>
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    .encrypted { background: #0a0a0a; padding: 2rem; border: 1px solid #1a1a1a; border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 2; color: #888; position: relative; }
-    .encrypted::before { content: "ENCRYPTED"; position: absolute; top: 0.5rem; right: 0.5rem; color: var(--c-danger); font-size: 0.6rem; letter-spacing: 0.2em; }
+    .encrypted { background: var(--c-surface); padding: 2rem; border: 1px solid var(--c-border); border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; line-height: 2; color: var(--c-muted); position: relative; }
+    .encrypted::before { content: "ENCRYPTED"; position: absolute; top: 0.5rem; right: 0.5rem; color: var(--c-muted); font-size: 0.6rem; letter-spacing: 0.2em; }
     .encrypted .key { color: var(--thread-yellow); }
     .encrypted .cipher { color: var(--thread-green); }
-    .encrypted .corrupted { color: var(--c-danger); text-decoration: line-through; }
+    .encrypted .corrupted { color: var(--c-muted); text-decoration: line-through; }
     .encrypted .plain { color: #aaa; }
     .encrypted .hidden { color: #222; }
-    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
-    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .dead-end-banner { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
     .hint-box { background: rgba(212,160,23,0.08); border-left: 3px solid var(--thread-yellow); padding: 1rem 1.5rem; margin: 1.5rem 0; font-family: var(--font-mono); font-size: 0.75rem; color: var(--c-muted); }
   </style>
@@ -41,21 +41,21 @@
     <div class="container">
       <span class="thread-label">THREADS:</span>
       <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
-      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
-      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
-      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../signals/console-log.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror/list.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena/first-message.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
       <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
     </div>
   </nav>
 
   <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
     <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
-      archive / dead-drop / signal integrity: <span style="color:var(--c-danger);">12%</span>
+      archive / dead-drop / signal integrity: <span style="color: var(--c-muted);">12%</span>
     </div>
 
     <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">DEAD DROP</h1>
     <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
-      source: anonymous · recovery method: signal intercept · classification: <span style="color:var(--c-danger);">AMBER</span><br>
+      source: anonymous · recovery method: signal intercept · classification: <span style="color: var(--c-muted);">AMBER</span><br>
       the dead drop was found at <span style="color:var(--thread-yellow);">coordinates [REDACTED]</span> on 2021-04-12
     </p>
 
@@ -97,9 +97,9 @@
       <p><span class="cipher">gur shyyre vf abg gur dhrfgvba</span></p>
       <p><span class="plain">// translation: "the watching is not the question" //</span></p>
       <p></p>
-      <p style="color:var(--c-danger);margin-top:1.5rem;">// END OF RECOVERABLE MESSAGES //</p>
-      <p style="color:#444;">// 2 of 9 messages could not be recovered //</p>
-      <p style="color:#444;">// recovery integrity: 12% //</p>
+      <p style="color: var(--c-muted);margin-top:1.5rem;">// END OF RECOVERABLE MESSAGES //</p>
+      <p style="color: #9ca3af;">// 2 of 9 messages could not be recovered //</p>
+      <p style="color: #9ca3af;">// recovery integrity: 12% //</p>
     </div>
 
     <div class="hint-box">

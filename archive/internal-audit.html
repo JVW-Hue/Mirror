@@ -9,11 +9,11 @@
     .audit { background: #fafaf8; border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 1.5rem 0; }
     .audit h3 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 0.8rem; }
     .audit p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.8rem; }
-    .audit .classified { background: rgba(192,57,43,0.1); color: var(--c-danger); padding: 0 0.4rem; border-radius: 2px; }
+    .audit .classified { background: var(--c-surface); color: var(--c-muted); padding: 0 0.4rem; border-radius: 2px; }
     .audit .finding { background: rgba(212,160,23,0.08); border-left: 3px solid var(--thread-yellow); padding: 0.8rem 1.2rem; margin: 0.8rem 0; font-family: var(--font-mono); font-size: 0.8rem; }
-    .audit .finding.severe { border-left-color: var(--c-danger); background: rgba(192,57,43,0.05); }
-    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
-    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .audit .finding.severe { border-left-color: var(--c-muted); background: rgba(192,57,43,0.05); }
+    .dead-end-banner { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
   </style>
 </head>
@@ -39,23 +39,23 @@
     <div class="container">
       <span class="thread-label">THREADS:</span>
       <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
-      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
-      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
-      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../signals/console-log.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror/list.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena/first-message.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
       <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
     </div>
   </nav>
 
   <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
     <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
-      archive / internal-audit / status: <span style="color:var(--c-danger);">SUPPRESSED</span>
+      archive / internal-audit / status: <span style="color: var(--c-muted);">SUPPRESSED</span>
     </div>
 
     <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">INTERNAL AUDIT</h1>
     <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
       audit designation: <span style="color:var(--thread-yellow);">AUDIT-2021-003</span><br>
-      conducted by: <span style="color:var(--c-danger);">[REDACTED]</span> · date: 2021-02-14<br>
-      status: <span style="color:var(--c-danger);">SUPPRESSED</span> · this copy is unauthorized
+      conducted by: <span style="color: var(--c-muted);">[REDACTED]</span> · date: 2021-02-14<br>
+      status: <span style="color: var(--c-muted);">SUPPRESSED</span> · this copy is unauthorized
     </p>
 
     <div class="audit">

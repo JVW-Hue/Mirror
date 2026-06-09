@@ -8,29 +8,29 @@
 <link rel="stylesheet" href="../assets/style.css" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
-body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
+body { }
 .photo-content { max-width: 720px; margin: 4rem auto; line-height: 1.9; }
-.photo-content h1 { font-size: 1.4rem; color: #c89bb0; letter-spacing: 0.05em; font-weight: 300; font-style: italic; }
+.photo-content h1 { font-size: 1.4rem; color: var(--c-fg); letter-spacing: 0.05em; font-weight: 300; font-style: italic; }
 .photo-frame { background: #221820; border: 1px solid #3a2e35; padding: 1rem; margin: 2rem 0; text-align: center; }
-.photo-frame .placeholder { background: linear-gradient(135deg, #2a1e26 0%, #3a2e35 50%, #2a1e26 100%); height: 400px; display: flex; align-items: center; justify-content: center; color: #6a4a5a; font-family: var(--font-mono); font-size: 0.85rem; position: relative; }
-.photo-frame .placeholder .caption-overlay { position: absolute; bottom: 1rem; left: 1rem; right: 1rem; text-align: left; color: #d4b8c4; font-style: italic; }
+.photo-frame .placeholder { background: linear-gradient(135deg, #2a1e26 0%, #3a2e35 50%, #2a1e26 100%); height: 400px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: 0.85rem; position: relative; }
+.photo-frame .placeholder .caption-overlay { position: absolute; bottom: 1rem; left: 1rem; right: 1rem; text-align: left; color: var(--c-fg); font-style: italic; }
 </style>
 </head>
 <body>
 
-<header class="site-header" style="background:#1a1418;border-bottom:1px solid #3a2e35;">
+<header class="site-header" >
   <div class="container">
-    <a href="../index.html" class="brand" style="color:#c89bb0;"><span class="brand-mark" style="border-color:#c89bb0;"></span>HELIX</a>
+    <a href="../index.html" class="brand"><span class="brand-mark"></span>HELIX</a>
   </div>
 </header>
 
 <main>
   <div class="container">
     <article class="photo-content">
-      <div class="page-header" style="border-bottom-color:#3a2e35;">
-        <div class="breadcrumb" style="color:#8a6a7a;">HELENA / THE PHOTO</div>
+      <div class="page-header" >
+        <div class="breadcrumb" >HELENA / THE PHOTO</div>
         <h1>The Photo</h1>
-        <p style="color:#8a7a82;font-style:italic;">Cambridge, MA · 2018-04-13 · 08:47 EST</p>
+        <p style="color: var(--c-muted);font-style:italic;">Cambridge, MA · 2018-04-13 · 08:47 EST</p>
       </div>
 
       <div class="content">
@@ -59,7 +59,7 @@ body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
 
         <p>The photo was, in the formal sense, taken on 2018-04-13. The photo was, in the formal sense, found on 2021-05-12. The photo was, in the formal sense, never published. The photo was, in the formal sense, not, in the formal sense, the kind of thing that two colleagues would, in the formal sense, be expected to keep. The photo was, in the formal sense, the kind of thing that Mark kept, in a folder labeled "office," in a subfolder labeled "2018-04," on the desktop of the laptop that was, in the formal sense, returned to Helix on 2019-08-12, and that was, in the formal sense, returned to Mark on 2021-04-30, as part of the civil discovery, and that was, in the formal sense, found to contain, in the formal sense, the photo.</p>
 
-        <p style="font-style:italic;color:#8a7a82;margin-top:3rem;">The photo is, in the formal sense, a piece of evidence in the civil action. The photo is, in the practical sense, a piece of evidence that, in the formal sense, two engineers were, in the practical sense, on the same side, in the moment before the work began, in the moment when the work was, in the formal sense, still possible.</p>
+        <p style="font-style:italic;color: var(--c-muted);margin-top:3rem;">The photo is, in the formal sense, a piece of evidence in the civil action. The photo is, in the practical sense, a piece of evidence that, in the formal sense, two engineers were, in the practical sense, on the same side, in the moment before the work began, in the moment when the work was, in the formal sense, still possible.</p>
 
         <p style="font-family:var(--font-mono);font-size:0.8rem;color:#666;margin-top:2rem;">
           // fragments: <span class="fragment" data-fragment="first day">first day</span> <span class="fragment" data-fragment="still possible">still possible</span>
@@ -69,7 +69,7 @@ body { background: #1a1418; color: #d4b8c4; font-family: Georgia, serif; }
   </div>
 </main>
 
-<footer class="site-footer" style="background:#1a1418;border-top:1px solid #3a2e35;color:#8a7a82;">
+<footer class="site-footer" >
   <div class="container">
     <div>the photo · 2018-04-13 · 08:47 EST</div>
   </div>

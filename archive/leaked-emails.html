@@ -12,11 +12,11 @@
     .email-header .to { color: var(--thread-purple); }
     .email-header .subject { color: var(--thread-yellow); }
     .email p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.8rem; }
-    .email .redacted { background: rgba(192,57,43,0.1); color: var(--c-danger); padding: 0 0.4rem; border-radius: 2px; }
-    .email .classified { background: rgba(192,57,43,0.15); color: var(--c-danger); padding: 0 0.4rem; border-radius: 2px; }
-    .email .corrupted { color: var(--c-danger); text-decoration: line-through; }
-    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
-    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .email .redacted { background: var(--c-surface); color: var(--c-muted); padding: 0 0.4rem; border-radius: 2px; }
+    .email .classified { background: var(--c-surface); color: var(--c-muted); padding: 0 0.4rem; border-radius: 2px; }
+    .email .corrupted { color: var(--c-muted); text-decoration: line-through; }
+    .dead-end-banner { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
   </style>
 </head>
@@ -42,9 +42,9 @@
     <div class="container">
       <span class="thread-label">THREADS:</span>
       <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
-      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
-      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
-      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../signals/console-log.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror/list.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena/first-message.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
       <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
     </div>
   </nav>
@@ -62,8 +62,8 @@
 
     <div class="email">
       <div class="email-header">
-        <p><span class="from">from:</span> <span class="redacted">[REDACTED]</span> <span style="color:#444;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
-        <p><span class="to">to:</span> Elena Vasquez <span style="color:#444;">&lt;e.vasquez@helix.internal&gt;</span></p>
+        <p><span class="from">from:</span> <span class="redacted">[REDACTED]</span> <span style="color: #9ca3af;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
+        <p><span class="to">to:</span> Elena Vasquez <span style="color: #9ca3af;">&lt;e.vasquez@helix.internal&gt;</span></p>
         <p><span class="subject">subject:</span> RE: threshold concerns</p>
         <p>date: 2020-03-20 09:14:22 UTC</p>
       </div>
@@ -76,8 +76,8 @@
 
     <div class="email">
       <div class="email-header">
-        <p><span class="from">from:</span> Elena Vasquez <span style="color:#444;">&lt;e.vasquez@helix.internal&gt;</span></p>
-        <p><span class="to">to:</span> <span class="redacted">[REDACTED]</span> <span style="color:#444;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
+        <p><span class="from">from:</span> Elena Vasquez <span style="color: #9ca3af;">&lt;e.vasquez@helix.internal&gt;</span></p>
+        <p><span class="to">to:</span> <span class="redacted">[REDACTED]</span> <span style="color: #9ca3af;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
         <p><span class="subject">subject:</span> RE: RE: threshold concerns</p>
         <p>date: 2020-03-20 09:47:11 UTC</p>
       </div>
@@ -87,10 +87,10 @@
       <p style="color:var(--c-muted);">— Elena</p>
     </div>
 
-    <div class="email" style="border-color:var(--c-danger);">
+    <div class="email" style="border-color: var(--c-muted);">
       <div class="email-header">
-        <p><span class="from">from:</span> <span class="redacted">[REDACTED]</span> <span style="color:#444;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
-        <p><span class="to">to:</span> Elena Vasquez <span style="color:#444;">&lt;e.vasquez@helix.internal&gt;</span></p>
+        <p><span class="from">from:</span> <span class="redacted">[REDACTED]</span> <span style="color: #9ca3af;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
+        <p><span class="to">to:</span> Elena Vasquez <span style="color: #9ca3af;">&lt;e.vasquez@helix.internal&gt;</span></p>
         <p><span class="subject">subject:</span> <span class="classified">CLASSIFIED</span></p>
         <p>date: 2020-09-08 03:14:09 UTC</p>
       </div>
@@ -99,8 +99,8 @@
 
     <div class="email">
       <div class="email-header">
-        <p><span class="from">from:</span> Elena Vasquez <span style="color:#444;">&lt;e.vasquez@helix.internal&gt;</span></p>
-        <p><span class="to">to:</span> <span class="redacted">[REDACTED]</span> <span style="color:#444;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
+        <p><span class="from">from:</span> Elena Vasquez <span style="color: #9ca3af;">&lt;e.vasquez@helix.internal&gt;</span></p>
+        <p><span class="to">to:</span> <span class="redacted">[REDACTED]</span> <span style="color: #9ca3af;">&lt;<span class="redacted">[REDACTED]</span>@helix.internal&gt;</span></p>
         <p><span class="subject">subject:</span> resignation</p>
         <p>date: 2021-04-08 16:47:22 UTC</p>
       </div>
@@ -114,7 +114,7 @@
       <h3>[ EMAILS PARTIALLY RECOVERED ]</h3>
       <p>14 emails were recovered from the server.<br>
       9 were partially corrupted. 5 were fully recovered.<br>
-      The corrupted emails contained <span style="color:var(--c-danger);">[CLASSIFIED]</span> information.</p>
+      The corrupted emails contained <span style="color: var(--c-muted);">[CLASSIFIED]</span> information.</p>
       <p style="margin-top:0.8rem;font-style:italic;color:var(--c-muted);">// the emails tell a story. the story is incomplete.</p>
     </div>
 

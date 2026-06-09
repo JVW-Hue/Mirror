@@ -6,7 +6,7 @@
   <title>connection map — [UNRESOLVED]</title>
   <link rel="stylesheet" href="../assets/style.css">
   <style>
-    .board { background: #0a0808; border: 1px solid #1a1a1a; border-radius: 4px; padding: 2rem; position: relative; overflow: hidden; }
+    .board { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 2rem; position: relative; overflow: hidden; }
     .board::before { content: ""; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: repeating-linear-gradient(0deg, transparent 0px, transparent 29px, rgba(255,255,255,0.02) 29px, rgba(255,255,255,0.02) 30px), repeating-linear-gradient(90deg, transparent 0px, transparent 29px, rgba(255,255,255,0.02) 29px, rgba(255,255,255,0.02) 30px); pointer-events: none; }
     .node { display: inline-block; padding: 0.5rem 1rem; margin: 0.3rem; border: 1px solid; border-radius: 3px; font-family: var(--font-mono); font-size: 0.75rem; cursor: default; position: relative; z-index: 1; }
     .node.blue { border-color: var(--thread-blue); color: var(--thread-blue); background: rgba(41,128,185,0.08); }
@@ -15,13 +15,13 @@
     .node.purple { border-color: var(--thread-purple); color: var(--thread-purple); background: rgba(142,68,173,0.08); }
     .node.green { border-color: var(--thread-green); color: var(--thread-green); background: rgba(39,174,96,0.08); }
     .node.gray { border-color: #555; color: #555; background: rgba(85,85,85,0.08); }
-    .node.classified { border-color: var(--c-danger); color: var(--c-danger); background: rgba(192,57,43,0.12); }
-    .arrow { color: #333; font-family: var(--font-mono); margin: 0 0.3rem; }
+    .node.classified { border-color: var(--c-muted); color: var(--c-muted); background: rgba(192,57,43,0.12); }
+    .arrow { color: var(--c-muted); font-family: var(--font-mono); margin: 0 0.3rem; }
     .connection { margin: 1rem 0; padding: 0.8rem 1rem; border-left: 2px solid #222; font-family: var(--font-mono); font-size: 0.75rem; color: #555; }
-    .connection .label { color: #444; font-style: italic; }
-    .connection .strength { color: var(--c-danger); font-size: 0.7rem; }
-    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
-    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .connection .label { color: #9ca3af; font-style: italic; }
+    .connection .strength { color: var(--c-muted); font-size: 0.7rem; }
+    .dead-end-banner { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
   </style>
 </head>
@@ -47,22 +47,22 @@
     <div class="container">
       <span class="thread-label">THREADS:</span>
       <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
-      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
-      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
-      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../signals/console-log.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror/list.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena/first-message.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
       <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
     </div>
   </nav>
 
   <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
     <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
-      archive / conspiracy-board / connections mapped: <span style="color:var(--thread-yellow);">147</span> / verified: <span style="color:var(--c-danger);">0</span>
+      archive / conspiracy-board / connections mapped: <span style="color:var(--thread-yellow);">147</span> / verified: <span style="color: var(--c-muted);">0</span>
     </div>
 
     <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">CONNECTION MAP</h1>
     <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
       reconstructed from witness statements, audit logs, and recovered documents.<br>
-      147 connections identified. <span style="color:var(--c-danger);">0 connections verified.</span>
+      147 connections identified. <span style="color: var(--c-muted);">0 connections verified.</span>
     </p>
 
     <div class="board">
@@ -150,19 +150,19 @@
 
       <div class="connection">
         <span class="node green" style="font-size:0.65rem;">FEDERAL CLIENT</span> <span class="arrow">→</span> <span class="node green" style="font-size:0.65rem;">[REDACTED]</span>
-        <span class="label"> — the federal client was <span style="color:var(--c-danger);">[REDACTED]</span></span>
+        <span class="label"> — the federal client was <span style="color: var(--c-muted);">[REDACTED]</span></span>
         <span class="strength">strength: UNVERIFIED</span>
       </div>
 
-      <div class="connection" style="border-left-color:var(--c-danger);">
+      <div class="connection" style="border-left-color: var(--c-muted);">
         <span class="node classified" style="font-size:0.65rem;">[CLASSIFIED]</span> <span class="arrow">→</span> <span class="node classified" style="font-size:0.65rem;">[CLASSIFIED]</span>
-        <span class="label"> — <span style="color:var(--c-danger);">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></span>
+        <span class="label"> — <span style="color: var(--c-muted);">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></span>
         <span class="strength">strength: CLASSIFIED</span>
       </div>
 
-      <div class="connection" style="border-left-color:var(--c-danger);">
+      <div class="connection" style="border-left-color: var(--c-muted);">
         <span class="node classified" style="font-size:0.65rem;">[CLASSIFIED]</span> <span class="arrow">→</span> <span class="node classified" style="font-size:0.65rem;">[CLASSIFIED]</span>
-        <span class="label"> — <span style="color:var(--c-danger);">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></span>
+        <span class="label"> — <span style="color: var(--c-muted);">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></span>
         <span class="strength">strength: CLASSIFIED</span>
       </div>
     </div>

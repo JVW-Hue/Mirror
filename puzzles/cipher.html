@@ -8,10 +8,10 @@
 <link rel="stylesheet" href="../assets/style.css" />
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
 <style>
-body { background: #f8f7f3; color: #2a2a2a; }
+body { }
 .cipher-content { max-width: 800px; margin: 4rem auto; font-family: var(--font-mono); }
 .cipher-content h1 { color: #5a4a3a; }
-.cipher { background: #1a1a1a; color: #d4cfc0; padding: 1.5rem; border-radius: 4px; font-size: 1.1rem; letter-spacing: 0.1em; word-break: break-all; line-height: 1.8; }
+.cipher { background: var(--c-surface); color: #d4cfc0; padding: 1.5rem; border-radius: 4px; font-size: 1.1rem; letter-spacing: 0.1em; word-break: break-all; line-height: 1.8; }
 .cipher-form { background: #fff; border: 1px solid #d4cfc0; padding: 1.5rem; margin: 2rem 0; border-radius: 4px; }
 .cipher-form input { width: 100%; padding: 0.6rem; font-family: var(--font-mono); font-size: 1rem; border: 1px solid #d4cfc0; border-radius: 3px; box-sizing: border-box; }
 .cipher-form button { margin-top: 1rem; background: #5a4a3a; color: #f8f7f3; border: none; padding: 0.5rem 1rem; cursor: pointer; }
@@ -38,7 +38,7 @@ body { background: #f8f7f3; color: #2a2a2a; }
   <div class="container">
     <article class="cipher-content">
       <div class="page-header">
-        <div class="breadcrumb" style="color:#5a4a3a;">PUZZLES / CIPHER · ROT-13</div>
+        <div class="breadcrumb" >PUZZLES / CIPHER · ROT-13</div>
         <h1>Rot-13 Cipher</h1>
         <p style="color:var(--c-muted);">A puzzle found in the source repository · 2021-05-12</p>
       </div>
@@ -110,9 +110,9 @@ document.getElementById('check-btn').addEventListener('click', () => {
   const v = document.getElementById('answer').value.toLowerCase().replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').trim();
   const r = document.getElementById('result');
   if (v.includes('legible') && v.includes('system could do was fail')) {
-    r.innerHTML = '<span style="color:#2a6a2a;">✓ correct. the message is decoded. click below to read it in full.</span><br><br><button onclick="document.getElementById(\'answer-hint\').style.display=\'block\';this.style.display=\'none\';">show decoded message</button>';
+    r.innerHTML = '<span >✓ correct. the message is decoded. click below to read it in full.</span><br><br><button onclick="document.getElementById(\'answer-hint\').style.display=\'block\';this.style.display=\'none\';">show decoded message</button>';
   } else {
-    r.innerHTML = '<span style="color:#8a3a3a;">not quite. try again, or use the hint.</span>';
+    r.innerHTML = '<span >not quite. try again, or use the hint.</span>';
   }
 });
 </script>

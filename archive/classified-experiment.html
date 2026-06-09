@@ -9,7 +9,7 @@
     .experiment { background: #fafaf8; border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 1.5rem 0; }
     .experiment h3 { font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c-muted); margin-bottom: 0.8rem; }
     .experiment p { font-size: 0.85rem; line-height: 1.7; margin-bottom: 0.8rem; }
-    .experiment .classified { background: rgba(192,57,43,0.1); color: var(--c-danger); padding: 0 0.4rem; border-radius: 2px; }
+    .experiment .classified { background: var(--c-surface); color: var(--c-muted); padding: 0 0.4rem; border-radius: 2px; }
     .experiment .result { font-family: var(--font-mono); font-size: 0.8rem; color: var(--thread-yellow); }
     .timeline { margin: 2rem 0; padding-left: 1.5rem; border-left: 2px solid var(--c-border); }
     .timeline-item { margin-bottom: 1.5rem; position: relative; }
@@ -18,8 +18,8 @@
     .timeline-item.failed::before { background: var(--c-danger); }
     .timeline-item .date { font-family: var(--font-mono); font-size: 0.7rem; color: var(--c-muted); letter-spacing: 0.1em; }
     .timeline-item .desc { font-size: 0.85rem; margin-top: 0.3rem; }
-    .dead-end-banner { background: rgba(192,57,43,0.1); border: 1px solid var(--c-danger); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
-    .dead-end-banner h3 { color: var(--c-danger); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .dead-end-banner { background: var(--c-surface); border: 1px solid var(--c-border); border-radius: 4px; padding: 1.5rem; margin: 2rem 0; text-align: center; }
+    .dead-end-banner h3 { color: var(--c-muted); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5rem; }
     .dead-end-banner p { color: var(--c-muted); font-size: 0.8rem; }
   </style>
 </head>
@@ -45,30 +45,30 @@
     <div class="container">
       <span class="thread-label">THREADS:</span>
       <a href="../press.html" class="thread-link" style="color:var(--thread-blue)">● official trail</a>
-      <a href="../signals.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
-      <a href="../mirror.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
-      <a href="../helena.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
+      <a href="../signals/console-log.html" class="thread-link" style="color:var(--thread-yellow)">● anomalous signal</a>
+      <a href="../mirror/list.html" class="thread-link" style="color:var(--thread-red)">● project mirror</a>
+      <a href="../helena/first-message.html" class="thread-link" style="color:var(--thread-purple)">● elena's trail</a>
       <a href="../discoveries.html" class="thread-link" style="color:var(--thread-green)">● side investigations</a>
     </div>
   </nav>
 
   <main class="container" style="padding-top:2rem;padding-bottom:4rem;">
     <div style="font-family:var(--font-mono);font-size:0.7rem;color:var(--c-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.5rem;">
-      archive / classified-experiment / classification: <span style="color:var(--c-danger);">TOP SECRET</span>
+      archive / classified-experiment / classification: <span style="color: var(--c-muted);">TOP SECRET</span>
     </div>
 
     <h1 style="font-size:1.6rem;margin-bottom:0.5rem;">EXPERIMENT LOG</h1>
     <p style="color:var(--c-muted);font-size:0.85rem;margin-bottom:2rem;">
       experiment designation: <span style="color:var(--thread-yellow);">LOOKING GLASS</span><br>
-      classification: <span style="color:var(--c-danger);">TOP SECRET</span> · authorization: <span style="color:var(--c-danger);">[REDACTED]</span><br>
-      status: <span style="color:var(--c-danger);">TERMINATED</span>
+      classification: <span style="color: var(--c-muted);">TOP SECRET</span> · authorization: <span style="color: var(--c-muted);">[REDACTED]</span><br>
+      status: <span style="color: var(--c-muted);">TERMINATED</span>
     </p>
 
     <div class="experiment">
       <h3>experiment overview</h3>
       <p>LOOKING GLASS was a behavioral prediction experiment conducted by Helix Technologies under contract with <span class="classified">[REDACTED]</span>. The experiment was designed to test the accuracy of the MIRROR system's 14-axis behavioral model.</p>
       <p>The experiment involved <span class="classified">[REDACTED]</span> subjects. The subjects were not informed of their participation. The subjects were not informed of the existence of the MIRROR system. The subjects were not informed of the <span class="classified">[REDACTED]</span>.</p>
-      <p class="result">// result: <span style="color:var(--c-danger);">CLASSIFIED</span> //</p>
+      <p class="result">// result: <span style="color: var(--c-muted);">CLASSIFIED</span> //</p>
     </div>
 
     <div class="timeline">
@@ -78,7 +78,7 @@
       </div>
       <div class="timeline-item done">
         <div class="date">2018-09-01</div>
-        <div class="desc">First behavioral predictions generated. Accuracy: <span class="classified">[REDACTED]</span>. False positive rate: <span class="classified">[REDACTED]</span>. <span style="color:var(--c-danger);">92,196</span> false positives recorded.</div>
+        <div class="desc">First behavioral predictions generated. Accuracy: <span class="classified">[REDACTED]</span>. False positive rate: <span class="classified">[REDACTED]</span>. <span style="color: var(--c-muted);">92,196</span> false positives recorded.</div>
       </div>
       <div class="timeline-item done">
         <div class="date">2019-03-15</div>
@@ -104,7 +104,7 @@
       <p>6. <span class="classified">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></p>
       <p>7. <span class="classified">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></p>
       <p>8. <span class="classified">[CLASSIFIED — CLEARED FOR EO BOARD ONLY]</span></p>
-      <p class="result">// findings 6-8: <span style="color:var(--c-danger);">CLASSIFIED</span> //</p>
+      <p class="result">// findings 6-8: <span style="color: var(--c-muted);">CLASSIFIED</span> //</p>
     </div>
 
     <div class="dead-end-banner">

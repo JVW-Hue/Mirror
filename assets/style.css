@@ -104,7 +104,8 @@ p { margin-bottom: 1rem; }
 .brand-mark::after { transform: rotate(45deg); }
 
 nav.main-nav { display: flex; gap: 1.75rem; align-items: center; }
-nav.main-nav ul { display: flex; list-style: none; gap: 1.75rem; margin: 0; padding: 0; }
+nav.main-nav > ul { display: flex; list-style: none; list-style-type: none; gap: 1.75rem; margin: 0; padding: 0; }
+nav.main-nav > ul > li { margin: 0; padding: 0; list-style: none; list-style-type: none; }
 nav.main-nav a {
   color: var(--c-muted);
   font-size: 0.85rem;
@@ -112,6 +113,8 @@ nav.main-nav a {
   transition: color 0.15s;
   text-decoration: none;
   letter-spacing: 0.02em;
+  display: inline-block;
+  padding: 0.25rem 0;
 }
 nav.main-nav a:hover { color: var(--c-accent); }
 

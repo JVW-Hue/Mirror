@@ -79,7 +79,6 @@ p { margin-bottom: 1rem; }
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
   font-weight: 700;
   color: var(--c-fg);
   font-size: 0.9rem;
@@ -88,20 +87,6 @@ p { margin-bottom: 1rem; }
   text-decoration: none;
 }
 .brand:hover { color: var(--c-fg); text-decoration: none; }
-.brand-mark {
-  width: 24px;
-  height: 24px;
-  position: relative;
-}
-.brand-mark::before,
-.brand-mark::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border: 1.5px solid var(--c-accent);
-  border-radius: 2px;
-}
-.brand-mark::after { transform: rotate(45deg); }
 
 nav.main-nav { display: flex; gap: 1.75rem; align-items: center; }
 nav.main-nav > ul { display: flex; list-style: none; list-style-type: none; gap: 1.75rem; margin: 0; padding: 0; }

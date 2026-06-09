@@ -2643,6 +2643,46 @@
   }
 
   function renderDiscoveryCounter() {
+    // Save progress button
+    let saveWrap = document.querySelector(".save-progress-wrap");
+    if (!saveWrap) {
+      saveWrap = document.createElement("div");
+      saveWrap.className = "save-progress-wrap";
+      document.body.appendChild(saveWrap);
+
+      const saveBtn = document.createElement("button");
+      saveBtn.className = "save-btn";
+      saveBtn.id = "save-progress-btn";
+      saveBtn.title = "Save your progress to this device";
+      saveBtn.setAttribute("aria-label", "Save progress");
+      saveBtn.textContent = "SAVE";
+      saveWrap.appendChild(saveBtn);
+
+      // Toast
+      const toast = document.createElement("div");
+      toast.className = "save-toast";
+      toast.id = "save-toast";
+      document.body.appendChild(toast);
+
+      saveBtn.addEventListener("click", () => {
+        try {
+          save();
+          saveBtn.textContent = "SAVED!";
+          saveBtn.classList.add("saved");
+          toast.textContent = `Progress saved · ${state.discovered} discoveries · ${state.completedObj.size} objectives`;
+          toast.classList.add("show");
+          setTimeout(() => { saveBtn.textContent = "SAVE"; saveBtn.classList.remove("saved"); }, 2000);
+          setTimeout(() => toast.classList.remove("show"), 2500);
+        } catch (e) {
+          saveBtn.textContent = "ERROR";
+          saveBtn.classList.add("error");
+          toast.textContent = "Save failed — try again";
+          toast.classList.add("show");
+          setTimeout(() => { saveBtn.textContent = "SAVE"; saveBtn.classList.remove("error"); }, 2000);
+          setTimeout(() => toast.classList.remove("show"), 2500);
+        }
+      });
+    }
     let counter = document.querySelector(".discovery-counter");
     if (!counter) {
       counter = document.createElement("div");
@@ -3241,6 +3281,36 @@
   setupTruthClimax();
   setupFinalMessage();
   setupAmbient();
+
+  // ============================================
+  // MOBILE HAMBURGER NAV
+  // ============================================
+  const nav = document.querySelector("nav.main-nav");
+  if (nav && !nav.querySelector(".nav-toggle")) {
+    const toggle = document.createElement("button");
+    toggle.className = "nav-toggle";
+    toggle.setAttribute("aria-label", "Toggle navigation");
+    toggle.innerHTML = '<span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>';
+    nav.parentNode.insertBefore(toggle, nav);
+    toggle.addEventListener("click", () => {
+      toggle.classList.toggle("open");
+      nav.classList.toggle("open");
+    });
+    // Close nav when clicking a link
+    nav.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        toggle.classList.remove("open");
+        nav.classList.remove("open");
+      });
+    });
+    // Close nav on resize to desktop
+    window.addEventListener("resize", () => {
+      if (!window.matchMedia("(max-width: 768px)").matches) {
+        toggle.classList.remove("open");
+        nav.classList.remove("open");
+      }
+    });
+  }
 
   // ============================================
   // COMPLETION CHECK — all 12 riddles solved

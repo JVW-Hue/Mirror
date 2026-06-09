@@ -592,6 +592,52 @@ input:focus, textarea:focus { outline: none; border-color: var(--c-accent); box-
 /* ============================================
    DISCOVERY COUNTER
    ============================================ */
+/* ============================================
+   SAVE PROGRESS BUTTON
+   ============================================ */
+.save-progress-wrap {
+  position: fixed;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.save-btn {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--c-muted);
+  background: rgba(255,255,255,0.95);
+  border: 1px solid #e0e0e0;
+  padding: 0.35rem 0.65rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  white-space: nowrap;
+}
+.save-btn:hover { background: #f0f0f0; border-color: #ccc; }
+.save-btn.saved { background: #e8f5e9; border-color: #81c784; color: #2e7d32; }
+.save-btn.error { background: #fce4ec; border-color: #ef9a9a; color: #c62828; }
+.save-toast {
+  position: fixed;
+  bottom: 3.2rem;
+  left: 1rem;
+  background: #2e7d32;
+  color: white;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  z-index: 1002;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.25s, transform 0.25s;
+  pointer-events: none;
+}
+.save-toast.show { opacity: 1; transform: translateY(0); }
+
 .discovery-counter {
   position: fixed;
   bottom: 1rem;
@@ -1063,8 +1109,6 @@ body.reveal-3 .redacted, body.reveal-4 .redacted { background: transparent; colo
   .mirror-truth h1 { font-size: 1.4rem; }
   .end-content h1 { font-size: 1.1rem; }
 
-  .discovery-counter { bottom: 8px; left: 8px; font-size: 0.65rem; padding: 0.3rem 0.5rem; border-radius: 20px; box-shadow: 0 1px 6px rgba(0,0,0,0.1); }
-
   .objectives-panel {
     position: fixed !important; bottom: 0 !important; right: 0 !important;
     left: 0 !important; width: 100% !important;
@@ -1109,11 +1153,145 @@ body.reveal-3 .redacted, body.reveal-4 .redacted { background: transparent; colo
   .thread-link { font-size: 0.65rem; padding: 0.2rem 0.35rem; }
 }
 
+/* ============================================
+   MOBILE NAV HAMBURGER
+   ============================================ */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  min-height: 44px;
+  min-width: 44px;
+  align-items: center;
+  justify-content: center;
+}
+.nav-toggle-bar {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--c-text);
+  margin: 4px 0;
+  border-radius: 2px;
+  transition: 0.25s;
+}
+.nav-toggle.open .nav-toggle-bar:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+.nav-toggle.open .nav-toggle-bar:nth-child(2) { opacity: 0; }
+.nav-toggle.open .nav-toggle-bar:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+@media (max-width: 768px) {
+  .nav-toggle { display: flex; }
+
+  nav.main-nav {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+    width: 100%;
+  }
+  nav.main-nav.open { max-height: 500px; }
+
+  nav.main-nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0;
+  }
+  nav.main-nav li { width: 100%; }
+  nav.main-nav a {
+    display: flex;
+    width: 100%;
+    min-height: 48px;
+    padding: 0.6rem 0.75rem;
+    font-size: 0.9rem;
+    border-radius: 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  nav.main-nav a:hover,
+  nav.main-nav a:active { background: var(--c-surface); }
+
+  .site-header .container { flex-direction: row; flex-wrap: wrap; }
+  .brand { flex: 1; }
+
+  .thread-bar { display: none; }
+
+  .hero { padding: 1.5rem 0; text-align: center; }
+  .hero h1 { font-size: 1.5rem; }
+  .hero p.lead { font-size: 0.85rem; }
+
+  .cards { grid-template-columns: 1fr; gap: 0.6rem; }
+  .card { padding: 0.9rem; }
+
+  .page-header { padding: 0.5rem 0 0.8rem; }
+  .page-header h1 { font-size: 1.3rem; }
+
+  .content { font-size: 0.92rem; line-height: 1.65; }
+
+  .thread-map, .map-canvas { height: 280px !important; }
+
+  .memo { padding: 0.75rem; }
+
+  .court-order { padding: 0.75rem 0.6rem; }
+
+  .forum-post { padding: 0.7rem; }
+  .forum-post h3 { font-size: 0.9rem; }
+
+  .riddle { padding: 0.75rem; }
+  .riddle-form { flex-direction: column; }
+  .riddle-input, .riddle-btn { width: 100%; }
+
+  .mirror-truth, .end-content { margin: 1rem 0.75rem; }
+  .mirror-truth h1 { font-size: 1.3rem; }
+
+  .purple-content { margin: 1rem 0.75rem; }
+  .purple-content h1 { font-size: 1.2rem; }
+
+  .data-room-box { margin: 0.75rem; padding: 0.75rem; }
+
+  .final-line { font-size: 0.9rem; }
+
+  .the-list { columns: 1; }
+
+  .site-footer .container { flex-direction: column; text-align: center; gap: 0.5rem; }
+
+  a, .btn { -webkit-tap-highlight-color: transparent; }
+
+  /* Bottom-sheet objectives on mobile */
+  .objectives-panel {
+    position: fixed !important;
+    bottom: 0 !important; right: 0 !important;
+    left: 0 !important; width: 100% !important;
+    max-height: 55vh !important;
+    border-radius: 12px 12px 0 0 !important;
+    transform: translateY(calc(100% - 40px));
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  }
+  .objectives-panel.expanded { transform: translateY(0); }
+  .objectives-panel.minimized { transform: translateY(100%) !important; }
+  .obj-reopen { right: 0.75rem !important; bottom: 0.75rem !important; }
+  .obj-reopen-label { display: none; }
+  .obj-reopen-count { font-size: 0.75rem; }
+
+  .save-progress-wrap { bottom: 3.5rem; left: 0.75rem; }
+  .save-btn { min-height: 40px; font-size: 0.65rem; }
+  .discovery-counter { bottom: 3.5rem; left: 0.75rem; font-size: 0.6rem; }
+}
+
+@media (max-width: 380px) {
+  .container { padding: 0 0.75rem; }
+  h1 { font-size: 1.3rem; }
+  .hero h1 { font-size: 1.35rem; }
+  .hero p.lead { font-size: 0.8rem; }
+  .card h3 { font-size: 0.88rem; }
+  .btn { padding: 0.55rem 0.8rem; font-size: 0.8rem; }
+}
+
 @media (max-width: 600px) {
   .brand { min-height: 40px; }
   nav.main-nav a { min-height: 40px; padding: 0.5rem; }
   .thread-link { min-height: 36px; }
-  .discovery-counter { min-width: 40px; min-height: 40px; padding: 0.5rem 0.7rem; }
+  .discovery-counter { min-width: 40px; min-height: 40px; padding: 0.5rem 0.7rem; bottom: 3.8rem; }
+  .save-btn { min-height: 40px; }
 }
 
 /* ============================================
